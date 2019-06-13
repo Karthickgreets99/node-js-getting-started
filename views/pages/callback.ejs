@@ -23,16 +23,17 @@
                         <div class="headerTextDecorated"></div>
                         <div class="result">
                             <section class="id_token">
-                                    <p><b>Code: </b<pre><%= code %></pre></p>
+                                    <p><b>Code: </b><pre><%= code %></pre></p>
 <p><b>id_token Info:</b></p>
 <pre>
 {
     "kid": "<%=idt.kid%>"",
     "alg": "<%=idt.alg%>"
 },
+</pre>
 <pre><%=idtokenInfo%></pre>
 <% if (state) { %>
-    <div><b>State: </b><%= state %></div>
+    <div><b>State: </b><pre><%= state %></pre></div>
   <% } %>
                             </section>  
                         </div>                     
