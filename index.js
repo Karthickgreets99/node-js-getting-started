@@ -11,9 +11,9 @@ express()
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/index'))
-  .get('/callback', (req, res) => {
-    const { query: body } = req;
-    if (body.code && body.id_token) {
+  .post('/callback', (req, res) => {
+    const { body } = req;
+    if (body && body.code && body.id_token) {
       const idTokenData = jwtDecode.decode(body.id_token);
       console.log(idTokenData);
       res.render('pages/callback', {
