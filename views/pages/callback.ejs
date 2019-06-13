@@ -7,34 +7,6 @@
     <title>Stay logged in for faster checkout</title>
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1, user-scalable=yes" />
     <link rel="stylesheet" href="https://www.paypalobjects.com/web/res/bc4/702f40f2e7398ff368b30099ca19e/css/contextualLogin.css" />
-    <style type="text/css">
-        .headerTextDecorated {
-            margin-top: 30px !important;
-        }
-        .pp-logo {
-            width: 70px;
-            height: 70px;
-            vertical-align: middle;
-            border-radius: 15px;
-            padding: 15px;
-            box-shadow: 0 0 13px 0 rgba(0,0,0,.15);            
-        }
-        .plus-logo {
-            padding: 8px;
-            border-radius: 0px;
-            box-shadow: none;
-            width: 40px;
-        }
-        .logoContainer {
-            text-align: center;
-            margin-top: 35px;
-            margin-bottom: 25px;
-        }
-        .headerTextDecorated {
-            border: none;
-        }
-    </style>
-
 </head>
 
 <body class="desktop">
@@ -89,20 +61,6 @@
             </div>
         </footer>
     </div>
-    <script type="text/javascript" src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js"></script>
-    <script type="text/javascript">
-        AppleID.auth.init({
-                clientId : 'com.herokuapp.swapl',
-                scope : 'email',
-                redirectURI: 'https://swapl.herokuapp.com/callback',
-                state : 'test-state-12345'
-            });
-
-            const buttonElement = document.getElementById('sign-in-with-apple-button');
-            buttonElement.addEventListener('click', () => {
-                AppleID.auth.signIn();
-            });
-    </script>
 </body>
 
 </html>
