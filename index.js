@@ -19,6 +19,10 @@ express()
       res.render('pages/callback', {
         code: body.code,
         idtokenInfo: JSON.stringify(idTokenData, null, 4),
+        idt: {
+          "kid": "AIDOPK1",
+          "alg": "RS256"
+        },
         state: body.state});
     } else {
       res.render('pages/index');
