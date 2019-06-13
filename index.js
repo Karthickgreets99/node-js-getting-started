@@ -11,7 +11,7 @@ express()
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/index'))
-  .post('/', (req, res) => {
+  .post('/callback', (req, res) => {
     const { body } = req;
     if (body && body.code && body.id_token) {
       const idTokenData = jwtDecode.decode(body.id_token);
