@@ -19,11 +19,11 @@
                     </header>
                     <div id="linked" class="linked">
                         <!--div id="headerIcon" class="partnerConnect"></div-->
-                        <div class="headerTextDecorated"></div>
                         <h1 class="headerText">Thank you. All set!</h1>
+                        <div class="headerTextDecorated"></div>
                         <div class="result">
                             <section class="id_token">
-                                    <p><b>Code</b>:<%= code %></p>
+                                    <p><b>Code: </b<pre><%= code %></pre></p>
 <p><b>id_token Info:</b></p>
 <pre>
 {
@@ -32,7 +32,6 @@
 },
 <pre><%=idtokenInfo%></pre>
 <% if (state) { %>
-    <hr />
     <div><b>State: </b><%= state %></div>
   <% } %>
                             </section>  
