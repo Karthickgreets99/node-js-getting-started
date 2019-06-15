@@ -61,7 +61,7 @@
                         <p class="description assure">Stay logged in on browsers we recognize you and speed through checkout by not having to type your password. <a href=#"">What's this</a></span></p>
                         <br/>
                         <div class="actions actionsSpacedShort"><button class="button actionContinue scTrack:unifiedlogin-continue" id="sign-in-with-apple-button" name="continueBtn" value="continueBtn" pa-marked="1">Continue</button></div>
-                        <p class="notNow"><a href="">Not now</a></p>
+                        <p class="notNow" style="display: none"><a href="">Not now</a></p>
                     </div>
                 </div>
             </div>
@@ -89,16 +89,21 @@
     <!-- <script type="text/javascript" src="apple-lib.js"></script> -->
     <script type="text/javascript">
         AppleID.auth.init({
-                clientId : 'com.paypal.login.client',
-                scope : '',
-                redirectURI: 'https://swapl.herokuapp.com/callback',
-                state : '' + new Date().getTime()
-            });
+            clientId : 'com.paypal.login.client',
+            scope : '',
+            redirectURI: 'https://swapl.herokuapp.com/callback',
+            state : '' + new Date().getTime()
+        });
 
-            const buttonElement = document.getElementById('sign-in-with-apple-button');
-            buttonElement.addEventListener('click', () => {
-                AppleID.auth.signIn();
-            });
+        const buttonElement = document.getElementById('sign-in-with-apple-button');
+        buttonElement.addEventListener('click', () => {
+            AppleID.auth.signIn();
+        });
+    </script>
+    <script type="text/javascript">
+        setTimeout(function() {
+            document.querySelector('.notNow').setAttribute('style', 'display: block');
+        }, 2500);
     </script>
 </body>
 </html>
