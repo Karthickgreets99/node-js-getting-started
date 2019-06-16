@@ -34,8 +34,8 @@ express()
     if (code) {
       const authTokens = await appleSignin.getAuthorizationToken(code, {
         clientID: 'com.paypal.login.client',
-        redirectUri: 'https://login.paypal.com/callback', // Dev
-        // redirectUri: 'https://swapl.herokuapp.com/callback', // Prod
+        // redirectUri: 'https://login.paypal.com/callback', // Dev
+        redirectUri: 'https://swapl.herokuapp.com/callback', // Prod
         clientSecret: 'eyJraWQiOiI1QjI1SzU1RjRTIiwiYWxnIjoiRVMyNTYifQ.eyJpc3MiOiJMMkRIVExBUDdLIiwiaWF0IjoxNTYwNjU2OTQ2LCJleHAiOjE1NzYyMDg5NDYsImF1ZCI6Imh0dHBzOi8vYXBwbGVpZC5hcHBsZS5jb20iLCJzdWIiOiJjb20ucGF5cGFsLmxvZ2luLmNsaWVudCJ9.zyD0SRHFokYpc0ctS6igjAIx76xJYfXS_IVNYS73GrtaSZ3PtLjBx8WbYZfsN_DsXXPWOCzAKF2J1EsU8VaiVg'
       }).then(async (tokenResponse) => {
         // console.log(tokenResponse);
