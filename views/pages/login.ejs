@@ -62,7 +62,7 @@
                         <p class="description assure">Enable auto login on this browser and speed through checkout every time. (Not recommended for shared devices) <a href=#"">What's this</a></span></p>
                         <br/>
                         <div class="actions actionsSpacedShort"><button class="button actionContinue scTrack:unifiedlogin-continue" id="sign-in-with-apple-button" name="continueBtn" value="continueBtn" pa-marked="1">Agree and Sign in with Apple</button></div>
-                        <p class="usePassword" style="display: none"><a href="">Use password instead</a></p>
+                        <p class="usePassword"><a href="">Use password instead</a></p>
                     </div>
                 </div>
             </div>
@@ -100,11 +100,6 @@
         buttonElement.addEventListener('click', () => {
             AppleID.auth.signIn();
         });
-    </script>
-    <script type="text/javascript">
-        setTimeout(function() {
-            document.querySelector('.usePassword').setAttribute('style', 'display: block');
-        }, 2500);
     </script>
 </body>
 </html>
