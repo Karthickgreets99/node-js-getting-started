@@ -25,17 +25,13 @@
                         <div class="headerTextDecorated"></div>
                         <div class="result">
                             <section class="id_token">
-                                    <p><b>Code: </b><pre><%= code %></pre></p>
-<p><b>id_token Info:</b></p>
-<pre>
-{
-    "kid": "<%=idt.kid%>"",
-    "alg": "<%=idt.alg%>"
-},
-</pre>
-<pre><%=idtokenInfo%></pre>
+                                    <!-- <p><b>Code: </b><pre><%= code %></pre></p> -->
+<p>
+    <b>Identity Token: </b>(id_token details)<pre><%=idtokenInfo%></pre>
+</p>
+<div><b>Subject: </b>(Unique Identifier on Apple side) <pre><%= subject %></pre></div>
 <% if (state) { %>
-    <div><b>State: </b><pre><%= state %></pre></div>
+    <div><b>State: </b>(set by the client in the request)<pre><%= state %></pre></div>
   <% } %>
                             </section>  
                         </div>                     
