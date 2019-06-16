@@ -3,29 +3,7 @@ const path = require('path')
 const PORT = process.env.PORT || 8000
 const jwtDecode = require('jsonwebtoken');
 const bodyParser = require('body-parser')
-const { URL } = require('url');
-const ENDPOINT_URL = 'https://appleid.apple.com';
-const request = require('request-promise-native');
-
-const getAuthorizationToken = async (code, options) => {
-  if (!options.clientID) throw new Error('clientID is empty');
-  if (!options.redirectUri) throw new Error('redirectUri is empty');
-  if (!options.clientSecret) throw new Error('clientSecret is empty');
-
-  const url = new URL(ENDPOINT_URL);
-  url.pathname = '/auth/token';
-
-  const form = {
-    client_id: options.clientID,
-    client_secret: options.clientSecret,
-    code,
-    grant_type: 'authorization_code',
-    redirect_uri: options.redirectUri,
-  };
-
-  const body = await request({ url: url.toString(), method: 'POST', form });
-  return JSON.parse(body);
-};
+const appleSignin = require("apple-signin");
 
 express()
   .use(express.static(path.join(__dirname, 'public')))
@@ -53,14 +31,16 @@ express()
         },
         state: oauthState});
     } else if (code) {
-      const authTokens = await getAuthorizationToken(code, {
+      const authTokens = await appleSignin.getAuthorizationToken(code, {
         clientID: 'com.paypal.login.client',
         // redirectUri: 'https://login.paypal.com/callback', // Developeent
         redirectUri: 'https://swapl.herokuapp.com/callback', // production
         clientSecret: 'eyJraWQiOiI1QjI1SzU1RjRTIiwiYWxnIjoiRVMyNTYifQ.eyJpc3MiOiJMMkRIVExBUDdLIiwiaWF0IjoxNTYwNjU2OTQ2LCJleHAiOjE1NzYyMDg5NDYsImF1ZCI6Imh0dHBzOi8vYXBwbGVpZC5hcHBsZS5jb20iLCJzdWIiOiJjb20ucGF5cGFsLmxvZ2luLmNsaWVudCJ9.zyD0SRHFokYpc0ctS6igjAIx76xJYfXS_IVNYS73GrtaSZ3PtLjBx8WbYZfsN_DsXXPWOCzAKF2J1EsU8VaiVg'
-      }).then(tokenResponse => {
+      }).then(async (tokenResponse) => {
         // console.log(tokenResponse);
-        const idTokenData = jwtDecode.decode(tokenResponse.id_token);
+        // const idTokenData = jwtDecode.decode(tokenResponse.id_token);
+        const idTokenData = await appleSignin.verifyIdToken(tokenResponse.id_token, 'com.paypal.login.client');
+        
         res.render('pages/callback', {
           code: code,
           subject: idTokenData.sub,
