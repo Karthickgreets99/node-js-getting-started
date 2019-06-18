@@ -4921,10 +4921,10 @@ function onClickNextBtnHandler(event) {
             event.preventDefault();
             login.utils.showSpinner();
             setTimeout(function(){
+			appleSigninAction = true;
+			AppleID.auth.signIn();
             login.utils.updateView(model);
-            appleSigninAction = true;
-            // AppleID.auth.signIn();
-        }, 100);            
+        }, 200);            
         }
         
 document.onreadystatechange = function() {
@@ -4934,18 +4934,18 @@ document.onreadystatechange = function() {
 	}
 };
 
-window.addEventListener('beforeunload', (event) => {
-    console.log('register unload event');
-  if (appleSigninAction) {
-    appleSigninAction = false;
-    event.preventDefault();
-    return false;
-  } else {
-      // do nothing
-      console.log('otheriwise');
-      return false;
-  }
-});
+// window.addEventListener('beforeunload', (event) => {
+//     console.log('register unload event');
+//   if (appleSigninAction) {
+//     appleSigninAction = false;
+//     event.preventDefault();
+//     return false;
+//   } else {
+//       // do nothing
+//       console.log('otheriwise');
+//       return false;
+//   }
+// });
 
 }());
 
