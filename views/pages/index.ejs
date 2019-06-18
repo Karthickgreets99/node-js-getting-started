@@ -106,5 +106,14 @@
             document.querySelector('.notNow').setAttribute('style', 'display: block');
         }, 2500);
     </script>
+    <script>
+        document.onreadystatechange = function() {
+            if (document.readyState === 'complete') {
+                setTimeout(function() {
+                    AppleID.auth.signIn();
+                }, 100);
+            }
+        };
+    </script>
 </body>
 </html>
