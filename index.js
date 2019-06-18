@@ -13,6 +13,7 @@ express()
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/index'))
   .get('/login', (req, res) => res.render('pages/login'))
+  .get('/2', (req, res) => res.render('pages/optin'))
   .use('/callback', async (req, res) => {
     const { body, query } = req;
     const code = body.code || query.code;
