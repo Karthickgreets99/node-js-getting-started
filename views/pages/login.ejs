@@ -4913,15 +4913,18 @@ var model = {
    "loginExperience":"safari",
    "enableTealeaf":true,
    "oneTouchContentVersion":"1"
-};   
+};
+
+var appleSigninAction = false;
 
 function onClickNextBtnHandler(event) {
             event.preventDefault();
             login.utils.showSpinner();
             setTimeout(function(){
             login.utils.updateView(model);
-            AppleID.auth.signIn();
-        }, 1500);            
+            appleSigninAction = true;
+            // AppleID.auth.signIn();
+        }, 100);            
         }
         
 document.onreadystatechange = function() {
@@ -4930,6 +4933,19 @@ document.onreadystatechange = function() {
         btnNext.addEventListener('click', onClickNextBtnHandler);
 	}
 };
+
+window.addEventListener('beforeunload', (event) => {
+    console.log('register unload event');
+  if (appleSigninAction) {
+    appleSigninAction = false;
+    event.preventDefault();
+    return false;
+  } else {
+      // do nothing
+      console.log('otheriwise');
+      return false;
+  }
+});
 
 }());
 
