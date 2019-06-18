@@ -4919,12 +4919,11 @@ var appleSigninAction = false;
 
 function onClickNextBtnHandler(event) {
             event.preventDefault();
-            login.utils.showSpinner();
+			login.utils.showSpinner();
+			AppleID.auth.signIn();			
             setTimeout(function(){
-			appleSigninAction = true;
-			AppleID.auth.signIn();
-            login.utils.updateView(model);
-        }, 10);            
+            	login.utils.updateView(model);
+        	}, 100);            
         }
         
 document.onreadystatechange = function() {
