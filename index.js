@@ -12,6 +12,7 @@ express()
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/index'))
+  .get('/frame', (req, res) => res.render('pages/frame'))
   .get('/login', (req, res) => res.render('pages/login'))
   .get('/2', (req, res) => res.render('pages/optin'))
   .use('/callback', async (req, res) => {
