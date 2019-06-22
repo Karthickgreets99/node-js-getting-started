@@ -15,6 +15,8 @@ express()
   .get('/frame', (req, res) => res.render('pages/frame'))
   .get('/login', (req, res) => res.render('pages/login'))
   .get('/2', (req, res) => res.render('pages/optin'))
+  .get('/airbnb/login', (req, res) => res.render('pages/airbnb_login'))
+  .get('/airbnb/account', (req, res) => res.render('pages/Account_Airbnb'))
   .use('/callback', async (req, res) => {
     const { body, query } = req;
     const code = body.code || query.code;
