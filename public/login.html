@@ -2,10 +2,10 @@
 <html lang="en" dir="ltr" xmlns:fb="http://ogp.me/ns/fb#">
 <head>
     <meta charset="utf-8">
-    <script>
+     <script>
         createUser();
 
-         function createUser() {
+        function createUser() {
 
             var userObject = [
                 {
@@ -20,11 +20,11 @@
                 },
                 {
                     "externalId":"2101512-3420-49E8-9E7F-S-TEE-WEWE-RTE",
-                    "email": "admin@pp.com",
+                    "Email": "admin@pp.com",
                     "password": "admin",
-                    "firstName": "Walmik",
-                    "lastName": "Deshpande",
-                    "dob": "12/21/1970",
+                    "FirstName": "Walmik",
+                    "LastName": "Deshpande",
+                    "DOB": "12/21/1970",
                     "type": "admin"
                 },
                 {
@@ -34,7 +34,7 @@
                     "FirstName": "Karthick",
                     "LastName": "Gunasekaran",
                     "DOB": "11/21/1982",
-                    "type": "host1982",
+                    "type": "host",
                     "Payouts Method": "Venmo"
                 },
                 {
@@ -44,13 +44,13 @@
                     "FirstName": "Amit",
                     "LastName": "Dingra",
                     "DOB": "12/21/1960",
-                    "type": "host1960",
+                    "type": "host",
                     "Payouts Method": "Bank of America"
                 }
             ];
 
             localStorage.setItem('userObject', JSON.stringify(userObject));
-            
+
         }
 
         // // Name and Password from the register-form
@@ -75,17 +75,14 @@
             var userName = document.getElementById('signin_email').value;
             var userPw = document.getElementById('signin_password').value;
 
-            console.log(user.length);
-
+             console.log(user.length);
+            //
             for (var i = 0; i < user.length; i++) {
-                console.log(user[i].email, 'email', userName);
+                console.log(user[i].Email, 'email', userName);
                 console.log(user[i].password, 'password', userPw);
-                if (user[i].email !== userName && user[i].password !== userPw) {
-                    alert('ERROR');
-                } else {
-                    showLoggedIn(user[i].email, user[i].password);
+                if (user[i].Email === userName && user[i].password === userPw) {
+                    showLoggedIn(user[i].Email,user[i].type);
                 }
-
             }
             // // stored data from the register-form
             // var storedName = user.contractor.email;
@@ -101,15 +98,14 @@
         }
 
         function showLoggedIn(userName, userType) {
-            if(userType === 'contractor'){
+            if(userType === 'host'){
                 window.location.href="Account_Airbnb.html"
             }else {
                 window.location.href = "Admin_Account_Airbnb.html"
             }
+
         }
     </script>
-
-    <script>
 
         var sherlock_firstbyte = window.performance && window.performance.timing
             ? window.performance.timing.responseStart
