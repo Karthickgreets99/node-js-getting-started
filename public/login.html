@@ -5,36 +5,52 @@
     <script>
         createUser();
 
-        function createUser() {
+         function createUser() {
 
             var userObject = [
                 {
-                    "email": "testContractor@gmail.com",
-                    "password": "stage2@qa",
-                    "firstName": "Venkat",
-                    "lastName": "Duraikannu",
-                    "dob": "11/11/1980",
-                    "type": "contractor"
+                    "externalId":"55562101512-3420-49E8-9E7F-S-TEE-WEWE-RTERTA",
+                    "Email": "host@pp.com",
+                    "password": "host1980",
+                    "FirstName": "Venkat",
+                    "LastName": "Duraikannu",
+                    "DOB": "11/11/1980",
+                    "type": "host",
+                    "Payouts Method": "Paypal"
                 },
                 {
-                    "email": "testAdmin@gmail.com",
-                    "password": "stage2@qa",
+                    "externalId":"2101512-3420-49E8-9E7F-S-TEE-WEWE-RTE",
+                    "email": "admin@pp.com",
+                    "password": "admin",
                     "firstName": "Walmik",
                     "lastName": "Deshpande",
-                    "dob": "12/21/1990",
+                    "dob": "12/21/1970",
                     "type": "admin"
+                },
+                {
+                    "externalId":"55562101512-3420-49E8-9E7F-S-TEE-WEWE-RTE",
+                    "Email": "host1@pp.com",
+                    "password": "contractor",
+                    "FirstName": "Karthick",
+                    "LastName": "Gunasekaran",
+                    "DOB": "11/21/1982",
+                    "type": "host1982",
+                    "Payouts Method": "Venmo"
+                },
+                {
+                    "externalId":"55562101512-3420-49E8-9E7F-S-TEE-WEWE",
+                    "Email": "host2@pp.com",
+                    "password": "contractor",
+                    "FirstName": "Amit",
+                    "LastName": "Dingra",
+                    "DOB": "12/21/1960",
+                    "type": "host1960",
+                    "Payouts Method": "Bank of America"
                 }
             ];
 
-            // console.log('typeof testObject: ' + typeof testObject);
-            // console.log('testObject properties:');
-            // for (var prop in userObject) {
-            //     console.log('  ' + prop + ': ' + userObject[prop]);
-            // }
-
             localStorage.setItem('userObject', JSON.stringify(userObject));
-
-
+            
         }
 
         // // Name and Password from the register-form
@@ -84,10 +100,12 @@
             // }
         }
 
-        function showLoggedIn(obj, obj1) {
-
-            window.location.href="Account_Airbnb.html"
-
+        function showLoggedIn(userName, userType) {
+            if(userType === 'contractor'){
+                window.location.href="Account_Airbnb.html"
+            }else {
+                window.location.href = "Admin_Account_Airbnb.html"
+            }
         }
     </script>
 
