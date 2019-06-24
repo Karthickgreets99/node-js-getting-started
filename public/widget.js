@@ -4,7 +4,7 @@
   window.PYPL = window.PYPL || {};
   window.PYPL.initPayouts = function(config) {
     var iFrame = document.createElement('iframe');
-    var src = 'https://localhost.paypal.com/signin/payouts';
+    var src = 'https://localhost.paypal.com/signin/payments';
     var defaultProps = {
       height: 700,
       style: 'width: 355px;',
