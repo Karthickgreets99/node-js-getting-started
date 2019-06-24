@@ -1,10 +1,11 @@
 (function() {
   'use strict';
+  const getRandomCharacters = len => Math.random().toString(36).slice(-len);
 
   window.PYPL = window.PYPL || {};
   window.PYPL.initPayouts = function(config) {
     var iFrame = document.createElement('iframe');
-    var src = 'https://localhost.paypal.com/signin/payments';
+    var src = config.src || 'https://localhost.paypal.com/signin/payments';
     var defaultProps = {
       height: 700,
       style: 'width: 355px;',
@@ -23,4 +24,16 @@
     });
     document.getElementById(config.parentId).appendChild(iFrame);
   };
+
+  window.PYPL.getExternalId = function() {
+    return [
+      getRandomCharacters(8),
+      getRandomCharacters(4),
+      getRandomCharacters(4),
+      getRandomCharacters(4),
+      getRandomCharacters(12),
+    ]
+      .join('-')
+      .toUpperCase();
+  }
 }());
