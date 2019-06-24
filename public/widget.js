@@ -16,7 +16,7 @@
     };
     var queryParams = '?';
     for (var param in config) {
-      queryParams = queryParams + param + '=' + encodeURIComponent(config[param]);
+      queryParams = queryParams + param + '=' + encodeURIComponent(config[param]) + '&';
     }
     defaultProps.src = src + queryParams;
     Object.keys(defaultProps).forEach(function(attr) {
