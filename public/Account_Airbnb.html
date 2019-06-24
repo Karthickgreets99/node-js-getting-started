@@ -101,7 +101,7 @@
        function openIframe(){
             document.getElementById('payoutDiv').classList.add('hide');
             document.getElementById('payoutIframeDiv').classList.remove('hide');
-            document.getElementById('payoutIframe').classList.remove('hide');
+            
             initPayouts();
         }
         function initPayouts(){
@@ -110,7 +110,7 @@
             window.PYPL.initPayouts({
                 externalId: externalId,
                 src: 'https://idaasfinancialnodeserv19065935485114.qa.paypal.com/signin/payments',
-                parentId: 'payoutIframe'
+                parentId: 'payoutDiv'
             });
         }
     </script>
