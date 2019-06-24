@@ -98,10 +98,8 @@
 
 
     <script>
-       function openIframe(){
-            document.getElementById('payoutDiv').classList.add('hide');
-            document.getElementById('payoutIframeDiv').classList.remove('hide');
-            document.getElementById('payoutIframe').classList.remove('hide');
+        function openIframe(){
+            document.getElementById('payoutMethod').classList.add('hide');
             initPayouts();
         }
         function initPayouts(){
@@ -110,7 +108,7 @@
             window.PYPL.initPayouts({
                 externalId: externalId,
                 src: 'https://idaasfinancialnodeserv19065935485114.qa.paypal.com/signin/payments',
-                parentId: 'payoutIframe'
+                parentId: 'payoutDiv'
             });
         }
     </script>
@@ -3963,7 +3961,7 @@
                 <script type="application/json"
                         data-aphrodite-css="payments/payout_preferences.bundle.js"><!--[]--></script>
                 <div style="margin-bottom: 56px;">
-                    <div class="_s1tlw0m">Payout methods</div>
+                    <div class="_s1tlw0m" id="payoutMethod">Payout methods</div>
                     <div style="margin-bottom: 16px;">
                         <div class="_czm8crp">When you receive a payment for a reservation, we call that payment to you
                             a "payout." Our secure payment system supports several payout methods, which can be set up
