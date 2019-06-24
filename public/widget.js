@@ -7,7 +7,7 @@
     var src = 'https://localhost.paypal.com/signin/payments';
     var defaultProps = {
       height: 700,
-      style: 'width: 335px;',
+      style: 'width: 355px;',
       name: 'injectedPayouts',
       frameborder: 0,
       scrolling: 'no',
