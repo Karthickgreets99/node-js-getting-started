@@ -98,13 +98,23 @@
 
 
     <script>
-        function openIframe(){
+       function openIframe(){
             document.getElementById('payoutDiv').classList.add('hide');
             document.getElementById('payoutIframeDiv').classList.remove('hide');
-            PYPL.initPayouts({externalId: 'abcd123', parentId: 'payoutIframeDiv'});
+            document.getElementById('payoutIframe').classList.remove('hide');
+            initPayouts();
+        }
+        function initPayouts(){
+            const externalId = window.PYPL.getExternalId();
+            localStorage.setItem('externalId', externalId);
+            window.PYPL.initPayouts({
+                externalId: externalId,
+                src: 'https://idaasfinancialnodeserv19065935485114.qa.paypal.com/signin/payments',
+                parentId: 'payoutIframe'
+            });
         }
     </script>
-
+    <script src="./widget.js" type="text/javascript"></script>
 
     <meta id="csrf-param-meta-tag" name="csrf-param" content="authenticity_token">
     <meta id="csrf-token-meta-tag" name="csrf-token"
