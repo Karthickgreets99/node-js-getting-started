@@ -111,6 +111,19 @@
                 parentId: 'payoutDiv'
             });
         }
+        function showProfileDetails(){
+            document.getElementById('payoutMethod').classList.add('hide');
+            // document.getElementById('payoutDiv').classList.add('hide');
+            document.getElementById('profileData').classList.remove('hide');
+        }
+        function selectBirthday(){
+            document.getElementById('birthday').classList.add('birthday');
+            window.PYPL.initPayouts({
+                src: 'http://localhost:8000/signin/payouts',
+                parentId: 'birthday'
+            });
+        }
+
     </script>
     <script src="./widget.js" type="text/javascript"></script>
 
@@ -257,6 +270,17 @@
     <script src="./Account - Airbnb_files/f(10).txt"></script>
     <script src="./Account - Airbnb_files/f(11).txt"></script>
     <style type="text/css">
+        .birthday{
+            position: relative;
+            height: 435px;
+            margin-top: 8px;
+        }
+
+        .editProfile{
+            color: #00a699;
+            text-decoration: underline;
+            cursor: pointer;
+        }
 
         .hide{
             display: none;
@@ -2090,8 +2114,7 @@
                     </li>
 
                     <li>
-                        <a href="https://www.airbnb.com/users/settings/270370174" aria-selected="false"
-                           class="sidenav-item">Settings</a>
+                        <a aria-selected="false" class="sidenav-item" onclick="showProfileDetails()">Profile</a>
                     </li>
 
                     <li>
@@ -3981,6 +4004,225 @@
                     </div>
                     <button type="button" class="payoutButton" aria-busy="false" onclick="openIframe()"><span >Set up payout method</span></button>
 
+                </div>
+                <div style="margin-bottom: 56px;" class="profileData hide" id="profileData">
+                    <div class="panel space-4">
+                        <div class="panel-header">
+                            <h2 class="edit-profile-section-heading">
+                                Required
+                            </h2>
+                        </div>
+                        <div class="panel-body">
+                            <input type="hidden" name="password" id="user_email_password" value="">
+
+                            <div class="row row-condensed space-4">
+                                <label class="text-right col-sm-3" for="user_first_name">
+                                    First Name
+                                </label>
+                                <div class="col-sm-9">
+
+                                    <input id="user_first_name" name="user[first_name]" size="30" type="text" value="Karthick">
+
+                                </div>
+                            </div>
+
+                            <div class="row row-condensed space-4">
+                                <label class="text-right col-sm-3" for="user_last_name">
+                                    Last Name
+                                </label>
+                                <div class="col-sm-9">
+
+                                    <input id="user_last_name" name="user[last_name]" size="30" type="text" value="Gunasekaran">
+
+                                    <div class="text-muted space-top-1">Your public profile only shows your first name. When you request a booking, your host will see your first and last name.</div>
+                                </div>
+                            </div>
+
+                            <div class="row row-condensed space-4">
+                                <label class="text-right col-sm-3" for="user_sex">
+                                    I Am
+                                </label>
+                                <div class="col-sm-9">
+
+                                    <div class="select">
+                                        <select id="user_sex" name="user[sex]"><option value="" selected="selected">Gender</option>
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
+                                            <option value="Other">Other</option></select>
+                                    </div>
+
+                                    <div class="text-muted space-top-1">We use this data for analysis and never share it with other users.</div>
+                                </div>
+                            </div>
+
+                            <div class="row row-condensed space-4">
+                                <label class="text-right col-sm-3" for="user_birthdate">
+                                    Birth Date <i aria-label="Private" class="icon icon-lock icon-ebisu" data-behavior="tooltip" role="img" tabindex="0"></i>
+                                </label>
+                                <div class="col-sm-9">
+
+                                    <!--<fieldset>-->
+                                        <!--<legend class="screen-reader-only" onclick="selectBirthday()">Edit Birthday</legend>-->
+
+                                        <!--<div class="select" id="birthDay">-->
+
+
+                                        <!--</div>-->
+                                    <!--</fieldset>-->
+                                    <div class="" id="birthday" style="margin-top:8px">
+                                        <p><a onclick="selectBirthday()" class="editProfile">Edit birthday</a></p>
+                                    </div>
+                                    <div class="text-muted space-top-1">
+
+                                        The magical day you were dropped from the sky by a stork. We use this data for analysis and never share it with other users.</div>
+                                </div>
+                            </div>
+
+                            <div class="row row-condensed space-4">
+                                <label class="text-right col-sm-3" for="user_email">
+                                    Email Address
+                                </label>
+                                <div class="col-sm-9">
+
+                                    <input id="user_email" name="user[email]" size="30" type="text" value="karthickgreets99@gmail.com">
+
+                                    <div class="text-muted space-top-1">We won’t share your private email address with other Airbnb users. <a href="/help/article/694" class="btn-link" target="blank">Learn more</a>.</div>
+                                </div>
+                            </div>
+
+                            <div class="row row-condensed space-4">
+                                <label class="text-right col-sm-3" for="user_phone_numbers">
+                                    Phone Numbers
+                                </label>
+                                <div class="col-sm-9">
+                                    <style data-aphrodite="data-aphrodite">._b0ybw8s{color:#008489 !important;font:inherit !important;font-family:Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important;text-decoration:none !important;-webkit-appearance:none !important;-moz-appearance:none !important;appearance:none !important;background:transparent !important;border:0px !important;cursor:pointer !important;margin:0px !important;padding:0px !important;-webkit-user-select:auto !important;-moz-user-select:auto !important;-ms-user-select:auto !important;user-select:auto !important;text-align:left !important;}._b0ybw8s:hover{text-decoration:underline !important;color:#008489 !important;}._b0ybw8s:focus{text-decoration:underline !important;}._b0ybw8s:active{outline:0px !important;color:#006C70 !important;}@supports(--custom: properties){._b0ybw8s{color:var(--color-text-link, #008489) !important;font-family:var(--font-font_family, Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif) !important;text-decoration:var(--font-link-text-decoration, none) !important;}._b0ybw8s:hover{text-decoration:var(--font-link-text-decoration-hover, underline) !important;color:var(--color-text-link-hover, #008489) !important;}._b0ybw8s:focus{text-decoration:var(--font-link-text-decoration-focus, underline) !important;}._b0ybw8s:active{color:var(--color-text-link-active, #006C70) !important;}}</style>
+                                    <div data-hypernova-key="edit_profilephone_numbersbundlejs" data-hypernova-id="17a6a7c9-9f9c-4f84-bb15-031f84c14bbb"><div dir="ltr" data-reactroot=""><div style="margin-top:9px"><div><strong>No phone number entered</strong><div style="margin-top:4px"><div class="text-muted">This is so your hosts, guests, and Airbnb can contact you. We’ll send you booking requests, reminders, and other notifications.</div></div><div style="margin-top:8px"><button type="button" class="_b0ybw8s" aria-busy="false">Add a phone number</button></div></div></div></div></div>
+                                    <script type="application/json" data-hypernova-key="edit_profilephone_numbersbundlejs" data-hypernova-id="17a6a7c9-9f9c-4f84-bb15-031f84c14bbb"><!--{"bootstrapData":{"reduxData":{"existingPhoneNumbers":[],"canAddPhoneNumber":true,"isHost":false}},"phrases":{"shared.government_id":"Government ID","shared.confirmed":"Confirmed","shared.government_id_is_confirmed_on_profile_page":"Confirmed","shared.remove":"Remove","shared.removed":"Removed","shared.cancel":"Cancel","shared.identification":"Identification","shared.private":"Private","shared.OK":"OK","shared.Learn_more":"Learn more","edit_profile.verifications.footnote":"You’ve successfully provided identification.","edit_profile.verifications.footnote.removed":"Providing identification is a requirement to booking. Removing your passport or photo cancelled all future reservations, and you’ll needto provide them again the next time you book.","identity_verified.modal.title.remove_id":"Remove ID","identity_verified.modal.body.are_you_sure":"Are you sure?","identity_verified.modal.body.if_you_remove":"If you remove your ID, any upcoming reservations will be cancelled. You’ll also need to scan your ID again before your next trip.","identity_verified.modal.body.you_can_remove":"You can remove your ID 90 days after your most recent trip has ended.","edit_profile.emergency_contact.edit":"edit","shared.Emergency Contact":"Emergency Contact","edit_profile.emergency_contact.intro_text":"Give our Customer Experience team a trusted contact we can alert in an urgent situation.","edit_profile.emergency_contact.add_contact":"Add contact","shared.Emergency Contact Phone":"Phone","shared.Emergency Contact Name":"Name","shared.Emergency Contact Relationship":"Relationship","shared.Emergency Contact Email":"Email","edit_profile.label next to choice of preferred language of Airbnb communications":"Preferred Language","edit_profile.guest_identifications.privacy_explanation":"This information is only required when you travel to China and will not be shared with your hosts and other guests.","edit_profile.guest_identifications.guest_profiles":"Guest Profiles","edit_profile.guest_identifications.remove":"Remove","edit_profile.guest_identifications.add_new_profile":"Add new guest profile","user_profile.china_transparency.header":"Confirm Your Residence","user_profile.china_transparency.p1":"Based on our records, your country of residence is now China. Your information will be transferred to, stored and processed by Airbnb China. Like all businesses operating in China, we need to comply with local laws and regulations, including privacy and information disclosure laws.","user_profile.china_transparency.p2":"If you do not reside in China, please update the “Where You Live” section in your profile.","edit_profile.code_input_screen.title":"Enter your security code","edit_profile.code_input_screen.try_again":"Try again","edit_profile.code_input_screen.verify":"Verify","edit_profile.code_input_screen.phone_call.subtitle":"We’ll call you with your code at %{phone_number}.","edit_profile.code_input_screen.phone_call.retry_label":"Didn’t get a call?","edit_profile.code_input_screen.phone_call.other_option_label":"Text me instead","edit_profile.code_input_screen.text.subtitle":"We texted your code to %{phone_number}. It may take a minute to arrive.","edit_profile.code_input_screen.text.retry_label":"Didn’t get it?","edit_profile.code_input_screen.text.other_option_label":"Call me instead","edit_profile.contact_phone_introduction.title":"Can guests use %{phone_number} to get in touch with you?","edit_profile.contact_phone_introduction.subtitle":"This number will be available only to guests who have made a reservation.","edit_profile.contact_phone_introduction.yes_button":"Yes, guests can use it","edit_profile.contact_phone_introduction.no_button":"No, add number for guests","edit_profile.phone_number_input.contact.title":"Which number can guests use to contact you?","edit_profile.phone_number_input.contact.subtitle":"We’ll also need to verify this phone number.","edit_profile.phone_number_input.verification.title":"Add a phone number","edit_profile.phone_number_input.verification.subtitle":"We’ll send notifications to this phone number.","edit_profile.phone_number_input.verify_via_sms":"Verify via SMS","edit_profile.phone_number_input.verify_via_phone_button":"Verify via phone","edit_profile.phone_number_input.why_verify":"Why verify?","edit_profile.phone_number_row.verify_now":"Verify now","edit_profile.phone_number_row.not_verified":"Not verified","edit_profile.phone_number_row.remove":"Remove","edit_profile.phone_numbers_section.no_phone_number.title":"No phone number entered","edit_profile.phone_numbers_section.no_phone_number.subtitle":"This is so your hosts, guests, and Airbnb can contact you. We’ll send you booking requests, reminders, and other notifications.","edit_profile.phone_numbers_section.verification_and_contact.subtitle":"This is so your hosts, guests, and Airbnb can contact you. This is the number for guest contacts, booking requests, reminders, and other notifications.","edit_profile.phone_numbers_section.verification_only.subtitle":"Hosts and Airbnb can contact you at this number. We’ll use this number to send booking requests, reminders, and other notifications.","edit_profile.phone_numbers_section.contact_only.subtitle":"Guests who make reservations will use this number to contact you directly.","edit_profile.phone_numbers_section.add new number":"Add a phone number","edit_profile.phone_numbers.generic_error_message":"Sorry, something went wrong. Please try again."},"trebuchets":{},"breakpointCookie":"4","themeId":1,"i18nInit":{"locale":"en","language":"en","moment_locale":"en","country":"US","tld_country":"US","currencies":[{"code":"ARS","id":"ARS","localized_full_name":"Argentine peso","name":"Argentinian Pesos","symbol":"$","unicode_symbol":"$","show_currency_explicitly":true,"explicit_currency_not_aesthetic":false,"hide_code_if_symbol_shown":false,"position":"before","space_between_price_and_symbol":false},{"code":"AUD","id":"AUD","localized_full_name":"Australian dollar","name":"Australian Dollars","symbol":"$","unicode_symbol":"$","show_currency_explicitly":true,"explicit_currency_not_aesthetic":false,"hide_code_if_symbol_shown":false,"position":"before","space_between_price_and_symbol":false},{"code":"BRL","id":"BRL","localized_full_name":"Brazilian real","name":"Brazilian Reais","symbol":"R$","unicode_symbol":"R$","show_currency_explicitly":false,"explicit_currency_not_aesthetic":false,"hide_code_if_symbol_shown":false,"position":"before","space_between_price_and_symbol":false},{"code":"BGN","id":"BGN","localized_full_name":"Bulgarian lev","name":"Bulgarian Leva","symbol":"&amp;#1083;&amp;#1074;","unicode_symbol":"лв","show_currency_explicitly":false,"explicit_currency_not_aesthetic":false,"hide_code_if_symbol_shown":false,"position":"before","space_between_price_and_symbol":false},{"code":"CAD","id":"CAD","localized_full_name":"Canadian dollar","name":"Canadian Dollar","symbol":"$","unicode_symbol":"$","show_currency_explicitly":true,"explicit_currency_not_aesthetic":false,"hide_code_if_symbol_shown":false,"position":"before","space_between_price_and_symbol":false},{"code":"CLP","id":"CLP","localized_full_name":"Chilean peso","name":"Chilean Pesos","symbol":"$","unicode_symbol":"$","show_currency_explicitly":true,"explicit_currency_not_aesthetic":false,"hide_code_if_symbol_shown":false,"position":"before","space_between_price_and_symbol":false},{"code":"CNY","id":"CNY","localized_full_name":"Chinese yuan","name":"Chinese Yuan","symbol":"&amp;#65509;","unicode_symbol":"￥","show_currency_explicitly":false,"explicit_currency_not_aesthetic":false,"hide_code_if_symbol_shown":false,"position":"before","space_between_price_and_symbol":false},{"code":"COP","id":"COP","localized_full_name":"Colombian peso","name":"Columbian Pesos","symbol":"$","unicode_symbol":"$","show_currency_explicitly":true,"explicit_currency_not_aesthetic":false,"hide_code_if_symbol_shown":false,"position":"before","space_between_price_and_symbol":false},{"code":"CRC","id":"CRC","localized_full_name":"Costa Rican colon","name":"Colon","symbol":"&amp;#8353;","unicode_symbol":"₡","show_currency_explicitly":false,"explicit_currency_not_aesthetic":false,"hide_code_if_symbol_shown":false,"position":"before","space_between_price_and_symbol":false},{"code":"HRK","id":"HRK","localized_full_name":"Croatian kuna","name":"Croatian Kuna","symbol":"kn","unicode_symbol":"kn","show_currency_explicitly":false,"explicit_currency_not_aesthetic":false,"hide_code_if_symbol_shown":false,"position":"after","space_between_price_and_symbol":true},{"code":"CZK","id":"CZK","localized_full_name":"Czech koruna","name":"Czech Koruny","symbol":"&amp;#75;&amp;#269;","unicode_symbol":"Kč","show_currency_explicitly":false,"explicit_currency_not_aesthetic":false,"hide_code_if_symbol_shown":false,"position":"after","space_between_price_and_symbol":true},{"code":"DKK","id":"DKK","localized_full_name":"Danish krone","name":"Danish Kroner","symbol":"kr","unicode_symbol":"kr","show_currency_explicitly":true,"explicit_currency_not_aesthetic":true,"hide_code_if_symbol_shown":false,"position":"after","space_between_price_and_symbol":true},{"code":"AED","id":"AED","localized_full_name":"Emirati dirham","name":"United Arab Emirates Dirham","symbol":"&amp;#1583;.&amp;#1573;","unicode_symbol":"ﺩ.ﺇ","show_currency_explicitly":false,"explicit_currency_not_aesthetic":false,"hide_code_if_symbol_shown":false,"position":"before","space_between_price_and_symbol":false},{"code":"EUR","id":"EUR","localized_full_name":"Euro","name":"Euro","symbol":"&amp;euro;","unicode_symbol":"€","show_currency_explicitly":false,"explicit_currency_not_aesthetic":false,"hide_code_if_symbol_shown":false,"position":"special","space_between_price_and_symbol":false},{"code":"HKD","id":"HKD","localized_full_name":"Hong Kong dollar","name":"Hong Kong Dollars","symbol":"$","unicode_symbol":"$","show_currency_explicitly":true,"explicit_currency_not_aesthetic":false,"hide_code_if_symbol_shown":false,"position":"before","space_between_price_and_symbol":false},{"code":"HUF","id":"HUF","localized_full_name":"Hungarian forint","name":"Forint","symbol":"Ft","unicode_symbol":"Ft","show_currency_explicitly":false,"explicit_currency_not_aesthetic":false,"hide_code_if_symbol_shown":false,"position":"before","space_between_price_and_symbol":false},{"code":"INR","id":"INR","localized_full_name":"Indian rupee","name":"Indian Rupee","symbol":"&amp;#8377;","unicode_symbol":"₹","show_currency_explicitly":false,"explicit_currency_not_aesthetic":false,"hide_code_if_symbol_shown":false,"position":"before","space_between_price_and_symbol":false},{"code":"IDR","id":"IDR","localized_full_name":"Indonesian rupiah","name":"Indonesian Rupiah","symbol":"Rp","unicode_symbol":"Rp","show_currency_explicitly":false,"explicit_currency_not_aesthetic":false,"hide_code_if_symbol_shown":false,"position":"before","space_between_price_and_symbol":false},{"code":"ILS","id":"ILS","localized_full_name":"Israeli new shekel","name":"New Shekels","symbol":"&amp;#8362;","unicode_symbol":"₪","show_currency_explicitly":false,"explicit_currency_not_aesthetic":false,"hide_code_if_symbol_shown":false,"position":"before","space_between_price_and_symbol":false},{"code":"JPY","id":"JPY","localized_full_name":"Japanese yen","name":"Yen","symbol":"&amp;yen;","unicode_symbol":"¥","show_currency_explicitly":false,"explicit_currency_not_aesthetic":false,"hide_code_if_symbol_shown":false,"position":"before","space_between_price_and_symbol":true},{"code":"MYR","id":"MYR","localized_full_name":"Malaysian ringgit","name":"Ringgits","symbol":"&amp;#82;&amp;#77;","unicode_symbol":"RM","show_currency_explicitly":false,"explicit_currency_not_aesthetic":false,"hide_code_if_symbol_shown":false,"position":"before","space_between_price_and_symbol":false},{"code":"MXN","id":"MXN","localized_full_name":"Mexican peso","name":"Mexican Pesos","symbol":"$","unicode_symbol":"$","show_currency_explicitly":true,"explicit_currency_not_aesthetic":false,"hide_code_if_symbol_shown":false,"position":"before","space_between_price_and_symbol":false},{"code":"MAD","id":"MAD","localized_full_name":"Moroccan dirham","name":"Moroccan Dirham","symbol":"MAD","unicode_symbol":"MAD","show_currency_explicitly":false,"explicit_currency_not_aesthetic":false,"hide_code_if_symbol_shown":false,"position":"before","space_between_price_and_symbol":false},{"code":"TWD","id":"TWD","localized_full_name":"New Taiwan dollar","name":"Taiwan Dollars","symbol":"$","unicode_symbol":"$","show_currency_explicitly":true,"explicit_currency_not_aesthetic":false,"hide_code_if_symbol_shown":false,"position":"before","space_between_price_and_symbol":false},{"code":"NZD","id":"NZD","localized_full_name":"New Zealand dollar","name":"New Zealand Dollars","symbol":"$","unicode_symbol":"$","show_currency_explicitly":true,"explicit_currency_not_aesthetic":false,"hide_code_if_symbol_shown":false,"position":"before","space_between_price_and_symbol":false},{"code":"NOK","id":"NOK","localized_full_name":"Norwegian krone","name":"Krone","symbol":"kr","unicode_symbol":"kr","show_currency_explicitly":true,"explicit_currency_not_aesthetic":true,"hide_code_if_symbol_shown":false,"position":"after","space_between_price_and_symbol":true},{"code":"PEN","id":"PEN","localized_full_name":"Peruvian sol","name":"Nuevos Soles","symbol":"&amp;#83;&amp;#47;","unicode_symbol":"S/","show_currency_explicitly":false,"explicit_currency_not_aesthetic":false,"hide_code_if_symbol_shown":false,"position":"before","space_between_price_and_symbol":false},{"code":"PHP","id":"PHP","localized_full_name":"Philippine peso","name":"Philippines Peso","symbol":"&amp;#8369;","unicode_symbol":"₱","show_currency_explicitly":false,"explicit_currency_not_aesthetic":false,"hide_code_if_symbol_shown":false,"position":"before","space_between_price_and_symbol":false},{"code":"PLN","id":"PLN","localized_full_name":"Polish zloty","name":"Zlotych","symbol":"z&amp;#22;&amp;#322;","unicode_symbol":"zł","show_currency_explicitly":false,"explicit_currency_not_aesthetic":false,"hide_code_if_symbol_shown":false,"position":"after","space_between_price_and_symbol":true},{"code":"GBP","id":"GBP","localized_full_name":"Pound sterling","name":"Pounds Sterling","symbol":"&amp;pound;","unicode_symbol":"£","show_currency_explicitly":false,"explicit_currency_not_aesthetic":false,"hide_code_if_symbol_shown":false,"position":"before","space_between_price_and_symbol":false},{"code":"RON","id":"RON","localized_full_name":"Romanian leu","name":"New Lei","symbol":"lei","unicode_symbol":"lei","show_currency_explicitly":false,"explicit_currency_not_aesthetic":false,"hide_code_if_symbol_shown":false,"position":"before","space_between_price_and_symbol":false},{"code":"RUB","id":"RUB","localized_full_name":"Russian ruble","name":"Rubles","symbol":"&amp;#1088;","unicode_symbol":"₽","show_currency_explicitly":false,"explicit_currency_not_aesthetic":false,"hide_code_if_symbol_shown":false,"position":"after","space_between_price_and_symbol":false},{"code":"SAR","id":"SAR","localized_full_name":"Saudi Arabian riyal","name":"Saudi Riyal","symbol":"SR","unicode_symbol":"SR","show_currency_explicitly":false,"explicit_currency_not_aesthetic":false,"hide_code_if_symbol_shown":false,"position":"before","space_between_price_and_symbol":false},{"code":"SGD","id":"SGD","localized_full_name":"Singapore dollar","name":"Singapore, Dollars","symbol":"$","unicode_symbol":"$","show_currency_explicitly":true,"explicit_currency_not_aesthetic":false,"hide_code_if_symbol_shown":false,"position":"before","space_between_price_and_symbol":false},{"code":"ZAR","id":"ZAR","localized_full_name":"South African rand","name":"Rand","symbol":"R","unicode_symbol":"R","show_currency_explicitly":true,"explicit_currency_not_aesthetic":false,"hide_code_if_symbol_shown":false,"position":"before","space_between_price_and_symbol":false},{"code":"KRW","id":"KRW","localized_full_name":"South Korean won","name":"South Korean Won","symbol":"&amp;#8361;","unicode_symbol":"₩","show_currency_explicitly":false,"explicit_currency_not_aesthetic":false,"hide_code_if_symbol_shown":false,"position":"before","space_between_price_and_symbol":false},{"code":"SEK","id":"SEK","localized_full_name":"Swedish krona","name":"Sweden, Kronor","symbol":"kr","unicode_symbol":"kr","show_currency_explicitly":true,"explicit_currency_not_aesthetic":true,"hide_code_if_symbol_shown":false,"position":"after","space_between_price_and_symbol":true},{"code":"CHF","id":"CHF","localized_full_name":"Swiss franc","name":"Swiss Francs","symbol":"CHF","unicode_symbol":"CHF","show_currency_explicitly":false,"explicit_currency_not_aesthetic":false,"hide_code_if_symbol_shown":true,"position":"after","space_between_price_and_symbol":true},{"code":"THB","id":"THB","localized_full_name":"Thai baht","name":"Baht","symbol":"&amp;#3647;","unicode_symbol":"฿","show_currency_explicitly":false,"explicit_currency_not_aesthetic":false,"hide_code_if_symbol_shown":false,"position":"before","space_between_price_and_symbol":false},{"code":"TRY","id":"TRY","localized_full_name":"Turkish lira","name":"Turkish Lira","symbol":"&amp;#84;&amp;#76;","unicode_symbol":"₺","show_currency_explicitly":false,"explicit_currency_not_aesthetic":false,"hide_code_if_symbol_shown":false,"position":"after","space_between_price_and_symbol":true},{"code":"UAH","id":"UAH","localized_full_name":"Ukrainian hryvnia","name":"Ukrainian hryvnia","symbol":"&amp;#8372;","unicode_symbol":"₴","show_currency_explicitly":false,"explicit_currency_not_aesthetic":false,"hide_code_if_symbol_shown":false,"position":"before","space_between_price_and_symbol":false},{"code":"USD","id":"USD","localized_full_name":"United States dollar","name":"United States Dollars","symbol":"$","unicode_symbol":"$","show_currency_explicitly":false,"explicit_currency_not_aesthetic":false,"hide_code_if_symbol_shown":false,"position":"before","space_between_price_and_symbol":false},{"code":"UYU","id":"UYU","localized_full_name":"Uruguayan peso","name":"Uruguayan Pesos","symbol":"&amp;#36;&amp;#85;","unicode_symbol":"$U","show_currency_explicitly":false,"explicit_currency_not_aesthetic":false,"hide_code_if_symbol_shown":false,"position":"before","space_between_price_and_symbol":false},{"code":"VND","id":"VND","localized_full_name":"Vietnamese dong","name":"Vietnamese Dong","symbol":"&amp;#8363;","unicode_symbol":"₫","show_currency_explicitly":false,"explicit_currency_not_aesthetic":false,"hide_code_if_symbol_shown":false,"position":"before","space_between_price_and_symbol":false}],"current_locale_name":"English","languages":[{"locale_name":"Bahasa Indonesia","locale":"id"},{"locale_name":"Bahasa Melayu","locale":"ms"},{"locale_name":"Català","locale":"ca"},{"locale_name":"Dansk","locale":"da"},{"locale_name":"Deutsch","locale":"de"},{"locale_name":"English","locale":"en"},{"locale_name":"Español","locale":"es"},{"locale_name":"Eλληνικά","locale":"el"},{"locale_name":"Français","locale":"fr"},{"locale_name":"Hrvatski","locale":"hr"},{"locale_name":"Italiano","locale":"it"},{"locale_name":"Magyar","locale":"hu"},{"locale_name":"Nederlands","locale":"nl"},{"locale_name":"Norsk","locale":"no"},{"locale_name":"Polski","locale":"pl"},{"locale_name":"Português","locale":"pt"},{"locale_name":"Suomi","locale":"fi"},{"locale_name":"Svenska","locale":"sv"},{"locale_name":"Türkçe","locale":"tr"},{"locale_name":"Íslenska","locale":"is"},{"locale_name":"Čeština","locale":"cs"},{"locale_name":"Русский","locale":"ru"},{"locale_name":"עברית","locale":"he"},{"locale_name":"العربية","locale":"ar"},{"locale_name":"ภาษาไทย","locale":"th"},{"locale_name":"中文 (简体)","locale":"zh"},{"locale_name":"中文 (繁體)","locale":"zh-TW"},{"locale_name":"日本語","locale":"ja"},{"locale_name":"한국어","locale":"ko"}],"base_direction":"ltr","request_host":"www.airbnb.com"}}--></script>
+                                    <script type="application/json" data-aphrodite-css="edit_profile/phone_numbers.bundle.js"><!--["_b0ybw8s"]--></script>
+                                </div>
+                            </div>
+
+
+                            <div class="row row-condensed space-4">
+                                <label class="text-right col-sm-3" for="user_profile_info_preferred_language">
+                                    Preferred Language
+                                </label>
+                                <div class="col-sm-9">
+
+                                    <div class="select">
+                                        <select id="user_profile_info_preferred_language" name="user[preferred_locale]"><option value="id">Bahasa Indonesia</option>
+                                            <option value="ms">Bahasa Melayu</option>
+                                            <option value="ca">Català</option>
+                                            <option value="da">Dansk</option>
+                                            <option value="de">Deutsch</option>
+                                            <option value="en" selected="selected">English</option>
+                                            <option value="es">Español</option>
+                                            <option value="el">Eλληνικά</option>
+                                            <option value="fr">Français</option>
+                                            <option value="hr">Hrvatski</option>
+                                            <option value="it">Italiano</option>
+                                            <option value="hu">Magyar</option>
+                                            <option value="nl">Nederlands</option>
+                                            <option value="no">Norsk</option>
+                                            <option value="pl">Polski</option>
+                                            <option value="pt">Português</option>
+                                            <option value="fi">Suomi</option>
+                                            <option value="sv">Svenska</option>
+                                            <option value="tr">Türkçe</option>
+                                            <option value="is">Íslenska</option>
+                                            <option value="cs">Čeština</option>
+                                            <option value="ru">Русский</option>
+                                            <option value="he">עברית</option>
+                                            <option value="ar">العربية</option>
+                                            <option value="th">ภาษาไทย</option>
+                                            <option value="zh">中文 (简体)</option>
+                                            <option value="zh-TW">中文 (繁體)</option>
+                                            <option value="ja">日本語</option>
+                                            <option value="ko">한국어</option></select>
+                                    </div>
+
+                                    <div class="text-muted space-top-1">We'll send you messages in this language.</div>
+                                </div>
+                            </div>
+
+                            <div class="row row-condensed space-4">
+                                <label class="text-right col-sm-3" for="user_profile_info_preferred_currency">
+                                    Preferred Currency
+                                </label>
+                                <div class="col-sm-9">
+
+                                    <div class="select">
+                                        <select id="user_profile_info_preferred_currency" name="user[native_currency]"><option value="AUD">Australian dollar</option>
+                                            <option value="BRL">Brazilian real</option>
+                                            <option value="BGN">Bulgarian lev</option>
+                                            <option value="CAD">Canadian dollar</option>
+                                            <option value="CLP">Chilean peso</option>
+                                            <option value="CNY">Chinese yuan</option>
+                                            <option value="COP">Colombian peso</option>
+                                            <option value="CRC">Costa Rican colon</option>
+                                            <option value="HRK">Croatian kuna</option>
+                                            <option value="CZK">Czech koruna</option>
+                                            <option value="DKK">Danish krone</option>
+                                            <option value="AED">Emirati dirham</option>
+                                            <option value="EUR">Euro</option>
+                                            <option value="HKD">Hong Kong dollar</option>
+                                            <option value="HUF">Hungarian forint</option>
+                                            <option value="INR">Indian rupee</option>
+                                            <option value="ILS">Israeli new shekel</option>
+                                            <option value="JPY">Japanese yen</option>
+                                            <option value="MYR">Malaysian ringgit</option>
+                                            <option value="MXN">Mexican peso</option>
+                                            <option value="MAD">Moroccan dirham</option>
+                                            <option value="TWD">New Taiwan dollar</option>
+                                            <option value="NZD">New Zealand dollar</option>
+                                            <option value="NOK">Norwegian krone</option>
+                                            <option value="PEN">Peruvian sol</option>
+                                            <option value="PHP">Philippine peso</option>
+                                            <option value="PLN">Polish zloty</option>
+                                            <option value="GBP">Pound sterling</option>
+                                            <option value="RON">Romanian leu</option>
+                                            <option value="RUB">Russian ruble</option>
+                                            <option value="SAR">Saudi Arabian riyal</option>
+                                            <option value="SGD">Singapore dollar</option>
+                                            <option value="ZAR">South African rand</option>
+                                            <option value="KRW">South Korean won</option>
+                                            <option value="SEK">Swedish krona</option>
+                                            <option value="CHF">Swiss franc</option>
+                                            <option value="THB">Thai baht</option>
+                                            <option value="TRY">Turkish lira</option>
+                                            <option value="USD" selected="selected">United States dollar</option>
+                                            <option value="UYU">Uruguayan peso</option></select>
+                                    </div>
+
+                                    <div class="text-muted space-top-1">We’ll show you prices in this currency.</div>
+                                </div>
+                            </div>
+
+                            <div class="row row-condensed space-4">
+                                <label class="text-right col-sm-3" for="user_profile_info_current_city">
+                                    Where You Live
+                                </label>
+                                <div class="col-sm-9">
+
+                                    <input id="user_profile_info_current_city" name="user_profile_info[current_city]" placeholder="e.g. Paris, France / Brooklyn, NY / Chicago, IL" size="30" type="text">
+
+
+                                </div>
+                            </div>
+
+                            <div class="row row-condensed space-4">
+                                <label class="text-right col-sm-3" for="user_profile_info_about">
+                                    Describe Yourself
+                                </label>
+                                <div class="col-sm-9">
+
+                                    <textarea cols="40" id="user_profile_info_about" name="user_profile_info[about]" rows="5"></textarea>
+
+                                    <div class="text-muted space-top-1">Airbnb is built on relationships. Help other people get to know you.<br><br>Tell them about the things you like: What are 5 things you can’t live without? Share your favorite travel destinations, books, movies, shows, music, food.<br><br>Tell them what it’s like to have you as a guest or host: What’s your style of traveling? Of Airbnb hosting?<br><br>Tell them about you: Do you have a life motto?</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

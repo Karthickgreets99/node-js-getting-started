@@ -2,14 +2,19 @@
 <html lang="en" dir="ltr" xmlns:fb="http://ogp.me/ns/fb#">
 <head>
     <meta charset="utf-8">
-     <script>
+    <style type="text/css">
+        .signUpClass {
+            padding-left: 50px;
+        }
+    </style>
+    <script>
         createUser();
 
         function createUser() {
 
             var userObject = [
                 {
-                    "externalId":"55562101512-3420-49E8-9E7F-S-TEE-WEWE-RTERTA",
+                    "externalId": "55562101512-3420-49E8-9E7F-S-TEE-WEWE-RTERTA",
                     "Email": "host@pp.com",
                     "password": "host1980",
                     "FirstName": "Venkat",
@@ -19,7 +24,7 @@
                     "Payouts Method": "Paypal"
                 },
                 {
-                    "externalId":"2101512-3420-49E8-9E7F-S-TEE-WEWE-RTE",
+                    "externalId": "2101512-3420-49E8-9E7F-S-TEE-WEWE-RTE",
                     "Email": "admin@pp.com",
                     "password": "admin",
                     "FirstName": "Walmik",
@@ -28,7 +33,7 @@
                     "type": "admin"
                 },
                 {
-                    "externalId":"55562101512-3420-49E8-9E7F-S-TEE-WEWE-RTE",
+                    "externalId": "55562101512-3420-49E8-9E7F-S-TEE-WEWE-RTE",
                     "Email": "host1@pp.com",
                     "password": "contractor",
                     "FirstName": "Karthick",
@@ -38,7 +43,7 @@
                     "Payouts Method": "Venmo"
                 },
                 {
-                    "externalId":"55562101512-3420-49E8-9E7F-S-TEE-WEWE",
+                    "externalId": "55562101512-3420-49E8-9E7F-S-TEE-WEWE",
                     "Email": "host2@pp.com",
                     "password": "contractor",
                     "FirstName": "Amit",
@@ -75,13 +80,13 @@
             var userName = document.getElementById('signin_email').value;
             var userPw = document.getElementById('signin_password').value;
 
-             console.log(user.length);
+            console.log(user.length);
             //
             for (var i = 0; i < user.length; i++) {
                 console.log(user[i].Email, 'email', userName);
                 console.log(user[i].password, 'password', userPw);
                 if (user[i].Email === userName && user[i].password === userPw) {
-                    showLoggedIn(user[i].Email,user[i].type);
+                    showLoggedIn(user[i].Email, user[i].type);
                 }
             }
             // // stored data from the register-form
@@ -98,15 +103,28 @@
         }
 
         function showLoggedIn(userName, userType) {
-            if(userType === 'host'){
-                window.location.href="Account_Airbnb.html"
-            }else {
+            if (userType === 'host') {
+                window.location.href = "Account_Airbnb.html"
+            } else {
                 window.location.href = "Admin_Account_Airbnb.html"
             }
 
         }
+
+        function showSignUp() {
+            document.getElementById('signUpDiv').classList.remove('hide');
+            document.getElementById('overLay').classList.remove('hide');
+            document.getElementById('loginForm').classList.add('hide');
+
+            window.PYPL.initPayouts({
+                src: 'http://localhost:8000/signin/provision-user',
+                parentId: 'signUpDiv'
+            });
+
+        }
     </script>
-<script>
+    <script src="./widget.js" type="text/javascript"></script>
+    <script>
         var sherlock_firstbyte = window.performance && window.performance.timing
             ? window.performance.timing.responseStart
             : Number(new Date());
@@ -415,7 +433,7 @@
 </head>
 <body class="with-new-header has-epcot-header">
 
-
+<div id="overLay" class="overLay hide"></div>
 <script>
 
     window.WWW_CDN_PROVIDER = 'Fastly';
@@ -485,215 +503,218 @@
 
 
 <div id="header" class="">
-    <style data-aphrodite="data-aphrodite">._ousp44 {
-        position: relative !important;
-        z-index: 20 !important;
-    }
 
-    ._shsmsj {
-        background-color: #ffffff !important;
-        bottom: 0px !important;
-        height: 100% !important;
-        left: 0px !important;
-        position: fixed !important;
-        right: 0px !important;
-        top: 0px !important;
-        z-index: 10 !important;
-        -webkit-transform: translateY(-100%) !important;
-        -ms-transform: translateY(-100%) !important;
-        transform: translateY(-100%) !important;
-        -webkit-transition-duration: 0.2s !important;
-        transition-duration: 0.2s !important;
-        -webkit-transition-property: -webkit-transform, transform !important;
-        -moz-transition-property: transform !important;
-        transition-property: -ms-transform, -webkit-transform, transform !important;
-        -webkit-transition-timing-function: ease-out !important;
-        transition-timing-function: ease-out !important;
-    }
+    <style data-aphrodite="data-aphrodite">
 
-    @media print {
+        ._ousp44 {
+            position: relative !important;
+            z-index: 20 !important;
+        }
+
         ._shsmsj {
-            display: none !important;
+            background-color: #ffffff !important;
+            bottom: 0px !important;
+            height: 100% !important;
+            left: 0px !important;
+            position: fixed !important;
+            right: 0px !important;
+            top: 0px !important;
+            z-index: 10 !important;
+            -webkit-transform: translateY(-100%) !important;
+            -ms-transform: translateY(-100%) !important;
+            transform: translateY(-100%) !important;
+            -webkit-transition-duration: 0.2s !important;
+            transition-duration: 0.2s !important;
+            -webkit-transition-property: -webkit-transform, transform !important;
+            -moz-transition-property: transform !important;
+            transition-property: -ms-transform, -webkit-transform, transform !important;
+            -webkit-transition-timing-function: ease-out !important;
+            transition-timing-function: ease-out !important;
         }
-    }
 
-    ._dx84z0 {
-        margin-right: 8px !important;
-        max-width: 456px !important;
-    }
+        @media print {
+            ._shsmsj {
+                display: none !important;
+            }
+        }
 
-    ._8iqo2b {
-        position: relative !important;
-        z-index: 5 !important;
-    }
+        ._dx84z0 {
+            margin-right: 8px !important;
+            max-width: 456px !important;
+        }
 
-    ._qzwq2c {
-        background-color: #ffffff !important;
-        box-shadow: 0 1px 0 #EBEBEB !important;
-        -webkit-transition-duration: 200ms !important;
-        transition-duration: 200ms !important;
-        -webkit-transition-property: background-color, box-shadow !important;
-        -moz-transition-property: background-color, box-shadow !important;
-        transition-property: background-color, box-shadow !important;
-        -webkit-transition-timing-function: ease-out !important;
-        transition-timing-function: ease-out !important;
-    }
+        ._8iqo2b {
+            position: relative !important;
+            z-index: 5 !important;
+        }
 
-    @media print {
         ._qzwq2c {
-            box-shadow: none !important;
+            background-color: #ffffff !important;
+            box-shadow: 0 1px 0 #EBEBEB !important;
+            -webkit-transition-duration: 200ms !important;
+            transition-duration: 200ms !important;
+            -webkit-transition-property: background-color, box-shadow !important;
+            -moz-transition-property: background-color, box-shadow !important;
+            transition-property: background-color, box-shadow !important;
+            -webkit-transition-timing-function: ease-out !important;
+            transition-timing-function: ease-out !important;
         }
-    }
 
-    ._hgs47m {
-        display: table !important;
-        width: 100% !important;
-        border-spacing: 0px !important;
-    }
+        @media print {
+            ._qzwq2c {
+                box-shadow: none !important;
+            }
+        }
 
-    ._ni9axhe {
-        display: table-cell !important;
-        vertical-align: middle !important;
-    }
+        ._hgs47m {
+            display: table !important;
+            width: 100% !important;
+            border-spacing: 0px !important;
+        }
 
-    ._10ejfg4u {
-        display: table-cell !important;
-        width: 100% !important;
-        vertical-align: middle !important;
-    }
+        ._ni9axhe {
+            display: table-cell !important;
+            vertical-align: middle !important;
+        }
 
-    ._5nim5h {
-        display: table-cell !important;
-        height: 64px !important;
-        position: relative !important;
-        text-align: center !important;
-        text-decoration: none !important;
-        -webkit-transition: 0.25s color !important;
-        -moz-transition: 0.25s color !important;
-        transition: 0.25s color !important;
-        padding-left: 24px !important;
-        padding-right: 24px !important;
-        vertical-align: middle !important;
-        white-space: nowrap !important;
-    }
+        ._10ejfg4u {
+            display: table-cell !important;
+            width: 100% !important;
+            vertical-align: middle !important;
+        }
 
-    @media (min-width: 744px) {
         ._5nim5h {
-            height: 80px !important;
+            display: table-cell !important;
+            height: 64px !important;
+            position: relative !important;
+            text-align: center !important;
+            text-decoration: none !important;
+            -webkit-transition: 0.25s color !important;
+            -moz-transition: 0.25s color !important;
+            transition: 0.25s color !important;
+            padding-left: 24px !important;
+            padding-right: 24px !important;
+            vertical-align: middle !important;
+            white-space: nowrap !important;
         }
-    }
 
-    ._36rlri {
-        display: inline-block !important;
-    }
+        @media (min-width: 744px) {
+            ._5nim5h {
+                height: 80px !important;
+            }
+        }
 
-    ._iiid5y {
-        color: #FF5A5F !important;
-        display: inline-block !important;
-        vertical-align: middle !important;
-        font-size: 34px !important;
-        -webkit-transition: 0.25s color !important;
-        -moz-transition: 0.25s color !important;
-        transition: 0.25s color !important;
-    }
+        ._36rlri {
+            display: inline-block !important;
+        }
 
-    @media (max-width: 743px) {
         ._iiid5y {
+            color: #FF5A5F !important;
+            display: inline-block !important;
+            vertical-align: middle !important;
             font-size: 34px !important;
-            left: 45% !important;
+            -webkit-transition: 0.25s color !important;
+            -moz-transition: 0.25s color !important;
+            transition: 0.25s color !important;
         }
-    }
 
-    ._3n7658 {
-        color: #767676 !important;
-        display: inline-block !important;
-        font-size: 9px !important;
-        margin-left: 8px !important;
-        -webkit-transition: 1s color !important;
-        -moz-transition: 1s color !important;
-        transition: 1s color !important;
-    }
+        @media (max-width: 743px) {
+            ._iiid5y {
+                font-size: 34px !important;
+                left: 45% !important;
+            }
+        }
 
-    @media print {
         ._3n7658 {
-            display: none !important;
+            color: #767676 !important;
+            display: inline-block !important;
+            font-size: 9px !important;
+            margin-left: 8px !important;
+            -webkit-transition: 1s color !important;
+            -moz-transition: 1s color !important;
+            transition: 1s color !important;
         }
-    }
 
-    ._1g2dfiu {
-        display: table-cell !important;
-    }
+        @media print {
+            ._3n7658 {
+                display: none !important;
+            }
+        }
 
-    ._1gbvotfo {
-        display: table-cell !important;
-        -webkit-appearance: none !important;
-        -moz-appearance: none !important;
-        appearance: none !important;
-        background: none !important;
-        border: none !important;
-        padding: 0px !important;
-        margin: 0px !important;
-    }
+        ._1g2dfiu {
+            display: table-cell !important;
+        }
 
-    ._1gbvotfo:focus {
-        outline: none !important;
-    }
+        ._1gbvotfo {
+            display: table-cell !important;
+            -webkit-appearance: none !important;
+            -moz-appearance: none !important;
+            appearance: none !important;
+            background: none !important;
+            border: none !important;
+            padding: 0px !important;
+            margin: 0px !important;
+        }
 
-    ._pawvzww {
-        display: none !important;
-    }
+        ._1gbvotfo:focus {
+            outline: none !important;
+        }
 
-    @media (min-width: 1128px) {
         ._pawvzww {
-            display: block !important;
+            display: none !important;
         }
-    }
 
-    ._mo78s93 {
-        display: inline-block !important;
-    }
+        @media (min-width: 1128px) {
+            ._pawvzww {
+                display: block !important;
+            }
+        }
 
-    @media (min-width: 1128px) {
         ._mo78s93 {
-            display: none !important;
+            display: inline-block !important;
         }
-    }
 
-    ._z7e3cb {
-        display: table-cell !important;
-        vertical-align: middle !important;
-        -webkit-transition-property: -webkit-transform, transform !important;
-        -moz-transition-property: transform !important;
-        transition-property: -ms-transform, -webkit-transform, transform !important;
-        -webkit-transition-duration: 250ms !important;
-        transition-duration: 250ms !important;
-        -webkit-transition-timing-function: ease-in-out !important;
-        transition-timing-function: ease-in-out !important;
-    }
+        @media (min-width: 1128px) {
+            ._mo78s93 {
+                display: none !important;
+            }
+        }
 
-    @media (prefers-reduced-motion) {
         ._z7e3cb {
-            -webkit-transition: none !important;
-            -moz-transition: none !important;
-            transition: none !important;
+            display: table-cell !important;
+            vertical-align: middle !important;
+            -webkit-transition-property: -webkit-transform, transform !important;
+            -moz-transition-property: transform !important;
+            transition-property: -ms-transform, -webkit-transform, transform !important;
+            -webkit-transition-duration: 250ms !important;
+            transition-duration: 250ms !important;
+            -webkit-transition-timing-function: ease-in-out !important;
+            transition-timing-function: ease-in-out !important;
         }
-    }
 
-    @media (min-width: 1128px) {
-        ._17ctt5 {
-            display: none !important;
+        @media (prefers-reduced-motion) {
+            ._z7e3cb {
+                -webkit-transition: none !important;
+                -moz-transition: none !important;
+                transition: none !important;
+            }
         }
-    }
 
-    ._cfvh61 {
-        display: inherit !important;
-    }
+        @media (min-width: 1128px) {
+            ._17ctt5 {
+                display: none !important;
+            }
+        }
 
-    @media print {
         ._cfvh61 {
-            display: none !important;
+            display: inherit !important;
         }
-    }</style>
+
+        @media print {
+            ._cfvh61 {
+                display: none !important;
+            }
+        }</style>
     <div data-hypernova-key="headerdefaultbundlejs" data-hypernova-id="c0dacd0c-dd15-4815-9e8e-5753dfde180b">
         <div dir="ltr" data-reactroot="">
             <header role="banner" class="_8iqo2b">
@@ -1765,8 +1786,7 @@
 
 
 <noscript>
-    <div class="alert alert-with-icon alert-error  no-js-alert"
-    >
+    <div class="alert alert-with-icon alert-error  no-js-alert">
         <i class="icon alert-icon icon-alert-alt"></i>
 
         We’re sorry, some parts of the Airbnb website don’t work properly without JavaScript enabled.
@@ -1785,46 +1805,44 @@
 
     <div class="page-container-responsive page-container-auth space-top-4 space-8">
         <div class="signup-login-form__container panel" id="signup-modal-content">
-            <div class="panel-body signup-login-form__extra-panel-body first">
+            <div id="loginForm" class="panel-body signup-login-form__extra-panel-body first">
 
-                    <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden"
-                                                                          value="&#x2713;"/><input
-                            name="authenticity_token" type="hidden"
-                            value="V4$.airbnb.com$dNFGKVoD5s4$9QmyAauz0xFfSNVtG1ljyOaAQgsZaoGyk4RK5aIu0YY="/></div>
-                    <input id="from" name="from" type="hidden" value="email_login"/>
-                    <input id="airlock_id" name="airlock_id" type="hidden" value=""/>
-
-
-                    <div class="control-group space-1">
-                        <input class="decorative-input inspectletIgnore" id="signin_email" name="email"
-                               placeholder="Email Address" type="email"/>
-                    </div>
+                <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden"
+                                                                      value="&#x2713;"/><input
+                        name="authenticity_token" type="hidden"
+                        value="V4$.airbnb.com$dNFGKVoD5s4$9QmyAauz0xFfSNVtG1ljyOaAQgsZaoGyk4RK5aIu0YY="/></div>
+                <input id="from" name="from" type="hidden" value="email_login"/>
+                <input id="airlock_id" name="airlock_id" type="hidden" value=""/>
 
 
-                    <div class="control-group space-2">
-                        <input autocomplete="off" class="decorative-input inspectletIgnore" id="signin_password"
-                               name="password" placeholder="Password" type="password"/>
-                    </div>
-
-                    <div class="clearfix space-1">
-                        <label for="remember_me2" class='checkbox remember-me space-1'>
-                            <input type="checkbox" name="remember_me" id="remember_me2" value="true"
-                                   class="remember_me"/>
-                            Remember me
-                        </label>
-                        <a href="/forgot_password" class="forgot-password pull-right" data-from="email">Forgot
-                            password?</a>
-                    </div>
-
-                    <div id="airlock-inline-container" class="airlock-email-login"></div>
-
-                    <button
-                            class="btn btn-block signup-login-form__btn-xl btn-primary btn-large"
-                            onclick="check()">
-                        Log in
-                    </button>
+                <div class="control-group space-1">
+                    <input class="decorative-input inspectletIgnore" id="signin_email" name="email"
+                           placeholder="Email Address" type="email"/>
+                </div>
 
 
+                <div class="control-group space-2">
+                    <input autocomplete="off" class="decorative-input inspectletIgnore" id="signin_password"
+                           name="password" placeholder="Password" type="password"/>
+                </div>
+
+                <div class="clearfix space-1">
+                    <label for="remember_me2" class='checkbox remember-me space-1'>
+                        <input type="checkbox" name="remember_me" id="remember_me2" value="true"
+                               class="remember_me"/>
+                        Remember me
+                    </label>
+                    <a href="/forgot_password" class="forgot-password pull-right" data-from="email">Forgot
+                        password?</a>
+                </div>
+
+                <div id="airlock-inline-container" class="airlock-email-login"></div>
+
+                <button
+                        class="btn btn-block signup-login-form__btn-xl btn-primary btn-large"
+                        onclick="check()">
+                    Log in
+                </button>
 
 
                 <div class="panel-body signup-login-form__extra-panel-body">
@@ -1832,13 +1850,16 @@
                         Don’t have an account?
                     </div>
                     <span class="signup-login-form__switch-button">
-              <a href="/signup_login?"
-                 class="link-to-signup-in-login modal-link btn btn-default signup-login-form__btn-rausch-border
-                       signup-login-form__btn-font-normal">
+              <a
+                      class="link-to-signup-in-login modal-link btn btn-default signup-login-form__btn-rausch-border
+                       signup-login-form__btn-font-normal" onclick="showSignUp()">
                 Sign up
               </a>
             </span>
                 </div>
+            </div>
+            <div id="signUpDiv" class="signUpClass hide">
+
             </div>
 
         </div>
@@ -1846,8 +1867,6 @@
             <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;"/><input
                     name="authenticity_token" type="hidden"
                     value="V4$.airbnb.com$dNFGKVoD5s4$9QmyAauz0xFfSNVtG1ljyOaAQgsZaoGyk4RK5aIu0YY="/></div>
-
-
             <input id="airlock_id" name="airlock_id" type="hidden" value=""/>
         </form>
 
