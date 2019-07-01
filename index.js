@@ -1,6 +1,6 @@
 const express = require('express')
 const path = require('path')
-const PORT = process.env.PORT || 8000
+const PORT = process.env.PORT || 8001
 const jwtDecode = require('jsonwebtoken');
 const bodyParser = require('body-parser')
 const appleSignin = require("apple-signin");

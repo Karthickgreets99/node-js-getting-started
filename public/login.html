@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <style type="text/css">
-        .signUpClass {
+        .signUpClasss {
             padding-left: 50px;
         }
     </style>
@@ -14,7 +14,7 @@
 
             var userObject = [
                 {
-                    "externalId": "55562101512-3420-49E8-9E7F-S-TEE-WEWE-RTERTA",
+                    "externalId": "8TEC2PAI-ZC16-05TL-JBYA-0.FIJG4TZ7XX",
                     "Email": "host@pp.com",
                     "password": "host1980",
                     "FirstName": "Venkat",
@@ -86,7 +86,7 @@
                 console.log(user[i].Email, 'email', userName);
                 console.log(user[i].password, 'password', userPw);
                 if (user[i].Email === userName && user[i].password === userPw) {
-                    showLoggedIn(user[i].Email, user[i].type);
+                    showLoggedIn(user[i].Email, user[i].type, user[i].externalId);
                 }
             }
             // // stored data from the register-form
@@ -102,8 +102,9 @@
             // }
         }
 
-        function showLoggedIn(userName, userType) {
+        function showLoggedIn(userName, userType, externalId) {
             if (userType === 'host') {
+                localStorage.setItem('externalId', externalId);
                 window.location.href = "Account_Airbnb.html"
             } else {
                 window.location.href = "Admin_Account_Airbnb.html"
@@ -117,8 +118,9 @@
             document.getElementById('loginForm').classList.add('hide');
 
             window.PYPL.initPayouts({
-                src: 'http://localhost:8000/signin/provision-user',
-                parentId: 'signUpDiv'
+                src: 'https://login.paypal.com/signin/onboard',
+                parentId: 'signUpDiv',
+                height: 1100
             });
 
         }

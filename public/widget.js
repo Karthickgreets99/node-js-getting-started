@@ -7,7 +7,7 @@
     var iFrame = document.createElement('iframe');
     var src = config.src || 'https://login.paypal.com/signin/payments';
     var defaultProps = {
-      height: 700,
+      height: config.height || 700,
       style: 'width: 355px;',
       name: 'injectedPayouts',
       frameborder: 0,
