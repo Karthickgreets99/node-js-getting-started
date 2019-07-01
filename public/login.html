@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8">
     <style type="text/css">
-        .signUpClasss {
-            padding-left: 50px;
+        .signUpClass {
+            text-align: center;
         }
     </style>
     <script>
@@ -3216,6 +3216,11 @@
 
 <div id="fb-root"></div>
 
-
+<script>
+    setTimeout(function() {
+        const ulElem = document.querySelectorAll('._1s04l2o li');
+        ulElem[3].setAttribute('onclick', 'showSignUp()')
+    }, 2000);
+</script>
 </body>
 </html>
