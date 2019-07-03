@@ -10,7 +10,7 @@
         <script type="text/javascript" src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js"></script>
     <!-- <script type="text/javascript" src="apple-lib.js"></script> -->
     <button id="sign-in-with-apple-button">Connect with Apple Id</button>
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
         AppleID.auth.init({
             clientId : 'com.paypal.login.client',
             scope : 'openid',
@@ -22,6 +22,8 @@
         buttonElement.addEventListener('click', () => {
             AppleID.auth.signIn();
         });
-    </script>
+    </script> -->
+    <a href="https://appleid.apple.com/auth/authorize?client_id=com.paypal.login.client&redirect_uri=https%3A%2F%2Fvensys.herokuapp.com%2Fcallback&response_type=code%20id_token&state=1562117659161&scope=openid&response_mode=form_post&frame_id=b4ba0b56-9213-4958-9195-933d61dd3938&m=00&v=1.1.2">Connect with Apple as like SDK</a>
+    <a href="https://appleid.apple.com/auth/authorize?client_id=com.paypal.login.client&redirect_uri=https%3A%2F%2Fvensys.herokuapp.com%2Fcallback&response_type=code%20id_token&state=1562117659161&scope=openid&response_mode=form_post">Connect with Apple no SDK</a>
 </body>
 </html>
