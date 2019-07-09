@@ -26,19 +26,18 @@ express()
     const idToken = body.id_token || query.id_token;
     const oauthState = body.state || query.state;
 
-    // if (idToken) {
-    //   const idTokenData = jwtDecode.decode(idToken);
-    //   console.log(idTokenData);
-    //   res.render('pages/callback', {
-    //     code: 'xxxxxx',
-    //     idtokenInfo: JSON.stringify(idTokenData, null, 4),
-    //     idt: {
-    //       "kid": "AIDOPK1",
-    //       "alg": "RS256"
-    //     },
-    //     state: oauthState});
-    // } else 
-    if (code) {
+    if (idToken) {
+      const idTokenData = jwtDecode.decode(idToken);
+      console.log(idTokenData);
+      res.render('pages/callback', {
+        code: 'xxxxxx',
+        idtokenInfo: JSON.stringify(idTokenData, null, 4),
+        idt: {
+          "kid": "AIDOPK1",
+          "alg": "RS256"
+        },
+        state: oauthState});
+    } else if (code) {
       const authTokens = await appleSignin.getAuthorizationToken(code, {
         clientID: 'com.paypal.login.client',
         // redirectUri: 'https://login.paypal.com/callback', // Dev
