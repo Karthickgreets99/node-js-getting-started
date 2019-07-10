@@ -98,6 +98,18 @@
 
 
     <script>
+        function displayThreshold(){
+            var retrievedObject = localStorage.getItem('userObject');
+            let user = JSON.parse(retrievedObject);
+            var urlParams = new URLSearchParams(window.location.search);
+            var username = urlParams.get('user');
+            for (var i = 0; i < user.length; i++) {
+                if (user[i].thresholdAmount===100 && user[i].Email === username){
+                    document.getElementById('thresholdDiv').classList.remove('hide');
+                }
+            }
+
+        }
         function openIframe(){
             document.getElementById('payoutMethod').classList.add('hide');
             initPayouts();
@@ -317,7 +329,7 @@
         }
         .thresholdText{
             background: #ffa500b8;
-            padding: 15px 40px 10px;
+            padding: 15px 40px 10px 100px;
         }
         .birthday{
             position: relative;
@@ -2139,9 +2151,9 @@
     <div id="overlay" class="overlay hide">
         <button class="ui-dialog-titlebar-close" type="button"  aria-label="Close-button" pa-marked="1"  id="btnClose" onclick="closeModal()"></button>
     </div>
-    <div class="page-container-responsive space-top-4 space-4" id="thresholdDiv">
+    <div class="page-container-responsive space-top-4 space-4 hide" id="thresholdDiv">
         <p class="thresholdText">
-            You received payment and reached above the threshold, please provide your identification document to receive seamless payout.
+            You reached threshold limit, please provide your identification document to receive seamless payout.
             <button class="thresholdbutton" onclick="submitDocuments()">proceed</button>
         </p>
     </div>
@@ -4354,7 +4366,9 @@
 
 
 <!-- ver. 47cc4ee9b5e477ee1f736e7c5f78c43f4258c2ae -->
-
+<script>
+    displayThreshold()
+</script>
 
 
 <img height="1" width="1" style="display:none;" alt="" src="./Account - Airbnb_files/adsct">

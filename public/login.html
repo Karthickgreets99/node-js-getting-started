@@ -97,7 +97,7 @@
         function showLoggedIn(userName, userType, externalId) {
             if (userType === 'host') {
                 localStorage.setItem('externalId', externalId);
-                window.location.href = "Account_Airbnb.html"
+                window.location.href = "Account_Airbnb.html?user="+userName+""
             } else {
                 window.location.href = "Admin_Account_Airbnb.html"
             }
