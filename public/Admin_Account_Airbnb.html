@@ -4298,11 +4298,22 @@
 
     function getPaid(){
 
-        const externalId = localStorage.getItem('externalId');
+        const externalId = localStorage.getItem('signUpExternalId');
+        var retrievedObject = localStorage.getItem('userObject');
+        let user = JSON.parse(retrievedObject);
+        for (var i = 0; i < user.length; i++) {
+            if (user[i].externalId===externalId){
+                user[i].thresholdAmount = 100;
+            }
+        }
+        console.log(user,'user')
+       localStorage.setItem('userObject', JSON.stringify(user));
+
+
         // alert(externalId)
         window.PYPL.initPayouts({
             externalId: externalId,
-            src: 'https://login.paypal.com/signin/payouts',
+            src: 'https://localhost.paypal.com/signin/payouts',
             parentId: 'payoutNow'
         });
     }
