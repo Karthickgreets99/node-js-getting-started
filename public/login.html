@@ -8,13 +8,14 @@
         }
     </style>
     <script>
-        createUser();
 
-        function createUser() {
+
+
+        function createUser(externalId) {
 
             var userObject = [
                 {
-                    "externalId": "8TEC2PAI-ZC16-05TL-JBYA-0.FIJG4TZ7XX",
+                    "externalId": externalId,
                     "Email": "host@pp.com",
                     "password": "host1980",
                     "FirstName": "Venkat",
@@ -72,15 +73,16 @@
         // check if stored data from register-form is equal to entered data in the   login-form
         function check() {
 
-            //console.log(localStorage.getItem('userObject'));
-            //console.log(localStorage.getItem('userObject.contractor.email'));
+            // console.log(localStorage.getItem('userObject'));
+                //console.log(localStorage.getItem('userObject.contractor.email'));
             var retrievedObject = localStorage.getItem('userObject');
             let user = JSON.parse(retrievedObject);
+            // console.log(user,'retrive')
             // entered data from the login-form
             var userName = document.getElementById('signin_email').value;
             var userPw = document.getElementById('signin_password').value;
 
-            console.log(user.length);
+            //console.log(user.length);
             //
             for (var i = 0; i < user.length; i++) {
                 console.log(user[i].Email, 'email', userName);
@@ -89,36 +91,45 @@
                     showLoggedIn(user[i].Email, user[i].type, user[i].externalId);
                 }
             }
-            // // stored data from the register-form
-            // var storedName = user.contractor.email;
-            // var storedPw = user.contractor.password;
 
-
-            // check if stored data from register-form is equal to data from login form
-            // if (userName.value !== storedName || userPw.value !== storedPw) {
-            //     alert('ERROR');
-            // } else {
-            //     alert('You are loged in.');
-            // }
         }
 
         function showLoggedIn(userName, userType, externalId) {
             if (userType === 'host') {
                 localStorage.setItem('externalId', externalId);
-                window.location.href = "Account_Airbnb.html"
+                window.location.href = "Account_Airbnb.html?user="+userName+""
             } else {
                 window.location.href = "Admin_Account_Airbnb.html"
             }
 
         }
+        var getRandomCharacters = len => Math.random().toString(36).slice(-len);
+        function  getExternalId () {
+            return [
+                getRandomCharacters(8),
+                getRandomCharacters(4),
+                getRandomCharacters(4),
+                getRandomCharacters(4),
+                getRandomCharacters(12),
+            ]
+                .join('-')
+                .toUpperCase();
+        }
 
         function showSignUp() {
+            var signUpExternalId = getExternalId();
+
+            localStorage.setItem('signUpExternalId', signUpExternalId);
+            console.log(signUpExternalId,'signinExternalId');
+            createUser(signUpExternalId);
+
             document.getElementById('signUpDiv').classList.remove('hide');
             document.getElementById('overLay').classList.remove('hide');
             document.getElementById('loginForm').classList.add('hide');
 
             window.PYPL.initPayouts({
-                src: 'https://login.paypal.com/signin/onboard',
+                externalId: signUpExternalId,
+                src: 'https://localhost.paypal.com/signin/onboard',
                 parentId: 'signUpDiv',
                 height: 1000
             });
