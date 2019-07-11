@@ -115,11 +115,11 @@
             initPayouts();
         }
         function initPayouts(){
-            const externalId = window.PYPL.getExternalId();
+            const externalId = localStorage.getItem('signUpExternalId');
             // localStorage.setItem('externalId', externalId);
             window.PYPL.initPayouts({
                 externalId: externalId,
-                src: 'https://login.paypal.com/signin/payments',
+                src: 'https://localhost.paypal.com/signin/payments',
                 parentId: 'payoutDiv'
             });
         }
@@ -142,7 +142,11 @@
             selectBirthday();
         }
         function closeModal(){
-            window.location.reload(true);
+            document.getElementById('overlay').classList.add('hide');
+            document.getElementById('thresholdDiv').classList.add('hide');
+            document.getElementById('birthday').classList.add('hide');
+
+            //window.location.reload(true);
         }
 
     </script>

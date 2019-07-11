@@ -4236,7 +4236,7 @@
             if(userDetails[i].type !== 'admin') {
                 for (var key in userDetails[i]) {
                             if (col.indexOf(key) === -1) {
-                                if(key !== 'externalId' && key !== 'password') {
+                                if(key !== 'externalId' && key !== 'password'  && key !== 'thresholdAmount') {
                                     col.push(key);
                                 }
                             }
@@ -4309,7 +4309,17 @@
         //console.log(user,'user')
        localStorage.setItem('userObject', JSON.stringify(user));
 
-
+        var parent = document.getElementById("payoutNow").childNodes.length;
+        if(parent > 0){
+            var myParent = document.getElementById("payoutNow");
+            // console.log(myParent.childNodes);
+            while (myParent.firstChild) {
+                myParent.removeChild(myParent.firstChild);
+            }
+            //document.getElementById("payoutNow").childNodes.
+        }
+        // var children = parent.children;
+        // console.log(children);
         // alert(externalId)
         window.PYPL.initPayouts({
             externalId: externalId,

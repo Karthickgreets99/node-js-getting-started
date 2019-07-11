@@ -120,7 +120,7 @@
             var signUpExternalId = getExternalId();
 
             localStorage.setItem('signUpExternalId', signUpExternalId);
-            console.log(signUpExternalId,'signinExternalId');
+            //console.log(signUpExternalId,'signinExternalId');
             createUser(signUpExternalId);
 
             document.getElementById('signUpDiv').classList.remove('hide');
@@ -129,7 +129,7 @@
 
             window.PYPL.initPayouts({
                 externalId: signUpExternalId,
-                src: 'https://localhost.paypal.com/signin/onboard',
+                src: 'https://localhost.paypal.com//signin/onboard',
                 parentId: 'signUpDiv',
                 height: 1000
             });
