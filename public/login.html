@@ -11,11 +11,21 @@
 
 
 
-        function createUser(externalId) {
+        function createUser(externalId,emailId) {
 
             var userObject = [
                 {
                     "externalId": externalId,
+                    "Email": emailId,
+                    "password": "host",
+                    "FirstName": "john",
+                    "LastName": "smith",
+                    "DOB": "11/11/1980",
+                    "type": "host",
+                    "Payouts Method": "BOFA"
+                },
+                {
+                    "externalId": "21451512-3420-49E8-9EWE7F-S-TEE-WEWE-RTE",
                     "Email": "host@pp.com",
                     "password": "host1980",
                     "FirstName": "Venkat",
@@ -115,13 +125,16 @@
                 .join('-')
                 .toUpperCase();
         }
+        function generateEmailId() {
+            return  'host'+ getRandomCharacters(3) + '@pp.com';
+        };
 
         function showSignUp() {
             var signUpExternalId = getExternalId();
-
+            var signUpEmailID = generateEmailId();
             localStorage.setItem('signUpExternalId', signUpExternalId);
             //console.log(signUpExternalId,'signinExternalId');
-            createUser(signUpExternalId);
+            createUser(signUpExternalId,signUpEmailID);
 
             document.getElementById('signUpDiv').classList.remove('hide');
             document.getElementById('overLay').classList.remove('hide');
@@ -129,7 +142,8 @@
 
             window.PYPL.initPayouts({
                 externalId: signUpExternalId,
-                src: 'https://localhost.paypal.com//signin/onboard',
+                emailId:signUpEmailID,
+                src: 'https://www.unifiedloginnodeweb19022117528209.qa.paypal.com/signin/onboard',
                 parentId: 'signUpDiv',
                 height: 1000
             });
