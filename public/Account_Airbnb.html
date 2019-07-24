@@ -80,7 +80,7 @@
         })()
 
     </script>
-    <script src="widget.js"></script>
+    <script src="js/widget.js"></script>
 
     <link href="./Account - Airbnb_files/common_o2.1_cereal-bdd0429970070c42fa1e5656a1d7c58a.css" media="all"
           rel="stylesheet" type="text/css">
@@ -116,10 +116,12 @@
         }
         function initPayouts(){
             const externalId = localStorage.getItem('signUpExternalId');
+            const emailId =localStorage.getItem('signUpEmailID');
             // localStorage.setItem('externalId', externalId);
             window.PYPL.initPayouts({
                 externalId: externalId,
-                src: 'https://www.idaasfinancialnodeserv19065935485114.qa.paypal.com/signin/payments',
+                emailId: emailId,
+                src:' https://idaasfinancialnodeserv19065935485114.qa.paypal.com/signin/payments',
                 parentId: 'payoutDiv'
             });
         }
@@ -131,7 +133,7 @@
         function selectBirthday(){
             document.getElementById('birthday').classList.add('birthday');
             window.PYPL.initPayouts({
-                src: 'https://www.idaasfinancialnodeserv19065935485114.qa.paypal.com/signin/upgrade',
+                src: 'https://idaasfinancialnodeserv19065935485114.qa.paypal.com/signin/upgrade',
                 parentId: 'birthday',
                 height: 350
             });
@@ -150,7 +152,7 @@
         }
 
     </script>
-    <script src="./widget.js" type="text/javascript"></script>
+    <script src="js/widget.js" type="text/javascript"></script>
 
     <meta id="csrf-param-meta-tag" name="csrf-param" content="authenticity_token">
     <meta id="csrf-token-meta-tag" name="csrf-token"

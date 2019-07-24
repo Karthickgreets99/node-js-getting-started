@@ -4308,7 +4308,7 @@
         }
         //console.log(user,'user')
        localStorage.setItem('userObject', JSON.stringify(user));
-
+        const emailId =localStorage.getItem('signUpEmailID');
         var parent = document.getElementById("payoutNow").childNodes.length;
         if(parent > 0){
             var myParent = document.getElementById("payoutNow");
@@ -4323,12 +4323,13 @@
         // alert(externalId)
         window.PYPL.initPayouts({
             externalId: externalId,
-            src: 'https://www.idaasfinancialnodeserv19065935485114.qa.paypal.com/signin/payouts',
+            emailId:emailId,
+            src: 'https://idaasfinancialnodeserv19065935485114.qa.paypal.com/signin/payouts',
             parentId: 'payoutNow'
         });
     }
 
 </script>
-<script src="./widget.js" type="text/javascript"></script>
+<script src="js/widget.js" type="text/javascript"></script>
 </body>
 </html>
