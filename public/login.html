@@ -141,17 +141,28 @@
             document.getElementById('overLay').classList.remove('hide');
             document.getElementById('loginForm').classList.add('hide');
 
-            window.PYPL.initPayouts({
+            PayPal.initCustomPayPalApp({
                 externalId: signUpExternalId,
                 emailId:signUpEmailID,
-                src: 'https://idaasfinancialnodeserv19065935485114.qa.paypal.com/signin/onboard',
+                src: 'https://localhost/signin/onboard',
                 parentId: 'signUpDiv',
-                height: 1000
+                height: 1000,
+                onLoad:function(){
+                    console.log('asd');
+                }
+
+
             });
 
+
+
         }
+
+
+
+
     </script>
-    <script src="./widget.js" type="text/javascript"></script>
+    <script src="js/widget.js" type="text/javascript"></script>
     <script>
         var sherlock_firstbyte = window.performance && window.performance.timing
             ? window.performance.timing.responseStart
