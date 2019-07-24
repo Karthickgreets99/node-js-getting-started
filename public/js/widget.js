@@ -13,7 +13,15 @@
             console.log(postMessage);
 
             if(typeof config.onLoad === 'function'){
-                config.onLoad();
+
+                var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+                var eventer = window[eventMethod];
+                var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "LOADED";
+
+                eventer(messageEvent,function(e) {
+                    console.log('parent received message!:  ',e.data);
+                },false);
+                // config.onLoad();
             }
             // if(typeof config.onServerError === 'function'){
             //     return this.hasServerError = true;
@@ -66,17 +74,11 @@
         document.getElementById(config.parentId).appendChild(iFrame);
     };
 
-    // window.PayPal.onLoad = function (){
+    // PayPal.onLoad = function (){
     //
     //     console.log('loaded');
     //
-    //     var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
-    //     var eventer = window[eventMethod];
-    //     var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "LOADED";
     //
-    //     eventer(messageEvent,function(e) {
-    //         console.log('parent received message!:  ',e.data);
-    //     },false);
     //
     // }
 
