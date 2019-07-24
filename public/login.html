@@ -134,7 +134,6 @@
             var signUpEmailID = generateEmailId();
             localStorage.setItem('signUpExternalId', signUpExternalId);
             localStorage.setItem('signUpEmailID', signUpEmailID);
-            //console.log(signUpExternalId,'signinExternalId');
             createUser(signUpExternalId,signUpEmailID);
 
             document.getElementById('signUpDiv').classList.remove('hide');
