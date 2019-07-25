@@ -20,13 +20,14 @@
 
         const onPostMessageHandler = function(event) {
             console.log(1);
+            console.log('event',event);
             let postMessage = (event && event.data) || {};
             if (!postMessage || !postMessage.data || !postMessage.data.event) {
                 console.log('invalidPostMessage');
                 return;
             }
 
-            console.log('postmessage',postMessage.data.event);
+            console.log('postmessage',postMessage);
 
 
            // if(typeof config.onLoad === 'function'){
@@ -95,7 +96,7 @@
     };
 
     function listenMessage(msg) {
-        alert(msg);
+        alert(msg.data.event);
     }
 
 })();
