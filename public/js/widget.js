@@ -10,6 +10,7 @@
                 window.attachEvent("onmessage", listenMessage);
             }
         },1000);
+
         const onPostMessageHandler = function(postMessage) {
             console.log(1);
             if (!postMessage || !postMessage.data || !postMessage.data.event) {
@@ -17,7 +18,8 @@
                 return;
             }
 
-            console.log(postMessage);
+            console.log('postmessage',postMessage);
+
 
            // if(typeof config.onLoad === 'function'){
 
@@ -42,8 +44,8 @@
             // if(typeof config.onComplete === 'function'){
             //     return this.hasUserComplete = true;
             // }
-        }
-
+        };
+        window.addEventListener('message', onPostMessageHandler);
         // setInterval(function() {
         //     // Send the message "Hello" to the parent window
         //     // ...if the domain is still "davidwalsh.name"
