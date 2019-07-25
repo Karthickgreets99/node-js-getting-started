@@ -2,7 +2,7 @@
     'use strict';
     window.PayPal = window.PayPal || {};
     window.PayPal.initCustomPayPalApp = function(config) {
-        const hasWidgetLoaded = false;
+
 
         window.addEventListener('message',function(e) {
             var key = e.message ? 'message' : 'data';
@@ -22,7 +22,8 @@
             console.log(1);
             console.log('event',event);
             let postMessage = (event && event.data) || {};
-            if (!postMessage || !postMessage.data || !postMessage.data.event) {
+            console.log('1111222',postMessage);
+            if (!postMessage && !postMessage.data) {
                 console.log('invalidPostMessage');
                 return;
             }
@@ -30,9 +31,9 @@
             console.log('postmessage',postMessage);
 
 
-           // if(typeof config.onLoad === 'function'){
+            if(typeof config.onLoad === 'function'){
 
-
+                console.log(123);
 
 
                 // var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
@@ -43,7 +44,7 @@
                 //     console.log('parent received message!:  ',e.data);
                 // },false);
                 // config.onLoad();
-            //}
+            }
             // if(typeof config.onServerError === 'function'){
             //     return this.hasServerError = true;
             // }
@@ -96,7 +97,7 @@
     };
 
     function listenMessage(msg) {
-        alert(msg.data);
+        return msg.data;
     }
 
 })();
