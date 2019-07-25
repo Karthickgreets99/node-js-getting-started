@@ -96,7 +96,7 @@
     };
 
     function listenMessage(msg) {
-        alert(msg.data.event);
+        alert(msg.data);
     }
 
 })();
