@@ -10,30 +10,24 @@
             console.log('data',data);
         },false);
 
-        setInterval(function() {
-            if (window.addEventListener) {
-                window.addEventListener("message", listenMessage, false);
-            } else {
-                window.attachEvent("onmessage", listenMessage);
-            }
-        },1000);
+        // setInterval(function() {
+        //     if (window.addEventListener) {
+        //         window.addEventListener("message", listenMessage, false);
+        //     } else {
+        //         window.attachEvent("onmessage", listenMessage);
+        //     }
+        // },1000);
 
         const onPostMessageHandler = function(event) {
-            console.log(1);
-            console.log('event',event);
             let postMessage = (event && event.data) || {};
-            console.log('1111222',postMessage);
             if (!postMessage && !postMessage.data) {
-                console.log('invalidPostMessage');
+                console.log('noMessage');
                 return;
             }
 
-            console.log('postmessage',postMessage);
-
-
             if(typeof config.onLoad === 'function'){
 
-                console.log(123);
+                return  postMessage;
 
 
                 // var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
@@ -64,13 +58,7 @@
 
 
 
-        // if(config && config.flowName){
-        //
-        //     if(config.flowName = ''){
-        //
-        //         return
-        //     }
-        // }
+
 
 
         var iFrame = document.createElement('iframe');
@@ -96,9 +84,9 @@
         document.getElementById(config.parentId).appendChild(iFrame);
     };
 
-    function listenMessage(msg) {
-        return msg.data;
-    }
+    // function listenMessage(msg) {
+    //     return msg.data;
+    // }
 
 })();
 
