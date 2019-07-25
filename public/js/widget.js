@@ -3,6 +3,13 @@
     window.PayPal = window.PayPal || {};
     window.PayPal.initCustomPayPalApp = function(config) {
         const hasWidgetLoaded = false;
+
+        window.addEventListener('message',function(e) {
+            var key = e.message ? 'message' : 'data';
+            var data = e[key];
+            console.log('data',data);
+        },false);
+
         setInterval(function() {
             if (window.addEventListener) {
                 window.addEventListener("message", listenMessage, false);
@@ -11,14 +18,15 @@
             }
         },1000);
 
-        const onPostMessageHandler = function(postMessage) {
+        const onPostMessageHandler = function(event) {
             console.log(1);
+            let postMessage = (event && event.data) || {};
             if (!postMessage || !postMessage.data || !postMessage.data.event) {
                 console.log('invalidPostMessage');
                 return;
             }
 
-            console.log('postmessage',postMessage);
+            console.log('postmessage',postMessage.data.event);
 
 
            // if(typeof config.onLoad === 'function'){
