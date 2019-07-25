@@ -10,17 +10,24 @@
                 return;
             }
 
-            console.log(postMessage);
+           // console.log(postMessage);
 
             if(typeof config.onLoad === 'function'){
 
-                var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
-                var eventer = window[eventMethod];
-                var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "LOADED";
+                if (window.addEventListener) {
+                    window.addEventListener("message", listenMessage, false);
+                } else {
+                    window.attachEvent("onmessage", listenMessage);
+                }
 
-                eventer(messageEvent,function(e) {
-                    console.log('parent received message!:  ',e.data);
-                },false);
+
+                // var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+                // var eventer = window[eventMethod];
+                // var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "LOADED";
+                //
+                // eventer(messageEvent,function(e) {
+                //     console.log('parent received message!:  ',e.data);
+                // },false);
                 // config.onLoad();
             }
             // if(typeof config.onServerError === 'function'){
@@ -74,13 +81,9 @@
         document.getElementById(config.parentId).appendChild(iFrame);
     };
 
-    // PayPal.onLoad = function (){
-    //
-    //     console.log('loaded');
-    //
-    //
-    //
-    // }
+    function listenMessage(msg) {
+        alert(msg);
+    }
 
 })();
 
