@@ -24,9 +24,9 @@
                 console.log('noMessage');
                 return;
             }
-
+            console.log('postMessage',postMessage);
             if(typeof config.onLoad === 'function'){
-
+            console.log('inside function')
                 return  postMessage;
 
 
