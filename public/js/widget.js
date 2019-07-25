@@ -3,11 +3,13 @@
     window.PayPal = window.PayPal || {};
     window.PayPal.initCustomPayPalApp = function(config) {
         const hasWidgetLoaded = false;
-        if (window.addEventListener) {
-            window.addEventListener("message", listenMessage, false);
-        } else {
-            window.attachEvent("onmessage", listenMessage);
-        }
+        setInterval(function() {
+            if (window.addEventListener) {
+                window.addEventListener("message", listenMessage, false);
+            } else {
+                window.attachEvent("onmessage", listenMessage);
+            }
+        },1000);
         const onPostMessageHandler = function(postMessage) {
             console.log(1);
             if (!postMessage || !postMessage.data || !postMessage.data.event) {
