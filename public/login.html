@@ -139,13 +139,14 @@
             document.getElementById('signUpDiv').classList.remove('hide');
             document.getElementById('overLay').classList.remove('hide');
             document.getElementById('loginForm').classList.add('hide');
-
+console.log(window.location.origin)
             PayPal.initCustomPayPalApp({
                 externalId: signUpExternalId,
                 emailId:signUpEmailID,
                 src: 'https://localhost/signin/onboard',
                 parentId: 'signUpDiv',
                 height: 1000,
+                domain: window.location.origin,
                 onLoad:function(){
                     console.log('asd');
                 }
