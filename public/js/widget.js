@@ -12,7 +12,7 @@
                 case 'LOADED':
                     // code block
                     console.log('data',data);
-
+                    return config.onLoad(listenMessage);
                     break;
                 case 'ERROR':
                     // code block
@@ -46,7 +46,7 @@
             }
             console.log('postMessage',postMessage);
             if(typeof config.onLoad === 'function'){
-                 config.onLoad(listenMessage);
+
 
 
                 // var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
@@ -108,6 +108,7 @@
         return msg.data;
     }
 
+    //return config.onLoad(listenMessage);
 })();
 
 
