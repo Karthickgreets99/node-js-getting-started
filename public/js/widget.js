@@ -27,7 +27,7 @@
 
         window.addEventListener('message',function(e) {
             var key = e.message ? 'message' : 'data';
-            var data = e[key];
+            var data = config.flowName + "_" + e[key];
 
             switch(data) {
                 case 'LOADED':
@@ -35,15 +35,15 @@
                     break;
                 case 'ERROR':
                     // code block
-                    onServerError(data);
+                    config.onError && config.onError(data);
                     break;
                 case 'EXIT':
                     // code block
-                    onUserExit(data);
+                    config.onExit && config.onExit(data);
                     break;
                 case 'COMPLETE':
                     // code block
-                    onUserComplete(data);
+                    config.onComplete && config.onComplete(data);
                     break;
                 default:
                 // code block
@@ -53,27 +53,6 @@
         },false);
 
 
-        const onWidgetLoad = function(data){
-            if(typeof config.onLoad === 'function'){
-                return config.onLoad(data)
-            }
-
-        };
-       const onServerError = function(data){
-            if(typeof config.onError === 'function'){
-                return config.onError(data)
-            }
-        };
-        const onUserExit = function(data){
-            if(typeof config.onExit === 'function'){
-                return config.onExit(data)
-            }
-        };
-       const onUserComplete = function(data){
-            if(typeof config.onComplete === 'function'){
-                return config.onComplete(data)
-            }
-        };
     };
 
 })();
