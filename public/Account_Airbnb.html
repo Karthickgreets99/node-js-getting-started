@@ -118,10 +118,11 @@
             const externalId = localStorage.getItem('signUpExternalId');
             const emailId =localStorage.getItem('signUpEmailID');
             // localStorage.setItem('externalId', externalId);
-            window.PYPL.initPayouts({
+            PayPal.initCustomPayPalApp({
                 externalId: externalId,
                 emailId: emailId,
-                src:' https://idaasfinancialnodeserv19065935485114.qa.paypal.com/signin/payments',
+                domain:window.location.origin,
+                src:' https://localhost/signin/payments',
                 parentId: 'payoutDiv'
             });
         }
@@ -132,10 +133,11 @@
         }
         function selectBirthday(){
             document.getElementById('birthday').classList.add('birthday');
-            window.PYPL.initPayouts({
-                src: 'https://idaasfinancialnodeserv19065935485114.qa.paypal.com/signin/upgrade',
+            PayPal.initCustomPayPalApp({
+                src: 'https://localhost/signin/upgrade',
                 parentId: 'birthday',
-                height: 350
+                height: 350,
+                domain:window.location.origin,
             });
         }
 
