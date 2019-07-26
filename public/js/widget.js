@@ -7,16 +7,36 @@
         window.addEventListener('message',function(e) {
             var key = e.message ? 'message' : 'data';
             var data = e[key];
-            console.log('data',data);
+
+            switch(data) {
+                case 'LOADED':
+                    // code block
+                    console.log('data',data);
+
+                    break;
+                case 'ERROR':
+                    // code block
+                    break;
+                case 'EXIT':
+                    // code block
+                    break;
+                case 'COMPLETE':
+                    // code block
+                    break;
+                default:
+                // code block
+            }
+
+
         },false);
 
-        // setInterval(function() {
-        //     if (window.addEventListener) {
-        //         window.addEventListener("message", listenMessage, false);
-        //     } else {
-        //         window.attachEvent("onmessage", listenMessage);
-        //     }
-        // },1000);
+        setInterval(function() {
+            if (window.addEventListener) {
+                window.addEventListener("message", listenMessage, false);
+            } else {
+                window.attachEvent("onmessage", listenMessage);
+            }
+        },1000);
 
         const onPostMessageHandler = function(event) {
             let postMessage = (event && event.data) || {};
@@ -26,8 +46,8 @@
             }
             console.log('postMessage',postMessage);
             if(typeof config.onLoad === 'function'){
-            console.log('inside function')
-                return  postMessage;
+            console.log('inside function');
+                return  listenMessage;
 
 
                 // var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
@@ -84,9 +104,9 @@
         document.getElementById(config.parentId).appendChild(iFrame);
     };
 
-    // function listenMessage(msg) {
-    //     return msg.data;
-    // }
+    function listenMessage(msg) {
+        return msg.data;
+    }
 
 })();
 
