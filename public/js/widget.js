@@ -46,8 +46,8 @@
             }
             console.log('postMessage',postMessage);
             if(typeof config.onLoad === 'function'){
-            console.log('inside function');
-                return  config.onLoad = listenMessage();
+
+                config.onLoad = listenMessage;
 
 
                 // var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
