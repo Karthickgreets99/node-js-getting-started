@@ -104,7 +104,7 @@
         document.getElementById(config.parentId).appendChild(iFrame);
     };
 
-    function listenMessage() {
+    function listenMessage(msg) {
         console.log('callback',msg.data);
         return msg;
     }
