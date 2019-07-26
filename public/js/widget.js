@@ -27,10 +27,10 @@
 
         window.addEventListener('message',function(e) {
             var key = e.message ? 'message' : 'data';
-            var data = config.flowName + "_" + e[key];
+            var data =  e[key];
 
             switch(data) {
-                case 'LOADED':
+                case 'signUpFlow_LOADED':
                     config.onLoad && config.onLoad(data);
                     break;
                 case 'ERROR':
