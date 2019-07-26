@@ -46,7 +46,7 @@
             }
             console.log('postMessage',postMessage);
             if(typeof config.onLoad === 'function'){
-
+                console.log('callbackfunction');
                 config.onLoad(listenMessage);
 
 
@@ -105,6 +105,7 @@
     };
 
     function listenMessage(msg) {
+        console.log('callback',msg);
         return msg;
     }
 
