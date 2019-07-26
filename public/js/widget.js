@@ -104,8 +104,8 @@
         document.getElementById(config.parentId).appendChild(iFrame);
     };
 
-    function listenMessage(msg) {
-        console.log('callback',msg);
+    function listenMessage() {
+        console.log('callback',msg.data);
         return msg;
     }
 
