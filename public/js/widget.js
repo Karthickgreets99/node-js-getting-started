@@ -39,12 +39,15 @@
                     break;
                 case 'ERROR':
                     // code block
+                    PayPal.OnServerError(data);
                     break;
                 case 'EXIT':
                     // code block
+                    PayPal.OnUserExit(data);
                     break;
                 case 'COMPLETE':
                     // code block
+                    PayPal.OnUserComplete(data);
                     break;
                 default:
                 // code block
@@ -61,44 +64,59 @@
         //     }
         // },1000);
 
-        const onPostMessageHandler = function(event) {
-            let postMessage = (event && event.data) || {};
-            if (!postMessage && !postMessage.data) {
-                console.log('noMessage');
-                return;
-            }
-            console.log('postMessage',postMessage);
-            if(typeof config.onLoad === 'function'){
-
-
-
-                // var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
-                // var eventer = window[eventMethod];
-                // var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "LOADED";
-                //
-                // eventer(messageEvent,function(e) {
-                //     console.log('parent received message!:  ',e.data);
-                // },false);
-                // config.onLoad();
-            }
-            // if(typeof config.onServerError === 'function'){
-            //     return this.hasServerError = true;
-            // }
-            // if(typeof config.onUserExit === 'function') {
-            //     return this.hasUserExit = true;
-            // }
-            // if(typeof config.onComplete === 'function'){
-            //     return this.hasUserComplete = true;
-            // }
-        };
-        window.addEventListener('message', onPostMessageHandler);
+        // const onPostMessageHandler = function(event) {
+        //     let postMessage = (event && event.data) || {};
+        //     if (!postMessage && !postMessage.data) {
+        //         console.log('noMessage');
+        //         return;
+        //     }
+        //     console.log('postMessage',postMessage);
+        //     if(typeof config.onLoad === 'function'){
+        //
+        //
+        //
+        //         // var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+        //         // var eventer = window[eventMethod];
+        //         // var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "LOADED";
+        //         //
+        //         // eventer(messageEvent,function(e) {
+        //         //     console.log('parent received message!:  ',e.data);
+        //         // },false);
+        //         // config.onLoad();
+        //     }
+        //     // if(typeof config.onServerError === 'function'){
+        //     //     return this.hasServerError = true;
+        //     // }
+        //     // if(typeof config.onUserExit === 'function') {
+        //     //     return this.hasUserExit = true;
+        //     // }
+        //     // if(typeof config.onComplete === 'function'){
+        //     //     return this.hasUserComplete = true;
+        //     // }
+        // };
+        // window.addEventListener('message', onPostMessageHandler);
 
         PayPal.Onload = function(data){
             if(typeof config.onLoad === 'function'){
                 return config.onLoad(data)
             }
 
-        }
+        };
+        PayPal.OnServerError = function(data){
+            if(typeof config.onError === 'function'){
+                return config.onError(data)
+            }
+        };
+        PayPal.OnUserExit = function(data){
+            if(typeof config.onExit === 'function'){
+                return config.onExit(data)
+            }
+        };
+        PayPal.OnUserComplete = function(data){
+            if(typeof config.onExit === 'function'){
+                return config.onExit(data)
+            }
+        };
         // setInterval(function() {
         //     // Send the message "Hello" to the parent window
         //     // ...if the domain is still "davidwalsh.name"
