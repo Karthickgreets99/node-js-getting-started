@@ -31,10 +31,7 @@
 
             switch(data) {
                 case 'LOADED':
-                    // code block
-                    //console.log('data',data);
-                    //return config.onLoad(data);
-                    onWidgetLoad(data);
+                    config.onLoad && config.onLoad(data);
                     break;
                 case 'ERROR':
                     // code block

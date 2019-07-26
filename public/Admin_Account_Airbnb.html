@@ -4321,10 +4321,11 @@
         // var children = parent.children;
         // console.log(children);
         // alert(externalId)
-        window.PYPL.initPayouts({
+        PayPal.initCustomPayPalApp({
             externalId: externalId,
             emailId:emailId,
-            src: 'https://idaasfinancialnodeserv19065935485114.qa.paypal.com/signin/payouts',
+            domain:window.location.origin,
+            src: 'https://localhost/signin/payouts',
             parentId: 'payoutNow'
         });
     }
