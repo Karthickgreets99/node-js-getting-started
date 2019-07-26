@@ -3,6 +3,28 @@
     window.PayPal = window.PayPal || {};
     window.PayPal.initCustomPayPalApp = function(config) {
 
+    var iFrame = document.createElement('iframe');
+    var src = config.src;
+    var defaultProps = {
+        height: config.height || 700,
+        style: 'width: 355px;',
+        name: 'injectedCustomPayPalApp',
+        frameborder: 0,
+        scrolling: 'no',
+        sandbox:
+            'allow-same-origin allow-scripts allow-popups allow-forms allow-top-navigation',
+    };
+    var queryParams = '?';
+    for (var param in config) {
+        queryParams =
+            queryParams + param + '=' + encodeURIComponent(config[param]) + '&';
+    }
+    defaultProps.src = src + queryParams;
+    Object.keys(defaultProps).forEach(function(attr) {
+        iFrame.setAttribute(attr, defaultProps[attr]);
+    });
+    document.getElementById(config.parentId).appendChild(iFrame);
+
 
         window.addEventListener('message',function(e) {
             var key = e.message ? 'message' : 'data';
@@ -11,8 +33,9 @@
             switch(data) {
                 case 'LOADED':
                     // code block
-                    console.log('data',data);
-                    return config.onLoad(data);
+                    //console.log('data',data);
+                    //return config.onLoad(data);
+                    PayPal.Onload(data);
                     break;
                 case 'ERROR':
                     // code block
@@ -30,13 +53,13 @@
 
         },false);
 
-        setInterval(function() {
-            if (window.addEventListener) {
-                window.addEventListener("message", listenMessage, false);
-            } else {
-                window.attachEvent("onmessage", listenMessage);
-            }
-        },1000);
+        // setInterval(function() {
+        //     if (window.addEventListener) {
+        //         window.addEventListener("message", listenMessage, false);
+        //     } else {
+        //         window.attachEvent("onmessage", listenMessage);
+        //     }
+        // },1000);
 
         const onPostMessageHandler = function(event) {
             let postMessage = (event && event.data) || {};
@@ -69,6 +92,13 @@
             // }
         };
         window.addEventListener('message', onPostMessageHandler);
+
+        PayPal.Onload = function(data){
+            if(typeof config.onLoad === 'function'){
+                return config.onLoad(data)
+            }
+
+        }
         // setInterval(function() {
         //     // Send the message "Hello" to the parent window
         //     // ...if the domain is still "davidwalsh.name"
@@ -80,33 +110,14 @@
 
 
 
-        var iFrame = document.createElement('iframe');
-        var src = config.src;
-        var defaultProps = {
-            height: config.height || 700,
-            style: 'width: 355px;',
-            name: 'injectedCustomPayPalApp',
-            frameborder: 0,
-            scrolling: 'no',
-            sandbox:
-                'allow-same-origin allow-scripts allow-popups allow-forms allow-top-navigation',
-        };
-        var queryParams = '?';
-        for (var param in config) {
-            queryParams =
-                queryParams + param + '=' + encodeURIComponent(config[param]) + '&';
-        }
-        defaultProps.src = src + queryParams;
-        Object.keys(defaultProps).forEach(function(attr) {
-            iFrame.setAttribute(attr, defaultProps[attr]);
-        });
-        document.getElementById(config.parentId).appendChild(iFrame);
+
     };
 
-    function listenMessage(msg) {
-        console.log('calling after callback',msg);
-        return msg.data;
-    }
+
+    // function listenMessage(msg) {
+    //     console.log('calling after callback',msg);
+    //     return msg.data;
+    // }
 
     //return config.onLoad(listenMessage);
 })();
