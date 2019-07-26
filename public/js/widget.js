@@ -46,8 +46,7 @@
             }
             console.log('postMessage',postMessage);
             if(typeof config.onLoad === 'function'){
-                console.log('callbackfunction');
-                config.onLoad(listenMessage);
+                 config.onLoad(listenMessage);
 
 
                 // var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
@@ -105,7 +104,8 @@
     };
 
     function listenMessage(msg) {
-        console.log('callback',msg.data);
+        console.log('callback123', msg.data);
+        console.log('callback1234', msg);
         return msg;
     }
 
