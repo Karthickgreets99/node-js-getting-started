@@ -104,6 +104,7 @@
     };
 
     function listenMessage(msg) {
+        console.log('calling after callback',msg);
         return msg.data;
     }
 
