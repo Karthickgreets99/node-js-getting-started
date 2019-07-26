@@ -105,7 +105,7 @@
     };
 
     function listenMessage(msg) {
-        return msg.data;
+        return msg;
     }
 
 })();
