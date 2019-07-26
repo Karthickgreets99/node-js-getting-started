@@ -104,9 +104,7 @@
     };
 
     function listenMessage(msg) {
-        console.log('callback123', msg.data);
-        console.log('callback1234', msg);
-        return msg;
+        return msg.data;
     }
 
 })();
