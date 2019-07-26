@@ -12,7 +12,7 @@
                 case 'LOADED':
                     // code block
                     console.log('data',data);
-                    return config.onLoad(listenMessage);
+                    return config.onLoad(data);
                     break;
                 case 'ERROR':
                     // code block
