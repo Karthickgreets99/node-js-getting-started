@@ -148,15 +148,17 @@
                 height: 1000,
                 domain: window.location.origin,
                 onLoad:function(obj){
-                    console.log(obj);
+                    console.log('onLoad',obj);
                 },
                 onError:function(obj){
-                    console.log(obj);
+                    console.log('onError',obj);
                 },
                 onExit:function(obj){
-                    console.log(obj);
+                    console.log('onExit',obj);
+                },
+                onComplete:function(obj){
+                    console.log('onComplete',obj);
                 }
-
 
             });
 
