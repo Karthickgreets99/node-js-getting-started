@@ -22,15 +22,18 @@
     Object.keys(defaultProps).forEach(function(attr) {
         iFrame.setAttribute(attr, defaultProps[attr]);
     });
-    document.getElementById(config.parentId).appendChild(iFrame);
 
+    var postMessageKey = ['signUpFlow_LOADED','payments_LOADED'];
+    document.getElementById(config.parentId).appendChild(iFrame);
 
         window.addEventListener('message',function(e) {
             var key = e.message ? 'message' : 'data';
             var data =  e[key];
 
+            var value = postMessageKey.indexOf(data) > -1 ? data : ''
+
             switch(data) {
-                case 'signUpFlow_LOADED':
+                case value:
                     config.onLoad && config.onLoad(data);
                     break;
                 case 'ERROR':
