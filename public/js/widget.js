@@ -29,9 +29,9 @@
         window.addEventListener('message',function(e) {
             var key = e.message ? 'message' : 'data';
             var data =  e[key];
-
+            console.log('data:',data);
             var value = postMessageKey.indexOf(data) > -1 ? data : ''
-
+            console.log('value:',value);
             switch(data) {
                 case value:
                     config.onLoad && config.onLoad(data);
