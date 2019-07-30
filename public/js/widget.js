@@ -23,17 +23,23 @@
         iFrame.setAttribute(attr, defaultProps[attr]);
     });
 
-    var postMessageKey = ['signUpFlow_LOADED','payments_LOADED'];
+    var postMessageKey = ['LOADED','ERROR','EXIT', 'COMPLETE'];
     document.getElementById(config.parentId).appendChild(iFrame);
 
         window.addEventListener('message',function(e) {
             var key = e.message ? 'message' : 'data';
             var data =  e[key];
             console.log('data:',data);
-            var value = postMessageKey.indexOf(data) > -1 ? data : ''
+            //var value = postMessageKey.indexOf(data) > -1 ? data : '';
+            if(data){
+                var checkValue =  data.split('_');
+                console.log('array',checkValue[0],checkValue[1]);
+                var value = postMessageKey.indexOf(checkValue[1]) > -1 ? data : '';
+                console.log('value:',value);
+            }
             console.log('value:',value);
-            switch(data) {
-                case value:
+            switch(checkValue[1]) {
+                case 'LOADED':
                     config.onLoad && config.onLoad(data);
                     break;
                 case 'ERROR':
