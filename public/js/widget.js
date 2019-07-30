@@ -29,30 +29,28 @@
         window.addEventListener('message',function(e) {
             var key = e.message ? 'message' : 'data';
             var data =  e[key];
-            console.log('data:',data);
-            //var value = postMessageKey.indexOf(data) > -1 ? data : '';
             if(data){
                 var checkValue =  data.split('_');
-                console.log('array',checkValue[0],checkValue[1]);
+                //console.log('array',checkValue[0],checkValue[1]);
                 var value = postMessageKey.indexOf(checkValue[1]) > -1 ? data : '';
-                console.log('value:',value);
+                //console.log('value:',value);
             }
-            console.log('value:',value);
+            //console.log('value:',value);
             switch(checkValue[1]) {
                 case 'LOADED':
-                    config.onLoad && config.onLoad(data);
+                    config.onLoad && config.onLoad(value);
                     break;
                 case 'ERROR':
                     // code block
-                    config.onError && config.onError(data);
+                    config.onError && config.onError(value);
                     break;
                 case 'EXIT':
                     // code block
-                    config.onExit && config.onExit(data);
+                    config.onExit && config.onExit(value);
                     break;
                 case 'COMPLETE':
                     // code block
-                    config.onComplete && config.onComplete(data);
+                    config.onComplete && config.onComplete(value);
                     break;
                 default:
                 // code block
