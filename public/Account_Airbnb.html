@@ -124,7 +124,19 @@
                 domain:window.location.origin,
                 flowName:'payments',
                 src:' https://localhost/signin/payments',
-                parentId: 'payoutDiv'
+                parentId: 'payoutDiv',
+                onLoad:function(obj){
+                    console.log('onLoad',obj);
+                },
+                onError:function(obj){
+                    console.log('onError',obj);
+                },
+                onExit:function(obj){
+                    console.log('onExit',obj);
+                },
+                onComplete:function(obj){
+                    console.log('onComplete',obj);
+                }
             });
         }
         function showProfileDetails(){
