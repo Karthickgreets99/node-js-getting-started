@@ -16,16 +16,16 @@
         };
         var queryParams = '?';
         for (var param in config) {
+            console.log('params',params)
             queryParams =
-                queryParams +'domain='+ domain + '&' + param + '=' + encodeURIComponent(config[param]) + '&';
+                queryParams  + param + '=' + encodeURIComponent(config[param]) + '&domain='+ domain + '&';
         }
         console.log('queryParams', queryParams);
         console.log('defaultProps', defaultProps);
 
         defaultProps.src = src + queryParams;
-        console.log('defaultPropsSrc', defaultProps.src);
         Object.keys(defaultProps).forEach(function (attr) {
-            iFrame.setAttribute(attr, defaultProps[attr]);
+        iFrame.setAttribute(attr, defaultProps[attr]);
         });
         document.getElementById(config.parentId).appendChild(iFrame);
 
