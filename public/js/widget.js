@@ -22,10 +22,9 @@
         Object.keys(defaultProps).forEach(function (attr) {
             iFrame.setAttribute(attr, defaultProps[attr]);
         });
-
         document.getElementById(config.parentId).appendChild(iFrame);
 
-        //event listner for post message
+        //event listener for post message
         window.addEventListener('message', function (e) {
             var postMessageKey = ['LOADED', 'ERROR', 'EXIT', 'COMPLETE'];
             var key = e.message ? 'message' : 'data';
@@ -53,11 +52,7 @@
                     // code block
                 }
             }
-
-
         }, false);
-
-
     };
 
 })();
