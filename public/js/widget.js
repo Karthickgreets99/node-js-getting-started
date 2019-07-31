@@ -25,34 +25,33 @@
 
         document.getElementById(config.parentId).appendChild(iFrame);
 
+        //event listner for post message
         window.addEventListener('message', function (e) {
             var postMessageKey = ['LOADED', 'ERROR', 'EXIT', 'COMPLETE'];
             var key = e.message ? 'message' : 'data';
             var data = e[key];
             if (data) {
-                var checkValue = data.split('_',1);
-                var checkValue1 = data.split('_',2);
-                console.log('checkvalue',checkValue,checkValue1);
+                var checkValue = data.split('_');
                 var value = postMessageKey.indexOf(checkValue[1]) > -1 ? data : '';
-            }
-            switch (checkValue[1]) {
-                case 'LOADED':
-                    config.onLoad && config.onLoad(value);
-                    break;
-                case 'ERROR':
+                switch (checkValue[1]) {
+                    case 'LOADED':
+                        config.onLoad && config.onLoad(value);
+                        break;
+                    case 'ERROR':
+                        // code block
+                        config.onError && config.onError(value);
+                        break;
+                    case 'EXIT':
+                        // code block
+                        config.onExit && config.onExit(value);
+                        break;
+                    case 'COMPLETE':
+                        // code block
+                        config.onComplete && config.onComplete(value);
+                        break;
+                    default:
                     // code block
-                    config.onError && config.onError(value);
-                    break;
-                case 'EXIT':
-                    // code block
-                    config.onExit && config.onExit(value);
-                    break;
-                case 'COMPLETE':
-                    // code block
-                    config.onComplete && config.onComplete(value);
-                    break;
-                default:
-                // code block
+                }
             }
 
 
