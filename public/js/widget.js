@@ -31,7 +31,8 @@
             var data = e[key];
             if (data) {
                 var checkValue = data.split('_',1);
-                console.log('checkvalue',checkValue);
+                var checkValue1 = data.split('_',2);
+                console.log('checkvalue',checkValue,checkValue1);
                 var value = postMessageKey.indexOf(checkValue[1]) > -1 ? data : '';
             }
             switch (checkValue[1]) {
