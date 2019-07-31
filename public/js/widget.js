@@ -17,7 +17,7 @@
         var queryParams = '?';
         for (var param in config) {
             queryParams =
-                domain + queryParams + param + '=' + encodeURIComponent(config[param]) + '&';
+                queryParams + param + '=' + encodeURIComponent(config[param]) + '&' + domain;
         }
         console.log('queryParams', queryParams);
         console.log('defaultProps', defaultProps);
