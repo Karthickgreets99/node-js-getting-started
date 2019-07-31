@@ -3,8 +3,8 @@
     window.PayPal = window.PayPal || {};
     window.PayPal.initCustomPayPalApp = function (config) {
         var iFrame = document.createElement('iframe');
+        config.domain = window.location.origin;
         var src = config.src;
-        var domain = window.location.origin;
         var defaultProps = {
             height: config.height || 700,
             style: 'width: 355px;',
@@ -18,7 +18,7 @@
         for (var param in config) {
             console.log('params',param)
             queryParams =
-                queryParams  + param + '=' + encodeURIComponent(config[param]) + '&domain='+ domain + '&';
+                queryParams  + param + '=' + encodeURIComponent(config[param]) + '&';
         }
         console.log('queryParams', queryParams);
         console.log('defaultProps', defaultProps);
