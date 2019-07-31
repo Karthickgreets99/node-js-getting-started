@@ -23,7 +23,7 @@
         console.log('queryParams', queryParams);
         console.log('defaultProps', defaultProps);
 
-        defaultProps.src = domain + src + queryParams;
+        defaultProps.src = src + queryParams;
         console.log('defaultPropsSrc', defaultProps.src);
         Object.keys(defaultProps).forEach(function (attr) {
             iFrame.setAttribute(attr, defaultProps[attr]);
