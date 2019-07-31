@@ -4,7 +4,6 @@
     window.PayPal.initCustomPayPalApp = function (config) {
         var iFrame = document.createElement('iframe');
         var src = config.src;
-        var domain = window.location.origin;
         var defaultProps = {
             height: config.height || 700,
             style: 'width: 355px;',
@@ -13,7 +12,7 @@
             scrolling: 'no',
             sandbox:
                 'allow-same-origin allow-scripts allow-popups allow-forms allow-top-navigation',
-
+            domain: window.location.origin,
         };
         var queryParams = '?';
         for (var param in config) {
