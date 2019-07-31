@@ -16,16 +16,12 @@
         };
         var queryParams = '?';
         for (var param in config) {
-            console.log('params',param)
             queryParams =
-                queryParams  + param + '=' + encodeURIComponent(config[param]) + '&';
+                queryParams + param + '=' + encodeURIComponent(config[param]) + '&';
         }
-        console.log('queryParams', queryParams);
-        console.log('defaultProps', defaultProps);
-
         defaultProps.src = src + queryParams;
         Object.keys(defaultProps).forEach(function (attr) {
-        iFrame.setAttribute(attr, defaultProps[attr]);
+            iFrame.setAttribute(attr, defaultProps[attr]);
         });
         document.getElementById(config.parentId).appendChild(iFrame);
 
