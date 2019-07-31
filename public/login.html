@@ -147,14 +147,13 @@
                 src: 'https://localhost/signin/onboard',
                 parentId: 'signUpDiv',
                 height: 1000,
-                domain: window.location.origin,
                 onLoad:function(obj){
                     console.log('signuponLoad',obj);
                 },
-                onError:function(obj){
+                onServerError:function(obj){
                     console.log('signuponError',obj);
                 },
-                onExit:function(obj){
+                onUserExit:function(obj){
                     console.log('signuponExit',obj);
                 },
                 onComplete:function(obj){

@@ -12,6 +12,7 @@
             scrolling: 'no',
             sandbox:
                 'allow-same-origin allow-scripts allow-popups allow-forms allow-top-navigation',
+            domain:window.location.origin,
         };
         var queryParams = '?';
         for (var param in config) {
@@ -38,11 +39,11 @@
                         break;
                     case 'ERROR':
                         // code block
-                        config.onError && config.onError(value);
+                        config.onServerError && config.onServerError(value);
                         break;
                     case 'EXIT':
                         // code block
-                        config.onExit && config.onExit(value);
+                        config.onUserExit && config.onUserExit(value);
                         break;
                     case 'COMPLETE':
                         // code block
