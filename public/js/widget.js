@@ -31,7 +31,7 @@
             var key = e.message ? 'message' : 'data';
             var data = e[key];
             if (data) {
-                var checkValue = data.split('_');
+                var checkValue = data && data.split('_');
                 var value = postMessageKey.indexOf(checkValue[1]) > -1 ? data : '';
                 switch (checkValue[1]) {
                     case 'LOADED':
